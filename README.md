@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="Prodesk IT Logo" width="200" />
+</p>
+
 # Prodesk IT — Landing Page
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
