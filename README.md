@@ -6,9 +6,7 @@
 
 A fast, frosted-glass landing page for Prodesk IT's digital marketing and web development wing — built from the ground up in plain HTML, CSS, and JavaScript.
 
-**Live Demo:** [add your deployed URL here]
-
-![Prodesk IT screenshot](screenshot.png)
+**Live Demo:** [https://internship-prodesk-it.vercel.app]
 
 ## Overview
 
@@ -49,7 +47,7 @@ prodesk-it/Sprint_1
 
 ## Deployment
 
-Deployed on Vercel: **[add your live URL here]**
+Deployed on Vercel: **[https://internship-prodesk-it.vercel.app/]**
 
 ---
 
