@@ -148,7 +148,7 @@ input:checked + .slider:before {
   max-width: 700px;
 }
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 800;
   color: var(--text-color);
   margin-bottom: 20px;
@@ -162,7 +162,7 @@ input:checked + .slider:before {
 }
 .btn-cta {
   display: inline-block;
-  padding: 14px 32px;
+  padding: 16px 50px;
   background-color: var(--primary-color);
   color: var(--btn-text-color);
   text-decoration: none;
@@ -175,7 +175,7 @@ input:checked + .slider:before {
 }
 .btn-cta:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 20px var(--btn-shadow-color);
+  box-shadow: 0 8px 20px var(--btn-shadow-color);
 }
 .section-title {
   font-size: 2.7rem;
