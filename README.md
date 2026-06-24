@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../Internship-Sprints/Sprint_2/assets/images/logo.png" alt="Prodesk IT Logo" width="200" />
+</p>
+
 # 🚀 Prodesk IT Internship
 
 Welcome to my internship repository for **Prodesk IT**, where I document and showcase the projects completed throughout my engineering internship journey.
@@ -45,11 +49,10 @@ Internship-Sprints/
 ---
 
 ## 🏆 Sprint Projects
-
-| Sprint    | Project                 | Description                                                                                    |
-| --------- | ----------------------- | ---------------------------------------------------------------------------------------------- |
-| Sprint 01 | Prodesk IT Landing Page | Responsive business landing page built with HTML, CSS, and JavaScript                          |
-| Sprint 02 | Cash-Flow Dashboard     | Financial management dashboard with expense tracking, charts, reports, and currency conversion |
+| Sprint | Project | Tech Stack | Live Demo |
+|---------|---------|------------|-----------|
+| Sprint 01 | Prodesk IT Landing Page | Responsive business landing page built with HTML, CSS, and JavaScript | [🌐 Live Site](https://internship-prodesk-it.vercel.app/) |
+| Sprint 02 | Cash-Flow Dashboard | Financial management dashboard with expense tracking, charts, reports, and currency conversion | [🌐 Live Site](https://internship-prodesk-it-uldp.vercel.app/) |
 
 ---
 
@@ -64,13 +67,6 @@ Internship-Sprints/
 * REST APIs
 * Responsive Web Design
 * Git & GitHub
-
----
-
-## 🔗 Project Links
-
-### Sprint 01 — [Prodesk IT Landing Page](https://internship-prodesk-it.vercel.app/)
-### Sprint 02 — [Cash-Flow Dashboard](https://internship-prodesk-it-uldp.vercel.app/)
 
 ---
 
