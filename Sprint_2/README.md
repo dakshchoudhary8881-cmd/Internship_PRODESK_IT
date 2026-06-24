@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="logo.png" alt="Prodesk IT Logo" width="200" />
+</p>
+
+
 <div align="center">
 
 # 📊 Cash-Flow Dashboard
@@ -37,19 +42,17 @@
 
 ## 📸 Screenshots
 
-> **Note:** Placeholders for screenshots. Add your actual application screenshots to the `assets` folder and update the links below.
-
 <details>
 <summary><b>Click to expand and view screenshots</b></summary>
 <br>
 
 | Dashboard Overview | Interactive Analytics |
 | :---: | :---: |
-| <img src="https://via.placeholder.com/600x350.png?text=Dashboard+Overview" alt="Dashboard View" width="100%"> | <img src="https://via.placeholder.com/600x350.png?text=Expense+Charts" alt="Analytics View" width="100%"> |
+| <img src="../Sprint_2/assets/images/desktop-view.png" alt="Dashboard View" width="100%"> | <img src="../Sprint_2/assets/pdf/CashFlow-Report-1782324047166.pdf" alt="Analytics View" width="100%"> |
 
 | PDF Report Generation | Multi-Currency Converter |
 | :---: | :---: |
-| <img src="https://via.placeholder.com/600x350.png?text=PDF+Report" alt="PDF Generation" width="100%"> | <img src="https://via.placeholder.com/600x350.png?text=Currency+Converter" alt="Currency Converter" width="100%"> |
+| <img src="../Sprint_2/assets/images/mobile-view-1.png" alt="mobile responsive image" width="100%"> | <img src="../Sprint_2/assets/images/mobile-view-2.png" alt="mobile responsive image" width="100%"> |
 
 </details>
 
@@ -71,7 +74,7 @@ Running the Cash-Flow Dashboard locally is incredibly simple as it requires no b
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/cash-flow-dashboard.git
+   git clone https://github.com/dakshchoudhary8881-cmd/Internship_PRODESK_IT.git
    ```
 
 2. **Navigate to the project directory**
@@ -83,10 +86,6 @@ Running the Cash-Flow Dashboard locally is incredibly simple as it requires no b
    Simply double-click the `index.html` file to open it in your preferred modern web browser.
    
    *Optional: For the best development experience, use a local server like VS Code's "Live Server" extension.*
-   ```bash
-   # If you have live-server installed via npm
-   npx live-server
-   ```
 
 ---
 
@@ -94,47 +93,33 @@ Running the Cash-Flow Dashboard locally is incredibly simple as it requires no b
 
 ```text
 cash-flow-dashboard/
-├── index.html          # Main application structure
-├── style.css           # UI styling and responsive layouts
-├── script.js           # Core application logic, Chart.js, and API integration
-├── assets/             # Directory for images, icons, and screenshots
+├── css/
+│    └── style.css
+├── Js/
+│    └── script.js
+├── assets/
+│    └── images
+│    └── pdf
+├── index.html          # Main application structure          # Directory for images, icons, and screenshots
 └── README.md           # Project documentation
 ```
 
-*(Note: Depending on your exact structure, adjust the filenames above if you split your CSS/JS into multiple files)*
-
 ---
 
-## 🌐 Deployment
+## Deployment
 
-Since this project is purely frontend, it can be deployed for free on platforms like **GitHub Pages**, **Vercel**, or **Netlify** in seconds.
-
-**Deploying on GitHub Pages:**
-1. Push your code to a public GitHub repository.
-2. Go to your repository **Settings** > **Pages**.
-3. Select the `main` branch as the source and click **Save**.
-4. Your dashboard will be live and accessible via a public URL shortly!
-
----
-
-## 🔮 Future Improvements
-
-- [ ] **Cloud Sync:** Integrate Firebase or Supabase to allow users to sync data across multiple devices.
-- [ ] **Custom Categories:** Allow users to create and manage their own expense/income categories.
-- [ ] **Data Export/Import:** Add support for exporting and importing data in CSV format.
-- [ ] **Budget Goals:** Implement a feature to set monthly budgets and track progress.
-- [ ] **Dark Mode Toggle:** Add a sleek dark mode theme for better nighttime viewing.
+Deployed on Vercel: **[https://internship-prodesk-it.vercel.app/]**
 
 ---
 
 ## 👨‍💻 Author
 
 **Daksh Choudhary**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Daksh Choudhary](https://linkedin.com/in/yourprofile)
+- GitHub: [dakshchoudhary8881-cmd](https://github.com/dakshchoudhary8881-cmd)
+- LinkedIn: [Daksh Choudhary](https://www.linkedin.com/in/daksh-choudhary-ba4786381/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BYffbcsa5S1m0903tqS%2BqaQ%3D%3D)
 
 ---
 
 <p align="center">
-  <i>Made with ❤️ for better personal finance management.</i>
+  <i>Built for the Prodesk IT Sprint 02 internship task.</i>
 </p>
