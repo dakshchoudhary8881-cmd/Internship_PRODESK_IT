@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../Internship-Sprints/logo.png" alt="Prodesk IT Logo" width="200" />
+  <img src="logo.png" alt="Prodesk IT Logo" width="200" />
 </p>
 
 # 🚀 Prodesk IT Internship
