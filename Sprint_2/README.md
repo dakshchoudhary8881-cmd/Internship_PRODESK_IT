@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="Prodesk IT Logo" width="200" />
+  <img src="../Sprint_2/assets/images/logo.png" alt="Prodesk IT Logo" width="200" />
 </p>
 
 
@@ -48,9 +48,9 @@
 
 | Dashboard Overview | Interactive Analytics |
 | :---: | :---: |
-| <img src="../Sprint_2/assets/images/desktop-view.png" alt="Dashboard View" width="100%"> | <img src="../Sprint_2/assets/pdf/CashFlow-Report-1782324047166.pdf" alt="Analytics View" width="100%"> |
+| <img src="../Sprint_2/assets/images/desktop-view.png" alt="Dashboard View" width="100%"> | <img src="../Sprint_2/assets/images/report.png" alt="Analytics View" width="100%"> |
 
-| PDF Report Generation | Multi-Currency Converter |
+| Mobile View | Mobile View  |
 | :---: | :---: |
 | <img src="../Sprint_2/assets/images/mobile-view-1.png" alt="mobile responsive image" width="100%"> | <img src="../Sprint_2/assets/images/mobile-view-2.png" alt="mobile responsive image" width="100%"> |
 
@@ -92,16 +92,20 @@ Running the Cash-Flow Dashboard locally is incredibly simple as it requires no b
 ## 📁 Folder Structure
 
 ```text
-cash-flow-dashboard/
+Sprint_2/
 ├── css/
 │    └── style.css
 ├── Js/
 │    └── script.js
 ├── assets/
 │    └── images
-│    └── pdf
-├── index.html          # Main application structure          # Directory for images, icons, and screenshots
-└── README.md           # Project documentation
+│         └── desktop-view.png
+│         └── logo.png
+│         └── mobile-view-1.png
+│         └── mobile-view-2.png
+│         └── report.png
+├── index.html       
+└── README.md           
 ```
 
 ---
