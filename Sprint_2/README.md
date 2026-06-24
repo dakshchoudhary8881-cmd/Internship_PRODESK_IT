@@ -112,7 +112,7 @@ Sprint_2/
 
 ## Deployment
 
-Deployed on Vercel: **[https://internship-prodesk-it.vercel.app/]**
+Deployed on Vercel: **[https://internship-prodesk-it-uldp.vercel.app/]**
 
 ---
 
