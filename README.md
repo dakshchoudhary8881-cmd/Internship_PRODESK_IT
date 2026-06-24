@@ -50,7 +50,7 @@ Internship-Sprints/
 
 ## 🏆 Sprint Projects
 | Sprint | Project | Tech Stack | Live Demo |
-|---------|---------|------------|-----------|
+|--------|------- |----------|-----------   |
 | Sprint 01 | Prodesk IT Landing Page | Responsive business landing page built with HTML, CSS, and JavaScript | [🌐 Live Site](https://internship-prodesk-it.vercel.app/) |
 | Sprint 02 | Cash-Flow Dashboard | Financial management dashboard with expense tracking, charts, reports, and currency conversion | [🌐 Live Site](https://internship-prodesk-it-uldp.vercel.app/) |
 
