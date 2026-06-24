@@ -70,7 +70,7 @@ Internship-Sprints/
 ## 🔗 Project Links
 
 ### Sprint 01 — [Prodesk IT Landing Page](internship-prodesk-it.vercel.app)
-### Sprint 02 — [Cash-Flow Dashboard](internship-prodesk-it-uldp.vercel.app)
+### Sprint 02 — [Cash-Flow Dashboard](https://internship-prodesk-it-uldp.vercel.app/)
 
 ---
 
