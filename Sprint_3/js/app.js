@@ -6,7 +6,6 @@ const API_CONFIG = {
     reverseGeocodeUrl: "https://api.bigdatacloud.net/data/reverse-geocode-client",
     cacheDuration: 10 * 60 * 1000
 };
-
 const elements = {
     searchForm: document.getElementById('search-form'),
     cityInput: document.getElementById('city-input'),
@@ -28,7 +27,6 @@ const elements = {
     feelsLikeValue: document.getElementById('feels-like-value'),
     coordsValue: document.getElementById('coords-value')
 };
-
 function getWeatherDetails(wmoCode) {
     const codeMap = {
         0: { text: "Clear Sky", icon: "☀️", theme: "theme-clear" },
@@ -51,43 +49,34 @@ function getWeatherDetails(wmoCode) {
         82: { text: "Violent Rain Showers", icon: "⛈️", theme: "theme-rain" },
         95: { text: "Thunderstorm", icon: "⚡⛈️", theme: "theme-rain" }
     };
-
     return codeMap[wmoCode] || { text: "Atmospheric Activity", icon: "🌡️", theme: "theme-default" };
 }
-
 function showLoading() {
     elements.loadingState.classList.remove('hidden');
     elements.weatherCard.style.opacity = '0.5';
     hideError();
 }
-
 function hideLoading() {
     elements.loadingState.classList.add('hidden');
     elements.weatherCard.style.opacity = '1';
 }
-
 function showError(message) {
     elements.errorMessage.textContent = message;
     elements.errorBanner.classList.remove('hidden');
     if (window.lucide) window.lucide.createIcons();
 }
-
 function hideError() {
     elements.errorBanner.classList.add('hidden');
 }
-
 function applyTheme(themeClass) {
     document.body.className = themeClass;
 }
-
 function getCachedData(cityKey) {
     try {
         const cached = localStorage.getItem(`weather_cache_${cityKey}`);
         if (!cached) return null;
-
         const parsed = JSON.parse(cached);
         const now = Date.now();
-
         if (now - parsed.timestamp < API_CONFIG.cacheDuration) {
             return parsed.data;
         } else {
@@ -98,7 +87,6 @@ function getCachedData(cityKey) {
         return null;
     }
 }
-
 function setCachedData(cityKey, data) {
     try {
         const payload = {
@@ -108,7 +96,6 @@ function setCachedData(cityKey, data) {
         localStorage.setItem(`weather_cache_${cityKey}`, JSON.stringify(payload));
     } catch (err) {}
 }
-
 function renderWeather(data, isCached = false) {
     elements.cityName.textContent = data.cityName;
     elements.countryBadge.textContent = data.country || "GLOBAL";
@@ -119,7 +106,6 @@ function renderWeather(data, isCached = false) {
     elements.windValue.textContent = `${data.wind} km/h`;
     elements.feelsLikeValue.textContent = `${Math.round(data.feelsLike)}°C`;
     elements.coordsValue.textContent = `${data.lat.toFixed(2)}, ${data.lon.toFixed(2)}`;
-
     if (isCached) {
         elements.cacheBadge.className = "cache-badge cached";
         elements.cacheBadge.innerHTML = `<i data-lucide="package"></i> Cached (10m)`;
@@ -127,43 +113,33 @@ function renderWeather(data, isCached = false) {
         elements.cacheBadge.className = "cache-badge live";
         elements.cacheBadge.innerHTML = `<i data-lucide="radio"></i> Live API`;
     }
-
     const now = new Date();
     elements.timestamp.textContent = `Updated: ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-
     applyTheme(data.theme);
-
     if (window.lucide) window.lucide.createIcons();
 }
-// --- Autocomplete / Suggestion helpers ---
 let _autocompleteTimer = null;
 let _suggestionsList = null;
-
 function ensureSuggestionsContainer() {
     if (_suggestionsList) return _suggestionsList;
     _suggestionsList = document.createElement('ul');
     _suggestionsList.id = 'city-suggestions';
     _suggestionsList.className = 'city-suggestions';
-    // Insert right after the search form
     const searchContainer = elements.searchForm.parentElement;
     searchContainer.style.position = 'relative';
     searchContainer.appendChild(_suggestionsList);
     return _suggestionsList;
 }
-
 function hideSuggestions() {
     if (_suggestionsList) {
         _suggestionsList.innerHTML = '';
         _suggestionsList.classList.remove('visible');
     }
 }
-
 function getFlagEmoji(countryCode) {
     const cc = countryCode.toUpperCase();
     return [...cc].map(c => String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65)).join('');
 }
-
-// Extract city name from Nominatim result
 function extractCityName(result) {
     if (result.address) {
         return result.address.city || result.address.town || result.address.village
@@ -171,27 +147,21 @@ function extractCityName(result) {
     }
     return result.name || result.display_name.split(',')[0] || 'Unknown';
 }
-
 async function fetchSuggestions(query) {
     if (query.length < 2) { hideSuggestions(); return; }
     try {
-        // Use Nominatim (OpenStreetMap) — has comprehensive Indian town/village coverage
         const url = `${API_CONFIG.nominatimUrl}?q=${encodeURIComponent(query)}&format=json&limit=8&addressdetails=1&accept-language=en`;
         const res = await fetch(url, { headers: { 'User-Agent': 'WeatherCastApp/1.0' } });
         if (!res.ok) return;
         const data = await res.json();
         if (!data || data.length === 0) { hideSuggestions(); return; }
-
         const list = ensureSuggestionsContainer();
         list.innerHTML = '';
-
-        // De-duplicate by display name
         const seen = new Set();
         data.forEach(r => {
             const label = r.display_name;
             if (seen.has(label)) return;
             seen.add(label);
-
             const li = document.createElement('li');
             li.className = 'suggestion-item';
             const cc = r.address?.country_code || '';
@@ -210,11 +180,9 @@ async function fetchSuggestions(query) {
             });
             list.appendChild(li);
         });
-
         list.classList.add('visible');
-    } catch (_) { /* silently fail */ }
+    } catch (_) {}
 }
-
 async function fetchWeatherByCity(cityName) {
     const normalizedKey = cityName.trim().toLowerCase();
     const cachedData = getCachedData(normalizedKey);
@@ -224,12 +192,9 @@ async function fetchWeatherByCity(cityName) {
     }
     showLoading();
     hideSuggestions();
-
     try {
-        // PRIMARY: Nominatim (OpenStreetMap) — excellent coverage of Indian towns & villages
         const nominatimUrl = `${API_CONFIG.nominatimUrl}?q=${encodeURIComponent(cityName)}&format=json&limit=5&addressdetails=1&accept-language=en`;
         const nominatimRes = await fetch(nominatimUrl, { headers: { 'User-Agent': 'WeatherCastApp/1.0' } });
-        
         if (nominatimRes.ok) {
             const nominatimData = await nominatimRes.json();
             if (nominatimData && nominatimData.length > 0) {
@@ -243,8 +208,6 @@ async function fetchWeatherByCity(cityName) {
                 return;
             }
         }
-
-        // FALLBACK: Open-Meteo geocoding
         const geocodeResponse = await fetch(`${API_CONFIG.geocodeUrl}?name=${encodeURIComponent(cityName)}&count=10&language=en&format=json`);
         if (!geocodeResponse.ok) {
             throw new Error(`Geocoding server error: ${geocodeResponse.status}`);
@@ -256,29 +219,23 @@ async function fetchWeatherByCity(cityName) {
         const location = geocodeData.results[0];
         const cacheKey = `${location.name}_${location.latitude}_${location.longitude}`.toLowerCase();
         await fetchWeatherByCoords(location.latitude, location.longitude, location.name, location.country_code, cacheKey);
-
     } catch (error) {
         showError(error.message || "Failed to retrieve atmospheric data. Check connection.");
     } finally {
         hideLoading();
     }
 }
-
 async function fetchWeatherByCoords(lat, lon, cityName = "Location", countryCode = "--", cacheKey = null) {
     showLoading();
-
     try {
         const weatherUrl = `${API_CONFIG.weatherUrl}?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m`;
         const response = await fetch(weatherUrl);
-
         if (!response.ok) {
             throw new Error(`Weather API error: ${response.status}`);
         }
-
         const weatherData = await response.json();
         const current = weatherData.current;
         const details = getWeatherDetails(current.weather_code);
-
         const structuredPayload = {
             cityName: cityName,
             country: countryCode ? countryCode.toUpperCase() : "GPS",
@@ -292,41 +249,33 @@ async function fetchWeatherByCoords(lat, lon, cityName = "Location", countryCode
             lat: lat,
             lon: lon
         };
-
         renderWeather(structuredPayload, false);
-
         if (cacheKey) {
             setCachedData(cacheKey, structuredPayload);
         }
-
     } catch (error) {
         showError("Unable to load weather forecast for coordinates.");
     } finally {
         hideLoading();
     }
 }
-
 async function reverseGeocodeAndFetch(lat, lon) {
     showLoading();
     try {
         const response = await fetch(`${API_CONFIG.reverseGeocodeUrl}?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
         const data = await response.json();
-        
         const city = data.city || data.locality || data.principalSubdivision || "Local Area";
         const country = data.countryCode || "GPS";
-        
         await fetchWeatherByCoords(lat, lon, city, country, city.toLowerCase());
     } catch (error) {
         await fetchWeatherByCoords(lat, lon, "My Location", "GPS");
     }
 }
-
 function initGeolocation() {
     if (!navigator.geolocation) {
         fetchWeatherByCity("London");
         return;
     }
-
     showLoading();
     navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -338,7 +287,6 @@ function initGeolocation() {
         { timeout: 8000 }
     );
 }
-
 function setupEventListeners() {
     elements.searchForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -348,37 +296,27 @@ function setupEventListeners() {
             elements.cityInput.blur();
         }
     });
-
-    // Debounced autocomplete as user types
     elements.cityInput.addEventListener('input', () => {
         clearTimeout(_autocompleteTimer);
         const q = elements.cityInput.value.trim();
         if (q.length < 2) { hideSuggestions(); return; }
         _autocompleteTimer = setTimeout(() => fetchSuggestions(q), 300);
     });
-
-    // Hide suggestions on Escape
     elements.cityInput.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') hideSuggestions();
     });
-
-    // Hide suggestions when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.search-container')) hideSuggestions();
     });
-
     elements.btnGeo.addEventListener('click', () => {
         initGeolocation();
     });
-
     elements.closeErrorBtn.addEventListener('click', hideError);
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) {
         window.lucide.createIcons();
     }
-
     setupEventListeners();
     initGeolocation();
 });
