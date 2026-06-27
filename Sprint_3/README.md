@@ -43,7 +43,7 @@
 
 | Clear Sky Theme | Moody Rain Theme |
 | :---: | :---: |
-| <img src="../Sprint_3/assets/sunny.png" alt="Clear Sky Theme " width="100%"> | <img src="../Sprint_3/assets/rainy.png" alt="Rain Theme" width="100%"> |
+| <img src="../Sprint_3/assets/images/sunny.png" alt="Clear Sky Theme " width="100%"> | <img src="../Sprint_3/assets/images/rainy.png" alt="Rain Theme" width="100%"> |
 </details>
 
 ---
