@@ -43,6 +43,8 @@ Each sprint focuses on a different aspect of software development, encouraging p
 Internship-Sprints/
 ├── Sprint_1/
 ├── Sprint_2/
+├── Sprint_3/
+├── logo.png
 └── README.md
 ```
 
@@ -53,7 +55,7 @@ Internship-Sprints/
 |--------|------- |----------|-----------   |
 | Sprint 01 | Prodesk IT Landing Page | Responsive business landing page built with HTML, CSS, and JavaScript | [🌐Live](https://internship-prodesk-it.vercel.app/) |
 | Sprint 02 | Cash-Flow Dashboard | Financial management dashboard with expense tracking, charts, reports, and currency conversion | [🌐Live](https://internship-prodesk-it-uldp.vercel.app/) |
-
+| Sprint 03 | Weather-Cast | Real-time weather dashboard using Fetch API, Async/Await, WeatherAPI, Geolocation API, LocalStorage caching, dynamic weather icons, and responsive UI | [🌐 Live](https://internship-prodesk-it-gb4g.vercel.app/) |
 ---
 
 ## 🛠 Technologies Used
