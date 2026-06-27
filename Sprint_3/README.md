@@ -81,6 +81,8 @@ Sprint_3/
 ├── assets/
 │    └── images/
 │         └── logo.png
+│         └── rainy.png
+│         └── sunny.png
 ├── css/
 │    └── style.css
 ├── js/
@@ -92,6 +94,7 @@ Sprint_3/
 ---
 
 ## 🌐 Deployment
+
 Deployed on Vercel: `[https://internship-prodesk-it-uldp.vercel.app/]` *(Sprint 03 Route)*
 
 ---
