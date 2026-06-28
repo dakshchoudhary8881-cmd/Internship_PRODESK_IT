@@ -95,7 +95,7 @@ Sprint_3/
 
 ## 🌐 Deployment
 
-Deployed on Vercel: `[https://internship-prodesk-it-gb4g.vercel.app/]` *(Sprint 03 Route)*
+Deployed on Vercel: https://internship-prodesk-it-gb4g.vercel.app/
 
 ---
 
