@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoverCraft — AI Cover Letter Generator | Sprint 04</title>
+    <meta name="description" content="CoverCraft is an AI-powered SaaS tool that generates professional, personalized cover letters using Google Gemini. Built for Sprint 04 — AI Engineering.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-background">
+        <div class="bg-gradient"></div>
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header class="app-header">
+            <div class="logo">
+                <div class="logo-icon-wrapper">
+                    <i data-lucide="sparkles" class="logo-icon"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>CoverCraft</h1>
+                    <span class="badge-sprint">Sprint 04 · AI Engineering</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="btn-explore-templates" class="btn-explore" title="Explore CV Templates">
+                    <i data-lucide="layout-template"></i>
+                    <span>Explore Templates</span>
+                </button>
+                <button id="btn-settings" class="btn-icon" title="API Settings">
+                    <i data-lucide="settings"></i>
+                </button>
+                <div id="api-status" class="api-status-badge disconnected">
+                    <i data-lucide="circle" class="status-dot"></i>
+                    <span id="api-status-text">No API Key</span>
+                </div>
+            </div>
+        </header>
+
+        <div id="settings-modal" class="modal-overlay hidden">
+            <div class="modal glass-panel">
+                <div class="modal-header">
+                    <div class="modal-title-group">
+                        <i data-lucide="key" class="modal-icon"></i>
+                        <div>
+                            <h2>API Key Settings</h2>
+                            <p class="modal-subtitle">Configure your Google Gemini access</p>
+                        </div>
+                    </div>
+                    <button id="btn-close-modal" class="btn-close" title="Close">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="security-notice">
+                        <i data-lucide="shield-check" class="notice-icon"></i>
+                        <div>
+                            <strong>100% Client-Side Security</strong>
+                            <p>Your API key is saved strictly in your browser's local storage. It is never sent to any external server or database.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="api-key-input" class="input-label">
+                            <span>Google Gemini API Key</span>
+                            <a href="https://aistudio.google.com" target="_blank" rel="noopener" class="key-link">Get Free Key &rarr;</a>
+                        </label>
+                        <div class="api-key-input-wrapper">
+                            <input type="password" id="api-key-input" class="input-field" placeholder="AIzaSy...">
+                            <button type="button" id="btn-toggle-key-visibility" class="btn-eye" title="Toggle visibility">
+                                <i data-lucide="eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="btn-clear-key" class="btn-danger">
+                        <i data-lucide="trash-2"></i>
+                        <span>Remove Key</span>
+                    </button>
+                    <button type="button" id="btn-save-key" class="btn-primary">
+                        <i data-lucide="check"></i>
+                        <span>Save Key</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="explore-modal" class="modal-overlay hidden">
+            <div class="modal glass-panel explore-modal-box">
+                <div class="modal-header">
+                    <div class="modal-title-group">
+                        <i data-lucide="layout-template" class="modal-icon"></i>
+                        <div>
+                            <h2>Explore CV Templates</h2>
+                            <p class="modal-subtitle">Preview professional structures and apply them instantly</p>
+                        </div>
+                    </div>
+                    <button id="btn-close-explore" class="btn-close" title="Close">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div id="explore-grid" class="explore-grid">
+                </div>
+            </div>
+        </div>
+
+        <div id="toast" class="toast hidden">
+            <i data-lucide="check-circle" class="toast-icon"></i>
+            <span id="toast-message">Copied to clipboard!</span>
+        </div>
+
+        <main class="main-content">
+            <section class="form-section glass-panel" aria-label="Cover Letter Input Form">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i data-lucide="file-text"></i>
+                    </div>
+                    <div>
+                        <h2>Your Details</h2>
+                        <p class="section-subtitle">Fill in to generate a tailored cover letter</p>
+                    </div>
+                </div>
+
+                <form id="cover-letter-form" class="cover-form" novalidate>
+                    <div class="form-group">
+                        <label for="input-name" class="input-label">Full Name</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="user" class="input-icon"></i>
+                            <input type="text" id="input-name" class="input-field" placeholder="Your Full Name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-role" class="input-label">Job Role</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="briefcase" class="input-icon"></i>
+                            <input type="text" id="input-role" class="input-field" placeholder="Job Role" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-company" class="input-label">Target Company</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="building-2" class="input-icon"></i>
+                            <input type="text" id="input-company" class="input-field" placeholder="Example-Google" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-skills" class="input-label">Key Skills</label>
+                        <div class="input-wrapper textarea-wrapper">
+                            <i data-lucide="zap" class="input-icon textarea-icon"></i>
+                            <textarea id="input-skills" class="input-field textarea-field" placeholder="JavaScript, React, Node.js, REST APIs, TypeScript..." rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="input-label">
+                            Upload Resume
+                            <span class="optional-badge">Optional</span>
+                        </label>
+                        <div id="dropzone" class="dropzone">
+                            <div id="dropzone-idle" class="dropzone-content">
+                                <i data-lucide="upload-cloud" class="dropzone-icon"></i>
+                                <p class="dropzone-text">Drag & drop your PDF resume here</p>
+                                <p class="dropzone-subtext">or click to browse</p>
+                            </div>
+                            <div id="dropzone-success" class="dropzone-content hidden">
+                                <i data-lucide="file-check-2" class="dropzone-icon success"></i>
+                                <p id="resume-filename" class="dropzone-text">resume.pdf</p>
+                                <p id="resume-info" class="dropzone-subtext">Extracted 1,200 characters</p>
+                                <button type="button" id="btn-clear-resume" class="btn-clear-resume">
+                                    <i data-lucide="x"></i> Remove
+                                </button>
+                            </div>
+                            <input type="file" id="resume-input" accept=".pdf" class="dropzone-file-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="input-label">Tone</label>
+                        <div class="tone-selector">
+                            <label class="tone-option active">
+                                <input type="radio" name="tone" value="professional" checked>
+                                <span class="tone-chip">
+                                    <i data-lucide="award"></i> Professional
+                                </span>
+                            </label>
+                            <label class="tone-option">
+                                <input type="radio" name="tone" value="conversational">
+                                <span class="tone-chip">
+                                    <i data-lucide="message-circle"></i> Conversational
+                                </span>
+                            </label>
+                            <label class="tone-option">
+                                <input type="radio" name="tone" value="confident">
+                                <span class="tone-chip">
+                                    <i data-lucide="rocket"></i> Confident
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-generate" class="btn-generate">
+                        <span class="btn-generate-content">
+                            <i data-lucide="sparkles"></i>
+                            <span>Generate Cover Letter</span>
+                        </span>
+                        <span class="btn-generate-loading hidden">
+                            <div class="btn-spinner"></div>
+                            <span>Crafting with AI...</span>
+                        </span>
+                    </button>
+                </form>
+            </section>
+
+            <section class="output-section" aria-label="Generated Cover Letter">
+                <div id="output-empty" class="output-empty glass-panel">
+                    <div class="empty-illustration">
+                        <i data-lucide="file-pen-line" class="empty-icon"></i>
+                    </div>
+                    <h3>Your cover letter will appear here</h3>
+                    <p>Fill in the form and click generate to craft your personalized letter</p>
+                    <button type="button" id="btn-explore-empty" class="btn-explore-center">
+                        <i data-lucide="layout-template"></i>
+                        <span>Explore CV Templates</span>
+                    </button>
+                </div>
+
+                <div id="output-loading" class="output-loading glass-panel hidden">
+                    <div class="loading-header">
+                        <div class="shimmer shimmer-title"></div>
+                        <div class="shimmer shimmer-subtitle"></div>
+                    </div>
+                    <div class="loading-body">
+                        <div class="shimmer shimmer-line"></div>
+                        <div class="shimmer shimmer-line short"></div>
+                        <div class="shimmer shimmer-line"></div>
+                        <div class="shimmer shimmer-line medium"></div>
+                        <div class="shimmer shimmer-line"></div>
+                        <div class="shimmer shimmer-line short"></div>
+                        <div class="shimmer shimmer-line"></div>
+                        <div class="shimmer shimmer-line medium"></div>
+                    </div>
+                    <div class="loading-footer">
+                        <div class="spinner-small"></div>
+                        <span>AI is crafting your letter...</span>
+                    </div>
+                </div>
+
+                <div id="output-result" class="output-result glass-panel hidden">
+                    <div class="output-header">
+                        <div class="output-title-group">
+                            <i data-lucide="file-text" class="output-icon"></i>
+                            <div>
+                                <h2>Generated Cover Letter</h2>
+                                <span id="output-mode-badge" class="mode-badge">Template Mode</span>
+                            </div>
+                        </div>
+                        <div class="output-actions">
+                            <button id="btn-copy" class="btn-action" title="Copy to clipboard">
+                                <i data-lucide="copy"></i>
+                                <span>Copy</span>
+                            </button>
+                            <button id="btn-download" class="btn-action" title="Download as text file">
+                                <i data-lucide="download"></i>
+                                <span>Download</span>
+                            </button>
+                            <button id="btn-regenerate" class="btn-action" title="Generate again">
+                                <i data-lucide="refresh-cw"></i>
+                                <span>Redo</span>
+                            </button>
+                        </div>
+                    </div>
+                    <article id="output-content" class="output-content">
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>Engineered for <strong>Sprint 04: AI Engineering & LLM Integration</strong></p>
+            <div class="tech-stack">
+                <span>🤖 Google Gemini API</span>
+                <span>🔒 Secure localStorage Keys</span>
+                <span>📄 PDF.js Resume Parsing</span>
+                <span>⚡ Prompt Engineering</span>
+                <span>🎨 Glassmorphism UI</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        if (window.pdfjsLib) {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+    </script>
+    <script src="js/generator.js"></script>
+    <script src="js/pdf-parser.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
