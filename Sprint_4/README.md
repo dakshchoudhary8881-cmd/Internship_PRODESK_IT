@@ -18,11 +18,7 @@
 
 ## 🌐 Live Demo
 
-> **Try it now → [https://your-username.github.io/covercraft/](https://your-username.github.io/covercraft/)**
->
-> *(Replace with your GitHub Pages URL after deploying)*
-
-![CoverCraft Demo](./screenshots/demo.gif)
+> **Try it now → [https://your-username.github.io/covercraft/](https://internship-prodesk-it-9831.vercel.app/)**
 
 ---
 
