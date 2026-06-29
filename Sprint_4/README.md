@@ -18,7 +18,7 @@
 
 ## 🌐 Live Demo
 
-> **Try it now → [https://your-username.github.io/covercraft/](https://internship-prodesk-it-9831.vercel.app/)**
+> **Try it now → [CoverCraft](https://internship-prodesk-it-9831.vercel.app/)**
 
 ---
 
