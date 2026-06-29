@@ -36,7 +36,6 @@ Built entirely in **Vanilla HTML, CSS, and JavaScript** — zero frameworks, zer
 |---|---|
 | 🤖 | Gemini 2.0 Flash API with dynamic prompt engineering |
 | 🎨 | Three tone modes — Professional, Conversational, Confident |
-| 📄 | PDF résumé upload with client-side text extraction via **PDF.js** |
 | 🔄 | Template engine fallback when API is unavailable |
 | 📋 | Copy to Clipboard & Download as `.txt` |
 | ⏳ | Skeleton loading UI during API response (2–5s) |
@@ -46,6 +45,8 @@ Built entirely in **Vanilla HTML, CSS, and JavaScript** — zero frameworks, zer
 ---
 
 ## 🔄 How It Works
+
+> 🔑 **Get a free API key** at [aistudio.google.com/apikey](https://aistudio.google.com/apikey), then paste it into the **⚙️ Settings** modal inside the app. No `.env` file needed.
 
 ```
   Fill the form  +  Upload résumé (optional)  +  Gemini API key (optional)
@@ -65,24 +66,7 @@ Built entirely in **Vanilla HTML, CSS, and JavaScript** — zero frameworks, zer
                     │  Cover letter ready  │
                     │  📋 Copy  ⬇ Download │
                     └──────────────────────┘
-```
 
----
-
-## ⚡ Quick Start
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/your-username/covercraft.git && cd covercraft
-
-# 2. Serve locally — PDF.js requires HTTP, not file://
-python3 -m http.server 3000
-
-# 3. Open in your browser
-open http://localhost:3000
-```
-
-> 🔑 **Get a free API key** at [aistudio.google.com/apikey](https://aistudio.google.com/apikey), then paste it into the **⚙️ Settings** modal inside the app. No `.env` file needed.
 
 ---
 
