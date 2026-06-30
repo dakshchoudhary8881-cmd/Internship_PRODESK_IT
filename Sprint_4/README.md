@@ -24,7 +24,9 @@
 
 ## 🌟 Overview
 
-CoverCraft is a SaaS-style utility that generates tailored, professional cover letters in seconds. Enter your details, optionally upload your résumé as a PDF, and the **Google Gemini 2.0 Flash API** crafts a personalized letter — with a smart template engine fallback when offline or API-key-free.
+CoverCraft is a SaaS-style utility that generates tailored, professional cover letters in seconds. Enter your details, optionally upload your résumé as a PDF, and the **Google Gemini 2.0 Flash API** crafts a personalized letter — with a smart template engine fallback if the API call fails.
+
+No setup needed on the user's end — the app comes pre-configured and ready to use.
 
 Built entirely in **Vanilla HTML, CSS, and JavaScript** — zero frameworks, zero build tools, zero dependencies.
 
@@ -36,29 +38,28 @@ Built entirely in **Vanilla HTML, CSS, and JavaScript** — zero frameworks, zer
 |---|---|
 | 🤖 | Gemini 2.0 Flash API with dynamic prompt engineering |
 | 🎨 | Three tone modes — Professional, Conversational, Confident |
-| 🔄 | Template engine fallback when API is unavailable |
+| 🔄 | Template engine fallback when the API is unavailable |
 | 📋 | Copy to Clipboard & Download as `.txt` |
 | ⏳ | Skeleton loading UI during API response (2–5s) |
-| 🔒 | API key in `localStorage` only — never hardcoded or sent to a server |
+| ⚡ | Works out of the box — no API key setup required from the user |
 | 📱 | Fully responsive glassmorphism design |
 
 ---
 
 ## 🔄 How It Works
 
-> 🔑 **Get a free API key** at [aistudio.google.com/apikey](https://aistudio.google.com/apikey), then paste it into the **⚙️ Settings** modal inside the app. No `.env` file needed.
-
 ```
-  Fill the form  +  Upload résumé (optional)  +  Gemini API key (optional)
+  Fill the form  +  Upload résumé (optional)
                                 │
                 ┌───────────────┴────────────────┐
-                │        API key present?        │
+                │       Gemini 2.0 Flash API      │
+                │   (pre-configured, no setup)    │
                 └───────────────┬────────────────┘
-                       Yes ─────┤───── No
+                       Success ─┤── Failure
                        │                │
             ┌──────────▼──────┐  ┌──────▼──────────────┐
-            │  Gemini 2.0     │  │  Template engine     │
-            │  Flash API      │  │  fallback            │
+            │  AI-generated   │  │  Template engine     │
+            │  cover letter   │  │  fallback             │
             └──────────┬──────┘  └──────┬───────────────┘
                        └────────┬────────┘
                                 │
@@ -66,7 +67,7 @@ Built entirely in **Vanilla HTML, CSS, and JavaScript** — zero frameworks, zer
                     │  Cover letter ready  │
                     │  📋 Copy  ⬇ Download │
                     └──────────────────────┘
-
+```
 
 ---
 
@@ -81,7 +82,7 @@ Sprint_4/
 │   ├── app.js            # State management & event binding
 │   ├── generator.js      # Gemini API + template fallback
 │   └── pdf-parser.js     # Client-side PDF text extraction
-├── .env.example          # API key reference (gitignored, never committed)
+├── .env.example           # API key reference (gitignored, never committed)
 └── README.md
 ```
 
@@ -105,12 +106,10 @@ Sprint_4/
 
 | Concern | How it's handled |
 |---|---|
-| API key storage | `localStorage` only — never in source code |
+| API key storage | Stored as an environment variable, injected at build time |
 | Data transport | Browser → Google API directly over HTTPS |
 | File privacy | PDFs parsed client-side via PDF.js, never uploaded |
-| Source code | Zero hardcoded secrets; `.env` covered by `.gitignore` |
-
----
+| Source code | Key excluded from version control via `.gitignore` / `.env.example` |
 
 ---
 
