@@ -24,6 +24,7 @@
             <div class="logo">
                 <div class="logo-icon-wrapper">
                     <i data-lucide="sparkles" class="logo-icon"></i>
+                    <div class="logo-pulse"></div>
                 </div>
                 <div class="logo-text">
                     <h1>CoverCraft</h1>
@@ -35,63 +36,8 @@
                     <i data-lucide="layout-template"></i>
                     <span>Explore Templates</span>
                 </button>
-                <button id="btn-settings" class="btn-icon" title="API Settings">
-                    <i data-lucide="settings"></i>
-                </button>
-                <div id="api-status" class="api-status-badge disconnected">
-                    <i data-lucide="circle" class="status-dot"></i>
-                    <span id="api-status-text">No API Key</span>
-                </div>
             </div>
         </header>
-
-        <div id="settings-modal" class="modal-overlay hidden">
-            <div class="modal glass-panel">
-                <div class="modal-header">
-                    <div class="modal-title-group">
-                        <i data-lucide="key" class="modal-icon"></i>
-                        <div>
-                            <h2>API Key Settings</h2>
-                            <p class="modal-subtitle">Configure your Google Gemini access</p>
-                        </div>
-                    </div>
-                    <button id="btn-close-modal" class="btn-close" title="Close">
-                        <i data-lucide="x"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="security-notice">
-                        <i data-lucide="shield-check" class="notice-icon"></i>
-                        <div>
-                            <strong>100% Client-Side Security</strong>
-                            <p>Your API key is saved strictly in your browser's local storage. It is never sent to any external server or database.</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="api-key-input" class="input-label">
-                            <span>Google Gemini API Key</span>
-                            <a href="https://aistudio.google.com" target="_blank" rel="noopener" class="key-link">Get Free Key &rarr;</a>
-                        </label>
-                        <div class="api-key-input-wrapper">
-                            <input type="password" id="api-key-input" class="input-field" placeholder="AIzaSy...">
-                            <button type="button" id="btn-toggle-key-visibility" class="btn-eye" title="Toggle visibility">
-                                <i data-lucide="eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-actions">
-                    <button type="button" id="btn-clear-key" class="btn-danger">
-                        <i data-lucide="trash-2"></i>
-                        <span>Remove Key</span>
-                    </button>
-                    <button type="button" id="btn-save-key" class="btn-primary">
-                        <i data-lucide="check"></i>
-                        <span>Save Key</span>
-                    </button>
-                </div>
-            </div>
-        </div>
 
         <div id="explore-modal" class="modal-overlay hidden">
             <div class="modal glass-panel explore-modal-box">
@@ -170,8 +116,8 @@
                         <div id="dropzone" class="dropzone">
                             <div id="dropzone-idle" class="dropzone-content">
                                 <i data-lucide="upload-cloud" class="dropzone-icon"></i>
-                                <p class="dropzone-text">Drag & drop your PDF resume here</p>
-                                <p class="dropzone-subtext">or click to browse</p>
+                                <p class="dropzone-text">Drag & drop your resume here</p>
+                                <p class="dropzone-subtext">Supports PDF, DOCX, and TXT files</p>
                             </div>
                             <div id="dropzone-success" class="dropzone-content hidden">
                                 <i data-lucide="file-check-2" class="dropzone-icon success"></i>
@@ -181,7 +127,7 @@
                                     <i data-lucide="x"></i> Remove
                                 </button>
                             </div>
-                            <input type="file" id="resume-input" accept=".pdf" class="dropzone-file-input">
+                            <input type="file" id="resume-input" accept=".pdf,.doc,.docx,.txt,.rtf" class="dropzone-file-input">
                         </div>
                     </div>
 
@@ -270,10 +216,50 @@
                                 <i data-lucide="copy"></i>
                                 <span>Copy</span>
                             </button>
-                            <button id="btn-download" class="btn-action" title="Download as text file">
-                                <i data-lucide="download"></i>
-                                <span>Download</span>
-                            </button>
+                            <div class="download-wrapper">
+                                <button id="btn-download" class="btn-action" title="Download cover letter">
+                                    <i data-lucide="download"></i>
+                                    <span>Download</span>
+                                    <i data-lucide="chevron-down" class="download-chevron"></i>
+                                </button>
+                                <div id="download-dropdown" class="download-dropdown hidden">
+                                    <button class="download-option" data-format="pdf">
+                                        <i data-lucide="file-text"></i>
+                                        <div>
+                                            <span class="download-option-title">PDF Document</span>
+                                            <span class="download-option-desc">Best for printing & sharing</span>
+                                        </div>
+                                    </button>
+                                    <button class="download-option" data-format="docx">
+                                        <i data-lucide="file-type"></i>
+                                        <div>
+                                            <span class="download-option-title">Word (DOCX)</span>
+                                            <span class="download-option-desc">Editable in Microsoft Word</span>
+                                        </div>
+                                    </button>
+                                    <button class="download-option" data-format="txt">
+                                        <i data-lucide="file-minus"></i>
+                                        <div>
+                                            <span class="download-option-title">Plain Text (TXT)</span>
+                                            <span class="download-option-desc">Simple text format</span>
+                                        </div>
+                                    </button>
+                                    <button class="download-option" data-format="html">
+                                        <i data-lucide="code"></i>
+                                        <div>
+                                            <span class="download-option-title">HTML Page</span>
+                                            <span class="download-option-desc">Styled web page</span>
+                                        </div>
+                                    </button>
+                                    <button class="download-option" data-format="md">
+                                        <i data-lucide="hash"></i>
+                                        <div>
+                                            <span class="download-option-title">Markdown (MD)</span>
+                                            <span class="download-option-desc">For GitHub & docs</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
                             <button id="btn-regenerate" class="btn-action" title="Generate again">
                                 <i data-lucide="refresh-cw"></i>
                                 <span>Redo</span>
@@ -290,10 +276,10 @@
             <p>Engineered for <strong>Sprint 04: AI Engineering & LLM Integration</strong></p>
             <div class="tech-stack">
                 <span>🤖 Google Gemini API</span>
-                <span>🔒 Secure localStorage Keys</span>
-                <span>📄 PDF.js Resume Parsing</span>
+                <span>📄 Multi-Format Resume Parsing</span>
                 <span>⚡ Prompt Engineering</span>
                 <span>🎨 Glassmorphism UI</span>
+                <span>📥 PDF · DOCX · TXT · HTML · MD Export</span>
             </div>
         </footer>
     </div>
@@ -304,6 +290,8 @@
             window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
         }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="js/generator.js"></script>
     <script src="js/pdf-parser.js"></script>
     <script src="js/app.js"></script>

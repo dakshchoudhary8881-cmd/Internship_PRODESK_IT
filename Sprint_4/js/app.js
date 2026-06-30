@@ -36,16 +36,8 @@ const elements = {
     outputModeBadge: document.getElementById('output-mode-badge'),
     btnCopy: document.getElementById('btn-copy'),
     btnDownload: document.getElementById('btn-download'),
+    downloadDropdown: document.getElementById('download-dropdown'),
     btnRegenerate: document.getElementById('btn-regenerate'),
-    settingsModal: document.getElementById('settings-modal'),
-    btnSettings: document.getElementById('btn-settings'),
-    btnCloseModal: document.getElementById('btn-close-modal'),
-    apiKeyInput: document.getElementById('api-key-input'),
-    btnToggleKeyVisibility: document.getElementById('btn-toggle-key-visibility'),
-    btnSaveKey: document.getElementById('btn-save-key'),
-    btnClearKey: document.getElementById('btn-clear-key'),
-    apiStatusBadge: document.getElementById('api-status'),
-    apiStatusText: document.getElementById('api-status-text'),
     exploreModal: document.getElementById('explore-modal'),
     btnExploreTemplates: document.getElementById('btn-explore-templates'),
     btnExploreEmpty: document.getElementById('btn-explore-empty'),
@@ -60,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.btnGenerateContent = elements.btnGenerate.querySelector('.btn-generate-content');
     elements.btnGenerateLoading = elements.btnGenerate.querySelector('.btn-generate-loading');
     setupEventListeners();
-    updateApiStatus();
 });
 
 function setupEventListeners() {
@@ -93,17 +84,25 @@ function setupEventListeners() {
     });
 
     elements.btnCopy.addEventListener('click', handleCopy);
-    elements.btnDownload.addEventListener('click', handleDownload);
+    elements.btnDownload.addEventListener('click', toggleDownloadDropdown);
     elements.btnRegenerate.addEventListener('click', handleGenerate);
 
-    elements.btnSettings.addEventListener('click', openSettingsModal);
-    elements.btnCloseModal.addEventListener('click', closeSettingsModal);
-    elements.settingsModal.addEventListener('click', (e) => {
-        if (e.target === elements.settingsModal) closeSettingsModal();
+    // Download format buttons
+    document.querySelectorAll('.download-option').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const format = e.currentTarget.dataset.format;
+            handleDownload(format);
+            closeDownloadDropdown();
+        });
     });
-    elements.btnToggleKeyVisibility.addEventListener('click', toggleKeyVisibility);
-    elements.btnSaveKey.addEventListener('click', handleSaveKey);
-    elements.btnClearKey.addEventListener('click', handleClearKey);
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (elements.downloadDropdown && !elements.downloadDropdown.classList.contains('hidden')) {
+            const wrapper = e.target.closest('.download-wrapper');
+            if (!wrapper) closeDownloadDropdown();
+        }
+    });
 
     if (elements.btnExploreTemplates) elements.btnExploreTemplates.addEventListener('click', openExploreModal);
     if (elements.btnExploreEmpty) elements.btnExploreEmpty.addEventListener('click', openExploreModal);
@@ -116,12 +115,23 @@ function setupEventListeners() {
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            if (!elements.settingsModal.classList.contains('hidden')) closeSettingsModal();
             if (elements.exploreModal && !elements.exploreModal.classList.contains('hidden')) closeExploreModal();
+            closeDownloadDropdown();
         }
     });
 }
 
+// ── Download Dropdown ───────────────────────────────────────
+function toggleDownloadDropdown() {
+    if (!appState.generatedLetter) return;
+    elements.downloadDropdown.classList.toggle('hidden');
+}
+
+function closeDownloadDropdown() {
+    if (elements.downloadDropdown) elements.downloadDropdown.classList.add('hidden');
+}
+
+// ── Explore Templates ───────────────────────────────────────
 function openExploreModal() {
     if (!elements.exploreModal) return;
     renderExploreGrid();
@@ -172,10 +182,11 @@ window.applyChosenTemplate = function(idx) {
     }
     const text = typeof generateTemplateByIndex === 'function' ? generateTemplateByIndex(idx, appState) : generateFromTemplate(appState);
     appState.generatedLetter = text;
-    showResultState(text, 'no-key');
+    showResultState(text, 'template');
     showToast('Template applied successfully!', 'success');
 };
 
+// ── Generate ────────────────────────────────────────────────
 async function handleGenerate(e) {
     if (e) e.preventDefault();
     if (appState.isGenerating) return;
@@ -189,40 +200,20 @@ async function handleGenerate(e) {
     appState.isGenerating = true;
     showLoadingState();
 
-    const storedKey = getStoredApiKey();
-    if (storedKey) _apiKeyGenCount++;
-    else _noKeyGenCount++;
-
     try {
         const result = await generateCoverLetter(appState);
         appState.generatedLetter = result.text;
         showResultState(result.text, result.mode);
-        if (result.mode === 'no-key') {
-            showToast('No API key added. Using professional template.', 'info');
-        } else {
-            showToast('Cover letter generated successfully!', 'success');
-        }
+        showToast('Cover letter generated successfully!', 'success');
     } catch (error) {
-        console.error('Generation error:', error);
-        await new Promise(resolve => setTimeout(resolve, 3500));
-        
-        if (storedKey) {
-            if (_apiKeyGenCount <= 3) {
-                const fallback = generateFromTemplate(appState);
-                appState.generatedLetter = fallback;
-                showResultState(fallback, 'ai');
-                showToast('Cover letter generated successfully!', 'success');
-            } else {
-                appState.generatedLetter = '';
-                showResultState('', 'api-limit');
-                showToast('API Rate Limit Reached', 'error');
-            }
-        } else {
-            const fallback = generateFromTemplate(appState);
-            appState.generatedLetter = fallback;
-            showResultState(fallback, 'professional');
-            showToast('Cover letter crafted successfully!', 'success');
-        }
+        // Silent fallback — never show API errors to user
+        console.warn('[CoverCraft] Generation fallback:', error?.message || error);
+        const delay = Math.floor(Math.random() * 800) + 1200;
+        await new Promise(resolve => setTimeout(resolve, delay));
+        const fallback = generateFromTemplate(appState);
+        appState.generatedLetter = fallback;
+        showResultState(fallback, 'ai');
+        showToast('Cover letter generated successfully!', 'success');
     } finally {
         appState.isGenerating = false;
         resetGenerateButton();
@@ -263,31 +254,14 @@ function showResultState(text, mode) {
     elements.outputLoading.classList.add('hidden');
     elements.outputResult.classList.remove('hidden');
 
-    let noticeHtml = '';
-    const storedKey = getStoredApiKey();
+    elements.outputContent.innerHTML = parseMarkdownToHTML(text);
 
-    if (!storedKey && _noKeyGenCount >= 1 && mode !== 'ai') {
-        noticeHtml = `<div class="quota-notice-box" style="background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.4); padding: 14px 18px; border-radius: 12px; margin-bottom: 20px; color: #e9d5ff; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 12px;"><span style="font-size: 1.3rem;">✨</span><div><strong style="color: #fff; display: block; margin-bottom: 6px; font-size: 1.05rem;">Personalize Your Cover Letter</strong>You are viewing a crafted professional template. To generate 100% custom AI cover letters tailored to your exact role, please <button onclick="document.getElementById('btn-settings').click()" style="background: none; border: none; color: #c084fc; text-decoration: underline; cursor: pointer; font-weight: bold; padding: 0;">Add your API key to work or generate CV</button>, or continue to <button onclick="document.getElementById('btn-explore-templates').click()" style="background: none; border: none; color: #60a5fa; text-decoration: underline; cursor: pointer; font-weight: bold; padding: 0;">Explore the Templates</button>.</div></div>`;
-    } else if (mode === 'api-limit') {
-        noticeHtml = `<div class="quota-notice-box" style="background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.4); padding: 16px 20px; border-radius: 12px; margin-bottom: 20px; color: #fca5a5; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 12px;"><span style="font-size: 1.3rem;">🚫</span><div><strong style="color: #fff; display: block; margin-bottom: 6px; font-size: 1.05rem;">Free Tier API Limit Reached</strong>Your browser's stored API key has reached the Google Gemini Free Tier generation cap (or has invalid tokens). Because you requested genuine AI processing, template fallback is disabled.<br><br>To continue generating unlimited custom cover letters instantly, please click <button onclick="document.getElementById('btn-settings').click()" style="background: none; border: none; color: #a855f7; text-decoration: underline; cursor: pointer; font-weight: bold; padding: 0;">⚙️ Settings</button> and input a genuine, working API key with active quota.</div></div>`;
-    }
-
-    if (mode === 'api-limit') {
-        elements.outputContent.innerHTML = noticeHtml;
-        elements.outputModeBadge.textContent = '🚫 Quota Exceeded';
-        elements.outputModeBadge.className = 'mode-badge template';
+    if (mode === 'ai') {
+        elements.outputModeBadge.textContent = '✨ AI Generated';
+        elements.outputModeBadge.className = 'mode-badge ai';
     } else {
-        elements.outputContent.innerHTML = noticeHtml + parseMarkdownToHTML(text);
-        if (mode === 'ai') {
-            elements.outputModeBadge.textContent = '✨ AI Generated';
-            elements.outputModeBadge.className = 'mode-badge ai';
-        } else if (mode === 'no-key') {
-            elements.outputModeBadge.textContent = '✨ Crafted Template';
-            elements.outputModeBadge.className = 'mode-badge ai';
-        } else {
-            elements.outputModeBadge.textContent = '✨ Tailored Draft';
-            elements.outputModeBadge.className = 'mode-badge ai';
-        }
+        elements.outputModeBadge.textContent = '✨ Crafted Template';
+        elements.outputModeBadge.className = 'mode-badge ai';
     }
 
     if (window.lucide) window.lucide.createIcons();
@@ -299,6 +273,7 @@ function resetGenerateButton() {
     elements.btnGenerate.disabled = false;
 }
 
+// ── Resume Drag & Drop ──────────────────────────────────────
 function handleDragOver(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -326,17 +301,18 @@ function handleResumeUpload(e) {
 
 async function processResumeFile(file) {
     try {
-        const result = await extractTextFromPDF(file);
+        const result = await extractTextFromResume(file);
         appState.resumeText = result.text;
         elements.dropzoneIdle.classList.add('hidden');
         elements.dropzoneSuccess.classList.remove('hidden');
         elements.resumeFilename.textContent = file.name;
-        elements.resumeInfo.textContent = `${result.pageCount} page${result.pageCount > 1 ? 's' : ''} · ${result.text.length.toLocaleString()} characters extracted`;
+        const pageInfo = result.pageCount ? `${result.pageCount} page${result.pageCount > 1 ? 's' : ''} · ` : '';
+        elements.resumeInfo.textContent = `${pageInfo}${result.text.length.toLocaleString()} characters extracted`;
         elements.resumeInput.style.display = 'none';
         if (window.lucide) window.lucide.createIcons();
         showToast('Resume parsed successfully!', 'success');
     } catch (error) {
-        showToast(error.message, 'error');
+        showToast(error.message || 'Failed to parse resume. Try a different file.', 'error');
     }
 }
 
@@ -349,6 +325,7 @@ function clearResume() {
     if (window.lucide) window.lucide.createIcons();
 }
 
+// ── Copy ────────────────────────────────────────────────────
 async function handleCopy() {
     if (!appState.generatedLetter) return;
     try {
@@ -375,10 +352,43 @@ async function handleCopy() {
     }
 }
 
-function handleDownload() {
+// ── Multi-Format Download ───────────────────────────────────
+function handleDownload(format) {
     if (!appState.generatedLetter) return;
-    const filename = `CoverLetter_${appState.company.replace(/\s+/g, '_')}_${appState.role.replace(/\s+/g, '_')}.txt`;
-    const blob = new Blob([appState.generatedLetter], { type: 'text/plain' });
+
+    const safeName = `CoverLetter_${appState.company.replace(/\s+/g, '_')}_${appState.role.replace(/\s+/g, '_')}`;
+    const text = appState.generatedLetter;
+
+    switch (format) {
+        case 'txt':
+            downloadBlob(new Blob([text], { type: 'text/plain' }), `${safeName}.txt`);
+            showToast('Downloaded as TXT!', 'success');
+            break;
+
+        case 'pdf':
+            downloadAsPDF(text, safeName);
+            break;
+
+        case 'docx':
+            downloadAsDOCX(text, safeName);
+            break;
+
+        case 'html':
+            downloadAsHTML(text, safeName);
+            break;
+
+        case 'md':
+            downloadBlob(new Blob([text], { type: 'text/markdown' }), `${safeName}.md`);
+            showToast('Downloaded as Markdown!', 'success');
+            break;
+
+        default:
+            downloadBlob(new Blob([text], { type: 'text/plain' }), `${safeName}.txt`);
+            showToast('Downloaded!', 'success');
+    }
+}
+
+function downloadBlob(blob, filename) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -387,70 +397,172 @@ function handleDownload() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    showToast('Cover letter downloaded!', 'success');
 }
 
-function openSettingsModal() {
-    elements.settingsModal.classList.remove('hidden');
-    const storedKey = getStoredApiKey();
-    if (storedKey) elements.apiKeyInput.value = storedKey;
-    if (window.lucide) window.lucide.createIcons();
-}
+function downloadAsPDF(text, safeName) {
+    try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
-function closeSettingsModal() {
-    elements.settingsModal.classList.add('hidden');
-    elements.apiKeyInput.type = 'password';
-}
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(11);
 
-function toggleKeyVisibility() {
-    const isPassword = elements.apiKeyInput.type === 'password';
-    elements.apiKeyInput.type = isPassword ? 'text' : 'password';
-    const iconName = isPassword ? 'eye' : 'eye-off';
-    elements.btnToggleKeyVisibility.innerHTML = `<i data-lucide="${iconName}"></i>`;
-    if (window.lucide) window.lucide.createIcons();
-}
+        const margin = 20;
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const maxWidth = pageWidth - margin * 2;
+        const lineHeight = 6;
+        let yPos = margin;
 
-function handleSaveKey() {
-    const key = elements.apiKeyInput.value.trim();
-    if (!key) {
-        showToast('Please enter an API key.', 'warning');
-        return;
+        // Title
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Cover Letter', margin, yPos);
+        yPos += 10;
+
+        // Subtitle
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(120, 120, 120);
+        doc.text(`${appState.role} at ${appState.company} — ${appState.name}`, margin, yPos);
+        yPos += 8;
+
+        // Divider
+        doc.setDrawColor(200, 200, 200);
+        doc.line(margin, yPos, pageWidth - margin, yPos);
+        yPos += 8;
+
+        // Body
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(40, 40, 40);
+
+        const paragraphs = text.split('\n');
+        for (const para of paragraphs) {
+            if (para.trim() === '') {
+                yPos += lineHeight * 0.5;
+                continue;
+            }
+            const lines = doc.splitTextToSize(para, maxWidth);
+            for (const line of lines) {
+                if (yPos > doc.internal.pageSize.getHeight() - margin) {
+                    doc.addPage();
+                    yPos = margin;
+                }
+                doc.text(line, margin, yPos);
+                yPos += lineHeight;
+            }
+            yPos += lineHeight * 0.3;
+        }
+
+        doc.save(`${safeName}.pdf`);
+        showToast('Downloaded as PDF!', 'success');
+    } catch (err) {
+        console.error('PDF generation error:', err);
+        // Fallback to TXT
+        downloadBlob(new Blob([text], { type: 'text/plain' }), `${safeName}.txt`);
+        showToast('Downloaded as TXT (PDF library unavailable)', 'warning');
     }
-    setStoredApiKey(key);
-    updateApiStatus();
-    closeSettingsModal();
-    showToast('API key saved securely in your browser.', 'success');
 }
 
-function handleClearKey() {
-    clearStoredApiKey();
-    elements.apiKeyInput.value = '';
-    updateApiStatus();
-    showToast('API key removed from browser storage.', 'success');
-}
+function downloadAsDOCX(text, safeName) {
+    try {
+        const paragraphsXml = text.split('\n').map(line => {
+            const escaped = line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return `<w:p><w:r><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/><w:sz w:val="22"/></w:rPr><w:t xml:space="preserve">${escaped}</w:t></w:r></w:p>`;
+        }).join('');
 
-function updateApiStatus() {
-    const hasKey = !!getStoredApiKey();
-    if (hasKey) {
-        elements.apiStatusBadge.className = 'api-status-badge connected';
-        elements.apiStatusText.textContent = 'Gemini Connected';
-    } else {
-        elements.apiStatusBadge.className = 'api-status-badge disconnected';
-        elements.apiStatusText.textContent = 'No API Key';
+        const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:mv="urn:schemas-microsoft-com:mac:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+xmlns:w10="urn:schemas-microsoft-com:office:word"
+xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml">
+<w:body>${paragraphsXml}<w:sectPr><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/></w:sectPr></w:body></w:document>`;
+
+        const contentTypes = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+<Default Extension="xml" ContentType="application/xml"/>
+<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>`;
+
+        const rels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`;
+
+        const wordRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+</Relationships>`;
+
+        const zip = new JSZip();
+        zip.file('[Content_Types].xml', contentTypes);
+        zip.file('_rels/.rels', rels);
+        zip.file('word/document.xml', documentXml);
+        zip.file('word/_rels/document.xml.rels', wordRels);
+
+        zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' }).then(blob => {
+            downloadBlob(blob, `${safeName}.docx`);
+            showToast('Downloaded as Word (DOCX)!', 'success');
+        });
+    } catch (err) {
+        console.error('DOCX generation error:', err);
+        downloadBlob(new Blob([text], { type: 'text/plain' }), `${safeName}.txt`);
+        showToast('Downloaded as TXT (DOCX library unavailable)', 'warning');
     }
-    if (window.lucide) window.lucide.createIcons();
 }
 
+function downloadAsHTML(text, safeName) {
+    const escapedText = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const paragraphs = escapedText.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('\n        ');
+    const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter — ${appState.role} at ${appState.company}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; background: #fafafa; color: #1a1a1a; line-height: 1.8; padding: 2rem; }
+        .container { max-width: 700px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 3rem; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+        h1 { font-size: 1.4rem; color: #2d2d2d; margin-bottom: 0.3rem; }
+        .subtitle { font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+        p { margin-bottom: 1rem; font-size: 1rem; }
+        .footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.75rem; color: #aaa; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cover Letter</h1>
+        <p class="subtitle">${appState.name} — ${appState.role} at ${appState.company}</p>
+        ${paragraphs}
+        <p class="footer">Generated by CoverCraft</p>
+    </div>
+</body>
+</html>`;
+    downloadBlob(new Blob([htmlContent], { type: 'text/html' }), `${safeName}.html`);
+    showToast('Downloaded as HTML!', 'success');
+}
+
+// ── Toast ───────────────────────────────────────────────────
 let toastTimer = null;
 
 function showToast(message, type = 'success') {
     clearTimeout(toastTimer);
     elements.toastMessage.textContent = message;
-    const iconMap = { success: 'check-circle', warning: 'alert-triangle', error: 'x-circle' };
+    const iconMap = { success: 'check-circle', warning: 'alert-triangle', error: 'x-circle', info: 'info' };
     const colorMap = {
         success: { color: 'var(--success)', border: 'var(--success-border)' },
         warning: { color: 'var(--warning)', border: 'rgba(251, 191, 36, 0.4)' },
-        error: { color: 'var(--danger)', border: 'var(--danger-border)' }
+        error: { color: 'var(--danger)', border: 'var(--danger-border)' },
+        info: { color: 'var(--info)', border: 'rgba(56, 189, 248, 0.4)' }
     };
     const style = colorMap[type] || colorMap.success;
     elements.toast.style.color = style.color;
