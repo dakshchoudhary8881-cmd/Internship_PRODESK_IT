@@ -6,14 +6,13 @@
 
 Welcome to my internship repository for **Prodesk IT**, where I document and showcase the projects completed throughout my engineering internship journey.
 
-This repository serves as a collection of sprint-based assignments focused on frontend development, JavaScript engineering, responsive design, UI/UX implementation, browser APIs, and modern web development practices.
+This repository serves as a collection of sprint-based assignments focused on frontend development, JavaScript engineering, responsive design, UI/UX implementation, browser APIs, React development, and modern web development practices.
 
 ---
 
 ## 👨‍💻 About Me
 
 **Daksh Choudhary**
-
 B.Tech (Artificial Intelligence & Machine Learning) Student with a strong interest in Frontend Development, Full-Stack Engineering, and Software Product Development.
 
 Throughout this internship, I have worked on real-world projects that helped strengthen my understanding of:
@@ -25,6 +24,7 @@ Throughout this internship, I have worked on real-world projects that helped str
 * Browser Storage
 * API Integration
 * UI/UX Development
+* React & Component-Based Architecture
 * Git & GitHub Workflow
 
 ---
@@ -45,6 +45,7 @@ Internship-Sprints/
 ├── Sprint_2/
 ├── Sprint_3/
 ├── Sprint_4/
+├── Sprint_5/
 ├── .gitignore
 ├── logo.png
 └── README.md
@@ -53,12 +54,15 @@ Internship-Sprints/
 ---
 
 ## 🏆 Sprint Projects
+
 | Sprint | Project | Tech Stack | Live Demo |
-|--------|------- |----------|-----------   |
-| Sprint 01 | Prodesk IT Landing Page | Responsive business landing page built with HTML, CSS, and JavaScript | [🌐Live](https://internship-prodesk-it.vercel.app/) |
-| Sprint 02 | Cash-Flow Dashboard | Financial management dashboard with expense tracking, charts, reports, and currency conversion | [🌐Live](https://internship-prodesk-it-uldp.vercel.app/) |
+|--------|---------|------------|-----------|
+| Sprint 01 | Prodesk IT Landing Page | Responsive business landing page built with HTML, CSS, and JavaScript | [🌐 Live](https://internship-prodesk-it.vercel.app/) |
+| Sprint 02 | Cash-Flow Dashboard | Financial management dashboard with expense tracking, charts, reports, and currency conversion | [🌐 Live](https://internship-prodesk-it-uldp.vercel.app/) |
 | Sprint 03 | Weather-Cast | Real-time weather dashboard using Fetch API, Async/Await, WeatherAPI, Geolocation API, LocalStorage caching, dynamic weather icons, and responsive UI | [🌐 Live](https://internship-prodesk-it-gb4g.vercel.app/) |
 | Sprint 04 | CoverCraft — AI Cover Letter Generator | AI-powered SaaS utility using Google Gemini API, prompt engineering, PDF resume parsing, secure localStorage key management, and glassmorphism UI | [🌐 Live](https://internship-prodesk-it-9831.vercel.app/) |
+| Sprint 05 | TaskFlow — Kanban Task Board | React 19 + Vite Kanban board with drag-and-drop (@dnd-kit), task priorities, inline editing, global search, and LocalStorage persistence | [🌐 Live](https://internship-prodesk-it-sprint5.vercel.app/) |
+
 ---
 
 ## 🛠 Technologies Used
@@ -66,6 +70,11 @@ Internship-Sprints/
 * HTML5
 * CSS3
 * JavaScript (ES6+)
+* React 19
+* Vite
+* React Hooks
+* @dnd-kit (Drag & Drop)
+* React Icons
 * Chart.js
 * jsPDF
 * LocalStorage API
@@ -76,6 +85,8 @@ Internship-Sprints/
 * Git & GitHub
 
 ---
+
+
 
 ## 📈 Internship Goals
 
