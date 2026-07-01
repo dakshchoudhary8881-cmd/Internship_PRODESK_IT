@@ -73,7 +73,7 @@ Built entirely in **Vanilla HTML, CSS, and JavaScript** — zero frameworks, zer
 
 ## 📂 Project Structure
 
-```
+
 Sprint_4/
 ├── index.html            # App entry point
 ├── css/
@@ -84,7 +84,7 @@ Sprint_4/
 │   └── pdf-parser.js     # Client-side PDF text extraction
 ├── .env.example           # API key reference (gitignored, never committed)
 └── README.md
-```
+
 
 ---
 

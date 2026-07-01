@@ -1,0 +1,27 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.app__divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(168, 85, 247, 0.2) 20%,
+    rgba(6, 182, 212, 0.4) 50%,
+    rgba(236, 72, 153, 0.2) 80%,
+    transparent
+  );
+  margin: 0.5rem 3rem 1.5rem;
+  position: relative;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+@media (max-width: 768px) {
+  .app__divider {
+    margin: 0.5rem 1.5rem 1rem;
+  }
+}
