@@ -61,7 +61,7 @@ Internship-Sprints/
 | Sprint 02 | Cash-Flow Dashboard | Financial management dashboard with expense tracking, charts, reports, and currency conversion | [🌐 Live](https://internship-prodesk-it-uldp.vercel.app/) |
 | Sprint 03 | Weather-Cast | Real-time weather dashboard using Fetch API, Async/Await, WeatherAPI, Geolocation API, LocalStorage caching, dynamic weather icons, and responsive UI | [🌐 Live](https://internship-prodesk-it-gb4g.vercel.app/) |
 | Sprint 04 | CoverCraft — AI Cover Letter Generator | AI-powered SaaS utility using Google Gemini API, prompt engineering, PDF resume parsing, secure localStorage key management, and glassmorphism UI | [🌐 Live](https://internship-prodesk-it-9831.vercel.app/) |
-| Sprint 05 | TaskFlow — Kanban Task Board | React 19 + Vite Kanban board with drag-and-drop (@dnd-kit), task priorities, inline editing, global search, and LocalStorage persistence | [🌐 Live](https://internship-prodesk-it-sprint5.vercel.app/) |
+| Sprint 05 | TaskFlow — Kanban Task Board | React 19 + Vite Kanban board with drag-and-drop (@dnd-kit), task priorities, inline editing, global search, and LocalStorage persistence | [🌐 Live](https://internship-prodesk-it-k7fs.vercel.app/) |
 
 ---
 
