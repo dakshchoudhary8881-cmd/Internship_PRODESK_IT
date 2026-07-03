@@ -1,113 +1,68 @@
-# Aurora Store — Production-Quality React E-Commerce SPA (Sprint 6)
+# 🛍️ React E-Commerce SPA
 
-A production-ready, highly responsive, modern React Single Page Application (SPA) engineered with **React 19**, **Vite**, **React Router DOM**, **Context API**, and curated **CSS Variables / Vanilla CSS**.
+A modern and responsive **Single Page E-Commerce Application** built with **React + Vite**. The project demonstrates client-side routing, Context API for global state management, protected routes, local storage persistence, and live product data integration.
 
----
+## 🚀 Features
 
-## 🌟 Key Features & Architecture
+* 🏠 Responsive Home Page
+* 🛍️ Product Listing from DummyJSON API
+* 📦 Dynamic Product Details Page
+* 🛒 Global Shopping Cart using Context API
+* ➕ Add, Remove & Update Cart Items
+* 💾 Cart Persistence with Local Storage
+* 👤 Login as Guest (Mock Authentication)
+* 🔒 Protected Checkout Route
+* 📱 Fully Responsive Design
 
-### 1. **True Single Page Application (SPA)**
-- Built with `react-router-dom` using declarative client-side routing (`BrowserRouter`).
-- Navigation never triggers browser reloads (`<Link>`, `<NavLink>`, and `useNavigate()` implemented throughout).
-- Automatic scroll-to-top handler on route changes.
+## 🛠️ Tech Stack
 
-### 2. **Global State Management (No Redux)**
-- **CartContext (`CartContext.jsx`)**: Manages cart contents, quantities, wishlist items, dark theme toggle, and floating toast notifications. Automatically syncs with `localStorage`.
-- **AuthContext (`AuthContext.jsx`)**: Manages guest authentication state (`isLoggedIn`, `user`) with persistent sessions across refreshes.
+* React
+* Vite
+* React Router DOM
+* Context API
+* Fetch API
+* Local Storage
+* CSS3
 
-### 3. **Live API Integration**
-- Connected directly to [DummyJSON API](https://dummyjson.com).
-- Features live pagination, multi-field product search, dynamic category filtering, and real-time sorting (by Price Low/High, Rating, and Discount).
+## 📂 Project Structure
 
-### 4. **Premium UI/UX Design System**
-- Custom curated HSL color tokens with glassmorphism header, soft drop shadows, and responsive grid layouts.
-- **Dark Mode Support**: One-click theme toggle switching seamlessly between light and dark themes.
-- **Interactive Micro-Animations**: Cart badge pulse on add, product card hover zooms, wishlist heart toggle, and order confirmation confetti celebration.
-- **Skeleton Loaders & Spinners**: Smooth feedback states while fetching asynchronous catalog data.
-
-### 5. **Robust Route Protection & Security**
-- **ProtectedRoute (`ProtectedRoute.jsx`)**: Higher-order wrapper ensuring unauthenticated users attempting to access `/checkout` are cleanly redirected to `/login` with post-auth redirection state preserved.
-
----
-
-## 📂 Exact Folder Structure
-
-```
-Sprint_6/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── Button.jsx
-│   │   ├── CartBadge.jsx
-│   │   ├── CartItem.jsx
-│   │   ├── Footer.jsx
-│   │   ├── Loader.jsx
-│   │   ├── Navbar.jsx
-│   │   ├── ProductCard.jsx
-│   │   └── ProtectedRoute.jsx
-│   ├── context/
-│   │   ├── AuthContext.jsx
-│   │   └── CartContext.jsx
-│   ├── hooks/
-│   │   └── useFetch.js
-│   ├── pages/
-│   │   ├── Cart.jsx
-│   │   ├── Checkout.jsx
-│   │   ├── Home.jsx
-│   │   ├── Login.jsx
-│   │   ├── NotFound.jsx
-│   │   ├── ProductDetails.jsx
-│   │   └── Shop.jsx
-│   ├── services/
-│   │   └── api.js
-│   ├── styles/
-│   │   └── global.css
-│   ├── App.jsx
-│   └── main.jsx
-├── index.html
-├── package.json
-└── vite.config.js
+```text
+src/
+├── components/
+├── context/
+├── pages/
+├── services/
+├── assets/
+├── App.jsx
+└── main.jsx
 ```
 
----
+## ⚙️ Installation
 
-## 🚀 Quick Start Instructions
+```bash
+git clone <repository-url>
 
-1. **Navigate to the Sprint 6 workspace directory:**
-   ```bash
-   cd Sprint_6
-   ```
+cd project-folder
 
-2. **Install project dependencies:**
-   ```bash
-   npm install
-   ```
+npm install
 
-3. **Start the local development server:**
-   ```bash
-   npm run dev
-   ```
+npm run dev
+```
 
-4. **Build production bundle:**
-   ```bash
-   npm run build
-   ```
+## 🎯 Sprint Objectives Covered
 
----
+* React Router with multiple routes
+* Dynamic routing using `useParams()`
+* Product API integration
+* Global cart using Context API
+* Dynamic cart badge
+* Local storage persistence
+* Guest login authentication
+* Protected checkout page
+* Responsive and reusable component architecture
 
-## 🎯 Sprint Requirements Checklist Verified
+## 👨‍💻 Author
 
-| Requirement | Implementation Details | Status |
-| :--- | :--- | :---: |
-| **React 19 + Vite** | Scaffolding created via `create-vite@latest` | ✅ |
-| **Routing (React Router DOM)** | `/`, `/shop`, `/product/:id`, `/cart`, `/login`, `/checkout`, `*` | ✅ |
-| **No Page Reloads** | Zero browser reloads across navigation flows | ✅ |
-| **Live API Data** | Dynamic fetching via `https://dummyjson.com` | ✅ |
-| **Global Cart Context** | Add, remove, quantity adjustments, duplicate prevention | ✅ |
-| **Cart Persistence** | Seamless `localStorage` restoration on refresh | ✅ |
-| **Guest Auth Context** | Guest sign-in status persisted locally | ✅ |
-| **Protected Route** | Restricts `/checkout` to authenticated guests | ✅ |
-| **Premium Responsive UI** | Custom HSL design tokens, soft shadows, glassmorphism | ✅ |
-| **Bonus Features** | Search, Category filter, Sorting, Wishlist, Dark Mode, Toasts | ✅ |
+**Daksh Choudhary**
+
+GitHub: https://github.com/dakshchoudhary8881-cmd
