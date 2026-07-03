@@ -1,18 +1,21 @@
-# 🛍️ React E-Commerce SPA
+# 🛒 React E-Commerce SPA
 
-A modern and responsive **Single Page E-Commerce Application** built with **React + Vite**. The project demonstrates client-side routing, Context API for global state management, protected routes, local storage persistence, and live product data integration.
+A modern **Single Page E-Commerce Application** built with **React + Vite**, featuring dynamic routing, global state management with the Context API, protected routes, and persistent shopping cart functionality.
 
-## 🚀 Features
+## 🔗 Live Demo
 
-* 🏠 Responsive Home Page
-* 🛍️ Product Listing from DummyJSON API
-* 📦 Dynamic Product Details Page
-* 🛒 Global Shopping Cart using Context API
-* ➕ Add, Remove & Update Cart Items
-* 💾 Cart Persistence with Local Storage
-* 👤 Login as Guest (Mock Authentication)
-* 🔒 Protected Checkout Route
-* 📱 Fully Responsive Design
+**🌐 Live Website:** https://internship-prodesk-it-tdeo.vercel.app/
+
+## ✨ Features
+
+* Dynamic product listing using the DummyJSON API
+* Product details with multiple images and pricing
+* Global shopping cart using Context API
+* Add, remove, and update cart items
+* Cart persistence with Local Storage
+* Guest Login (Mock Authentication)
+* Protected Checkout Route
+* Responsive design for all devices
 
 ## 🛠️ Tech Stack
 
@@ -24,42 +27,39 @@ A modern and responsive **Single Page E-Commerce Application** built with **Reac
 * Local Storage
 * CSS3
 
+## 📦 Installation
+
+```bash
+git clone <repository-url>
+cd <project-folder>
+
+npm install
+npm run dev
+```
+
 ## 📂 Project Structure
 
 ```text
 src/
+├── assets/
 ├── components/
 ├── context/
 ├── pages/
 ├── services/
-├── assets/
 ├── App.jsx
 └── main.jsx
 ```
 
-## ⚙️ Installation
+## 🎯 Sprint Objectives
 
-```bash
-git clone <repository-url>
-
-cd project-folder
-
-npm install
-
-npm run dev
-```
-
-## 🎯 Sprint Objectives Covered
-
-* React Router with multiple routes
-* Dynamic routing using `useParams()`
-* Product API integration
-* Global cart using Context API
-* Dynamic cart badge
-* Local storage persistence
-* Guest login authentication
-* Protected checkout page
-* Responsive and reusable component architecture
+* ✅ Client-side Routing
+* ✅ Dynamic Product Pages
+* ✅ API Integration
+* ✅ Global Cart State
+* ✅ Persistent Cart
+* ✅ Guest Authentication
+* ✅ Protected Routes
+* ✅ Responsive UI
 
 ## 👨‍💻 Author
 
