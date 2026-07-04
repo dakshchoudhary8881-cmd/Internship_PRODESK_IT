@@ -64,7 +64,7 @@ Internship-Sprints/
 | Sprint 03 | Weather-Cast | Real-time weather dashboard using Fetch API, Async/Await, WeatherAPI, Geolocation API, LocalStorage caching, dynamic weather icons, and responsive UI | [🌐 Live](https://internship-prodesk-it-gb4g.vercel.app/) |
 | Sprint 04 | CoverCraft — AI Cover Letter Generator | AI-powered SaaS utility using Google Gemini API, prompt engineering, PDF resume parsing, secure localStorage key management, and glassmorphism UI | [🌐 Live](https://internship-prodesk-it-9831.vercel.app/) |
 | Sprint 05 | TaskFlow — Kanban Task Board | React 19 + Vite Kanban board with drag-and-drop (@dnd-kit), task priorities, inline editing, global search, and LocalStorage persistence | [🌐 Live](https://internship-prodesk-it-k7fs.vercel.app/) |
-| Sprint 06 | ShopSphere — React E-Commerce SPA | Modern React + Vite e-commerce application featuring React Router, Context API, dynamic product pages, global shopping cart, LocalStorage persistence, guest authentication, protected checkout, and responsive UI powered by the DummyJSON API. | [🌐 Live](https://internship-prodesk-it-j54l-7ri1d2jvu.vercel.app/) |
+| Sprint 06 | ShopSphere — React E-Commerce SPA | Modern React + Vite e-commerce application featuring React Router, Context API, dynamic product pages, global shopping cart, LocalStorage persistence, guest authentication, protected checkout, and responsive UI powered by the DummyJSON API. | [🌐 Live](https://internship-prodesk-it-tdeo.vercel.app/) |
 
 
 ---
@@ -73,7 +73,7 @@ Internship-Sprints/
 
 | Client Delivery | Project | Tech Stack | Live Demo |
 |----------------|---------|------------|-----------|
-| Client Delivery 01 | Food Truck Menu Management System – Digital menu management dashboard with automatic category icons, menu creation, search, category filtering, dashboard statistics, form validation, XSS sanitization, analytics simulation, and a fully responsive enterprise UI. | React, Vite, JavaScript, CSS | [🌐 Live](internship-prodesk-it-j54l.vercel.app) |
+| Client Delivery 01 | Food Truck Menu Management System – Digital menu management dashboard with automatic category icons, menu creation, search, category filtering, dashboard statistics, form validation, XSS sanitization, analytics simulation, and a fully responsive enterprise UI. | React, Vite, JavaScript, CSS | [🌐 Live](https://internship-prodesk-it-j54l-7ri1d2jvu.vercel.app/) |
 
 ---
 
