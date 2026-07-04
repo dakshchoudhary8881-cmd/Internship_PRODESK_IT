@@ -1334,3 +1334,127 @@ button {
   color: var(--text-muted);
   font-size: 0.875rem;
 }
+
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE ENHANCEMENTS FOR ALL DISPLAY SIZES
+   ========================================================================== */
+
+/* Navbar Auth & Controls Responsive Behavior */
+.mobile-auth-section {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .desktop-auth-section {
+    display: none !important;
+  }
+  .mobile-auth-section {
+    display: block;
+    width: 100%;
+  }
+  .navbar-links {
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+}
+
+/* Tablet & Mobile Layout Adaptations (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero {
+    padding: 3.5rem 0;
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+  }
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+  }
+  .shop-controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.25rem;
+  }
+  .filter-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .filter-select {
+    width: 100%;
+  }
+  .product-details-grid {
+    gap: 2rem;
+  }
+  .main-image-wrapper {
+    height: 320px;
+  }
+  .details-title {
+    font-size: 1.75rem;
+  }
+  .details-price {
+    font-size: 2rem;
+  }
+  .cart-summary {
+    position: static;
+    margin-top: 2rem;
+  }
+}
+
+/* Small Mobile Devices (max-width: 500px) */
+@media (max-width: 500px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .navbar-content {
+    height: 70px;
+  }
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+  }
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .product-card-actions {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .cart-item {
+    padding: 1rem;
+  }
+  .cart-item-img {
+    width: 70px;
+    height: 70px;
+  }
+  .modal-content {
+    padding: 1.5rem;
+    max-height: 85vh;
+  }
+  .details-specs {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ultra Small Screens (max-width: 360px - e.g. iPhone SE / Galaxy Fold) */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.85rem;
+  }
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  .details-title {
+    font-size: 1.5rem;
+  }
+}

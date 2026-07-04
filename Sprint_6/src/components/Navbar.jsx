@@ -8,6 +8,7 @@ import OrdersModal from './OrdersModal';
 
 /**
  * Responsive Navigation Header Component with In-Place Login & My Orders modals
+ * Fully optimized across all display sizes (Mobile, Tablet, Desktop)
  */
 const Navbar = () => {
   const { isLoggedIn, user, logout } = useAuth();
@@ -18,6 +19,21 @@ const Navbar = () => {
 
   const toggleMobileMenu = () => setMobileMenuOpen(prev => !prev);
   const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  const handleOpenLogin = () => {
+    closeMobileMenu();
+    setLoginModalOpen(true);
+  };
+
+  const handleOpenOrders = () => {
+    closeMobileMenu();
+    setOrdersModalOpen(true);
+  };
+
+  const handleLogout = () => {
+    closeMobileMenu();
+    logout();
+  };
 
   return (
     <header className="navbar">
@@ -56,10 +72,44 @@ const Navbar = () => {
           >
             Shopping Cart
           </NavLink>
+
+          {/* Mobile-Only Auth & Orders Section inside Dropdown */}
+          <div className="mobile-auth-section">
+            <div style={{ height: '1px', background: 'var(--border-color)', margin: '0.5rem 0' }}></div>
+            {isLoggedIn ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%' }}>
+                <button
+                  type="button"
+                  onClick={handleOpenOrders}
+                  className="btn btn-outline btn-sm"
+                  style={{ width: '100%', padding: '0.65rem 1rem', fontWeight: 700 }}
+                >
+                  📦 My Orders ({user?.name?.split(' ')[0]})
+                </button>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="btn btn-ghost btn-sm"
+                  style={{ width: '100%', color: 'var(--danger)', padding: '0.65rem 1rem', fontWeight: 700 }}
+                >
+                  Logout Account
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={handleOpenLogin}
+                className="btn btn-primary btn-sm"
+                style={{ width: '100%', padding: '0.75rem 1rem', fontWeight: 700 }}
+              >
+                🔐 Sign In / Guest Login
+              </button>
+            )}
+          </div>
         </nav>
 
         {/* Right Action Controls: Theme, Cart, Orders & Login/Logout Button */}
-        <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
           <button
             type="button"
             onClick={toggleTheme}
@@ -95,36 +145,39 @@ const Navbar = () => {
             <CartBadge />
           </Link>
 
-          {isLoggedIn ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          {/* Desktop-Only Auth & Orders Buttons (Hidden on Mobile screens to prevent overflow) */}
+          <div className="desktop-auth-section">
+            {isLoggedIn ? (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <button
+                  type="button"
+                  onClick={() => setOrdersModalOpen(true)}
+                  className="btn btn-outline btn-sm"
+                  style={{ padding: '0.45rem 0.85rem', fontWeight: 700, borderRadius: 'var(--radius-full)' }}
+                >
+                  📦 My Orders
+                </button>
+                <button
+                  type="button"
+                  onClick={logout}
+                  className="btn btn-ghost btn-sm"
+                  style={{ color: 'var(--danger)', padding: '0.45rem 0.65rem', fontWeight: 600 }}
+                  title="Sign out of your account"
+                >
+                  Logout ({user?.name?.split(' ')[0]})
+                </button>
+              </div>
+            ) : (
               <button
                 type="button"
-                onClick={() => setOrdersModalOpen(true)}
-                className="btn btn-outline btn-sm"
-                style={{ padding: '0.4rem 0.75rem', fontWeight: 700, borderRadius: 'var(--radius-full)' }}
+                onClick={() => setLoginModalOpen(true)}
+                className="btn btn-primary btn-sm"
+                style={{ padding: '0.48rem 1.1rem', borderRadius: 'var(--radius-full)', fontWeight: 700 }}
               >
-                📦 My Orders
+                🔐 Login
               </button>
-              <button
-                type="button"
-                onClick={logout}
-                className="btn btn-ghost btn-sm"
-                style={{ color: 'var(--danger)', padding: '0.4rem 0.6rem', fontWeight: 600 }}
-                title="Sign out of your account"
-              >
-                Logout ({user?.name?.split(' ')[0]})
-              </button>
-            </div>
-          ) : (
-            <button
-              type="button"
-              onClick={() => setLoginModalOpen(true)}
-              className="btn btn-primary btn-sm"
-              style={{ padding: '0.45rem 1rem', borderRadius: 'var(--radius-full)', fontWeight: 700 }}
-            >
-              🔐 Login
-            </button>
-          )}
+            )}
+          </div>
 
           <button
             type="button"

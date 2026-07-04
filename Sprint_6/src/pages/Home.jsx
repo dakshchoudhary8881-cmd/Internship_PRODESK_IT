@@ -172,7 +172,7 @@ const Home = () => {
 
       {/* Featured Products Section */}
       <section className="container" style={{ padding: '2rem 1.5rem 4rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2.5rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem', marginBottom: '2.5rem' }}>
           <div>
             <span className="product-category">Editor's Pick</span>
             <h2 style={{ fontSize: '2.2rem', fontWeight: 800 }}>Trending Products</h2>

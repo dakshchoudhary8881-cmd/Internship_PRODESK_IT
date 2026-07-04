@@ -172,7 +172,7 @@ const Checkout = () => {
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
               <div className="form-group">
                 <label className="form-label">City / District</label>
                 <input
@@ -269,7 +269,7 @@ const Checkout = () => {
                   Select UPI App or Enter VPA ID
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.75rem', marginBottom: '1.25rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '0.75rem', marginBottom: '1.25rem' }}>
                   {[
                     { id: 'gpay', label: 'Google Pay', icon: '🔵' },
                     { id: 'phonepe', label: 'PhonePe', icon: '🟣' },
@@ -320,7 +320,7 @@ const Checkout = () => {
                   Select Preferred Bank
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem', marginBottom: '1.25rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '0.75rem', marginBottom: '1.25rem' }}>
                   {[
                     { id: 'HDFC', label: 'HDFC Bank' },
                     { id: 'ICICI', label: 'ICICI Bank' },
@@ -361,7 +361,7 @@ const Checkout = () => {
                         required={paymentMethod === 'netbanking' && bankDetails.bankName === 'DIRECT'}
                       />
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: 0 }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', marginBottom: 0 }}>
                       <div className="form-group" style={{ marginBottom: 0 }}>
                         <label className="form-label">Account Number</label>
                         <input
