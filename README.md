@@ -46,6 +46,7 @@ Internship-Sprints/
 ├── Sprint_3/
 ├── Sprint_4/
 ├── Sprint_5/
+├── Sprint_6/
 ├── .gitignore
 ├── logo.png
 └── README.md
