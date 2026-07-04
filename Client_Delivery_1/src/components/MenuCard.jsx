@@ -3,8 +3,6 @@ import CategoryIcon from "./CategoryIcon";
 
 export const MenuCard = ({ item }) => {
   const { name, category, price } = item;
-
-  // Format price to 2 decimal places
   const formattedPrice = typeof price === "number" ? price.toFixed(2) : Number(price || 0).toFixed(2);
 
   return (

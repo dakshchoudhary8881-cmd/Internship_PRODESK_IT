@@ -7,7 +7,6 @@ import Loader from "./components/Loader";
 import "./App.css";
 
 export function App() {
-  // Initialize menu state as an empty array so the Menu Items section is initially empty
   const [menuItems, setMenuItems] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");

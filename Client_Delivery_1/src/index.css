@@ -46,7 +46,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Accessibility Focus States */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,

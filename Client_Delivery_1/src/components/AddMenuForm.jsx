@@ -5,12 +5,8 @@ export const AddMenuForm = ({ onAddItem, existingItems = [] }) => {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Fast Food");
   const [price, setPrice] = useState("");
-
-  // Error and success states
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
-
-  // Ref for returning focus to first input
   const nameInputRef = useRef(null);
 
   const categories = [
@@ -27,12 +23,9 @@ export const AddMenuForm = ({ onAddItem, existingItems = [] }) => {
 
   const validate = (cleanName, cleanPrice) => {
     const newErrors = {};
-
-    // Check empty Food Name
     if (!cleanName) {
       newErrors.name = "Food Name is required.";
     } else {
-      // Check duplicate (case insensitive)
       const isDuplicate = existingItems.some(
         (item) => item.name.toLowerCase() === cleanName.toLowerCase()
       );
@@ -40,13 +33,9 @@ export const AddMenuForm = ({ onAddItem, existingItems = [] }) => {
         newErrors.name = `${cleanName} already exists.`;
       }
     }
-
-    // Check Category
     if (!category || category.trim() === "") {
       newErrors.category = "Category is required.";
     }
-
-    // Check Price
     if (cleanPrice === "" || cleanPrice === null || cleanPrice === undefined) {
       newErrors.price = "Price is required.";
     } else {
@@ -62,50 +51,30 @@ export const AddMenuForm = ({ onAddItem, existingItems = [] }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSuccessMessage("");
-
-    // Sanitize inputs
     const cleanName = sanitizeInput(name);
     const cleanPrice = sanitizeInput(price.toString());
     const cleanCategory = sanitizeInput(category);
-
-    // Validate
     const validationErrors = validate(cleanName, cleanPrice);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-
-    // Clear previous errors
     setErrors({});
-
-    // Create new item (icon is automatically determined by category in MenuCard)
     const newItem = {
       id: Date.now(),
       name: cleanName,
       category: cleanCategory || "Fast Food",
       price: Number(cleanPrice),
     };
-
-    // Append item
     onAddItem(newItem);
-
-    // Analytics Log
     console.log("[Analytics] User interacted with React Components");
-
-    // Better Form UX: Clear inputs
     setName("");
     setCategory("Fast Food");
     setPrice("");
-
-    // Show success message
     setSuccessMessage("Menu item added successfully.");
-
-    // Return focus to first input
     if (nameInputRef.current) {
       nameInputRef.current.focus();
     }
-
-    // Auto hide success message after 4 seconds
     setTimeout(() => {
       setSuccessMessage("");
     }, 4000);
@@ -125,7 +94,6 @@ export const AddMenuForm = ({ onAddItem, existingItems = [] }) => {
 
         <form onSubmit={handleSubmit} noValidate aria-label="Add menu form">
           <div className="form-grid">
-            {/* Food Name */}
             <div className="form-group">
               <label htmlFor="food-name" className="form-label">
                 Food Name *
@@ -151,8 +119,6 @@ export const AddMenuForm = ({ onAddItem, existingItems = [] }) => {
                 </span>
               )}
             </div>
-
-            {/* Category */}
             <div className="form-group">
               <label htmlFor="food-category" className="form-label">
                 Category *
@@ -180,8 +146,6 @@ export const AddMenuForm = ({ onAddItem, existingItems = [] }) => {
                 </span>
               )}
             </div>
-
-            {/* Price */}
             <div className="form-group">
               <label htmlFor="food-price" className="form-label">
                 Price (₹) *

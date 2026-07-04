@@ -1,7 +1,6 @@
 import React from "react";
 
 export const Loader = () => {
-  // Generate 8 skeleton placeholders to match grid size
   const skeletons = Array.from({ length: 8 }, (_, index) => index);
 
   return (
