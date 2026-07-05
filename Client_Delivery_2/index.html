@@ -19,7 +19,7 @@
                     <span class="brand-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
                     </span>
-                    <span class="brand-text">LUMEN <span>//</span> STUDIO</span>
+                    <span class="brand-text" id="sidebar-brand-name">LUMEN <span>//</span> STUDIO</span>
                 </a>
                 <button class="sidebar-close-btn" id="close-sidebar-btn" aria-label="Close navigation sidebar">
                     <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -152,22 +152,34 @@
                         <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                         <svg class="icon-sun hidden" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     </button>
-                    <button class="icon-btn notif-btn" aria-label="View notifications" title="3 New Notifications">
-                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                        <span class="notif-badge">3</span>
-                    </button>
+                    <div class="notif-wrapper">
+                        <button class="icon-btn notif-btn" id="notif-toggle-btn" aria-label="View notifications" aria-expanded="false" aria-controls="notification-panel" title="Notifications">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            <span class="notif-badge" id="notif-count-badge">0</span>
+                        </button>
+                        <div id="notification-panel" class="notif-panel hidden" role="region" aria-label="Notifications Center">
+                            <div class="notif-header">
+                                <h3>Notifications</h3>
+                                <button class="btn-action text-muted" id="clear-notif-btn" title="Clear All Notifications">Clear All</button>
+                            </div>
+                            <div class="notif-list" id="notif-list-container"></div>
+                            <div class="notif-empty hidden" id="notif-empty-state">
+                                <p>No new notifications</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </header>
             <main id="main-content" class="content-area" role="main">
                 <section id="view-dashboard" class="template-view active" role="tabpanel" aria-labelledby="page-title">
                     <div class="welcome-banner">
                         <div class="welcome-text">
-                            <h2>Welcome Back, Sarah</h2>
-                            <p>Here is what is happening across the studio today. You have <strong>6 shoots</strong> scheduled and <strong>$14,250</strong> in pending invoices.</p>
+                            <h2 id="welcome-title">Welcome Back, Sarah</h2>
+                            <p id="welcome-subtitle">Here is your live studio overview. You have <strong>0 shoots</strong> scheduled and <strong>$0</strong> in pending invoices.</p>
                         </div>
                         <div class="quick-actions">
                             <button class="btn btn-primary" onclick="switchView('view-add-booking')">+ New Booking</button>
-                            <button class="btn btn-secondary" onclick="switchView('view-clients')">Add Client</button>
+                            <button class="btn btn-secondary" onclick="openAddClientModal()">Add Client</button>
                             <button class="btn btn-outline" onclick="switchView('view-schedule')">View Calendar</button>
                         </div>
                     </div>
@@ -177,38 +189,38 @@
                                 <span class="stat-title">Total Bookings</span>
                                 <span class="stat-icon">📅</span>
                             </div>
-                            <div class="stat-value">1,428</div>
-                            <div class="stat-trend trend-up">↑ 12% vs last month</div>
+                            <div class="stat-value" id="stat-total-bookings">0</div>
+                            <div class="stat-trend" id="stat-bookings-trend">Ready for new records</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-header">
                                 <span class="stat-title">Today's Shoots</span>
                                 <span class="stat-icon">📸</span>
                             </div>
-                            <div class="stat-value">6</div>
-                            <div class="stat-trend">3 in studio, 3 location</div>
+                            <div class="stat-value" id="stat-today-shoots">0</div>
+                            <div class="stat-trend" id="stat-shoots-trend">No sessions scheduled today</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-header">
                                 <span class="stat-title">Completed Projects</span>
                                 <span class="stat-icon">✓</span>
                             </div>
-                            <div class="stat-value">1,385</div>
-                            <div class="stat-trend trend-up">98.5% completion rate</div>
+                            <div class="stat-value" id="stat-completed-projects">0</div>
+                            <div class="stat-trend" id="stat-completed-trend">0% completion rate</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-header">
                                 <span class="stat-title">Pending Payments</span>
                                 <span class="stat-icon">💳</span>
                             </div>
-                            <div class="stat-value">$14,250</div>
-                            <div class="stat-trend trend-warn">14 invoices awaiting pay</div>
+                            <div class="stat-value" id="stat-pending-payments">$0</div>
+                            <div class="stat-trend" id="stat-payments-trend">0 open invoices awaiting pay</div>
                         </div>
                     </div>
                     <div class="dashboard-grid">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Upcoming Shoots Today</h3>
+                                <h3>Upcoming Shoots</h3>
                                 <button class="btn btn-sm btn-outline" onclick="switchView('view-schedule')">View All</button>
                             </div>
                             <div class="table-responsive">
@@ -222,37 +234,14 @@
                                             <th>Status</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>09:00 AM</td>
-                                            <td><strong>Eleanor Vance</strong></td>
-                                            <td><span class="tag">Wedding Prep</span></td>
-                                            <td>Alex Rivera</td>
-                                            <td><span class="status status-confirmed">Confirmed</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>11:30 AM</td>
-                                            <td><strong>Chronos Horology</strong></td>
-                                            <td><span class="tag">Commercial</span></td>
-                                            <td>Marcus Vance</td>
-                                            <td><span class="status status-in-progress">In Studio</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>02:00 PM</td>
-                                            <td><strong>Victoria Sterling</strong></td>
-                                            <td><span class="tag">Fashion Lookbook</span></td>
-                                            <td>Elena Rostova</td>
-                                            <td><span class="status status-confirmed">Confirmed</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>04:30 PM</td>
-                                            <td><strong>David & Elena Rostova</strong></td>
-                                            <td><span class="tag">Portrait</span></td>
-                                            <td>Alex Rivera</td>
-                                            <td><span class="status status-pending">Pending Prep</span></td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="dashboard-upcoming-tbody"></tbody>
                                 </table>
+                            </div>
+                            <div id="upcoming-empty-state" class="empty-state" role="status">
+                                <div class="empty-icon">📅</div>
+                                <h3>No data found</h3>
+                                <p>No upcoming shoots scheduled. Create a new booking to see sessions here.</p>
+                                <button class="btn btn-sm btn-primary" onclick="switchView('view-add-booking')">+ Create Booking</button>
                             </div>
                         </div>
                         <div class="card">
@@ -260,35 +249,11 @@
                                 <h3>Recent Activity</h3>
                                 <span class="badge">Live Feed</span>
                             </div>
-                            <div class="activity-feed">
-                                <div class="activity-item">
-                                    <div class="activity-dot dot-success"></div>
-                                    <div class="activity-content">
-                                        <p><strong>Invoice #INV-2042</strong> paid by <strong>Vogue Italia</strong> ($4,800.00)</p>
-                                        <span class="activity-time">12 minutes ago</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-dot dot-primary"></div>
-                                    <div class="activity-content">
-                                        <p>New booking request created for <strong>Aether EV Launch</strong></p>
-                                        <span class="activity-time">45 minutes ago</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-dot dot-info"></div>
-                                    <div class="activity-content">
-                                        <p><strong>Elena Rostova</strong> uploaded 42 retouched photos to Gallery</p>
-                                        <span class="activity-time">2 hours ago</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-dot dot-warn"></div>
-                                    <div class="activity-content">
-                                        <p>Client <strong>Marcus Vance</strong> rescheduled appointment to Friday</p>
-                                        <span class="activity-time">4 hours ago</span>
-                                    </div>
-                                </div>
+                            <div class="activity-feed" id="dashboard-activity-feed"></div>
+                            <div id="activity-empty-state" class="empty-state" role="status">
+                                <div class="empty-icon">⚡</div>
+                                <h3>No activity yet</h3>
+                                <p>Studio system initialized from zero. Actions taken across templates will log here automatically.</p>
                             </div>
                         </div>
                     </div>
@@ -329,91 +294,21 @@
                                         <th class="text-right">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody id="bookings-table-body">
-                                    <tr>
-                                        <td><strong>#BK-9041</strong></td>
-                                        <td>Eleanor Vance</td>
-                                        <td>Wedding Photography</td>
-                                        <td>July 12, 2026</td>
-                                        <td>Alex Rivera</td>
-                                        <td><span class="status status-confirmed">Confirmed</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="Edit Booking">✏️</button>
-                                            <button class="btn-action" title="View Details">👁️</button>
-                                            <button class="btn-action text-error" title="Delete Booking" onclick="deleteRow(this)">🗑️</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>#BK-9040</strong></td>
-                                        <td>Chronos Horology Group</td>
-                                        <td>Commercial Photography</td>
-                                        <td>July 14, 2026</td>
-                                        <td>Marcus Vance</td>
-                                        <td><span class="status status-confirmed">Confirmed</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="Edit Booking">✏️</button>
-                                            <button class="btn-action" title="View Details">👁️</button>
-                                            <button class="btn-action text-error" title="Delete Booking" onclick="deleteRow(this)">🗑️</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>#BK-9039</strong></td>
-                                        <td>Victoria Sterling</td>
-                                        <td>Fashion Shoots</td>
-                                        <td>July 15, 2026</td>
-                                        <td>Elena Rostova</td>
-                                        <td><span class="status status-pending">Pending</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="Edit Booking">✏️</button>
-                                            <button class="btn-action" title="View Details">👁️</button>
-                                            <button class="btn-action text-error" title="Delete Booking" onclick="deleteRow(this)">🗑️</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>#BK-9038</strong></td>
-                                        <td>David & Elena Rostova</td>
-                                        <td>Portrait Photography</td>
-                                        <td>July 18, 2026</td>
-                                        <td>Alex Rivera</td>
-                                        <td><span class="status status-completed">Completed</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="Edit Booking">✏️</button>
-                                            <button class="btn-action" title="View Details">👁️</button>
-                                            <button class="btn-action text-error" title="Delete Booking" onclick="deleteRow(this)">🗑️</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>#BK-9037</strong></td>
-                                        <td>Aether EV Motors</td>
-                                        <td>Product Photography</td>
-                                        <td>July 22, 2026</td>
-                                        <td>Marcus Vance</td>
-                                        <td><span class="status status-confirmed">Confirmed</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="Edit Booking">✏️</button>
-                                            <button class="btn-action" title="View Details">👁️</button>
-                                            <button class="btn-action text-error" title="Delete Booking" onclick="deleteRow(this)">🗑️</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="bookings-table-body"></tbody>
                             </table>
                         </div>
-                        <div id="bookings-empty-state" class="empty-state hidden" role="status" aria-live="polite">
+                        <div id="bookings-empty-state" class="empty-state" role="status" aria-live="polite">
                             <div class="empty-icon">📂</div>
                             <h3>No data found</h3>
-                            <p>No bookings match your current search or filter criteria.</p>
-                            <button class="btn btn-sm btn-outline" onclick="resetBookingFilters()">Reset Filters</button>
+                            <p>No booking records exist in localStorage. Create a new reservation to populate this table.</p>
+                            <button class="btn btn-sm btn-primary" onclick="switchView('view-add-booking')">+ Create First Booking</button>
                         </div>
                         <div class="pagination-ui">
-                            <div class="page-info">Showing <strong>1 to 5</strong> of <strong>1,428</strong> entries</div>
+                            <div class="page-info" id="bookings-page-info">Showing <strong>0</strong> entries</div>
                             <div class="page-controls">
                                 <button class="btn btn-sm btn-outline" disabled>← Previous</button>
                                 <button class="btn btn-sm btn-primary">1</button>
-                                <button class="btn btn-sm btn-outline">2</button>
-                                <button class="btn btn-sm btn-outline">3</button>
-                                <span class="page-dots">...</span>
-                                <button class="btn btn-sm btn-outline">285</button>
-                                <button class="btn btn-sm btn-outline">Next →</button>
+                                <button class="btn btn-sm btn-outline" disabled>Next →</button>
                             </div>
                         </div>
                     </div>
@@ -531,7 +426,7 @@
                             <button class="btn btn-outline btn-test-empty" onclick="toggleTableEmptyState('clients-table-body', 'clients-empty-state')">Test Empty State</button>
                         </div>
                         <div class="toolbar-right">
-                            <button class="btn btn-primary" onclick="alert('Inline Client Add: Please use the Add New Booking template which automatically archives new clients to this database.')">+ Add Client</button>
+                            <button class="btn btn-primary" onclick="openAddClientModal()">+ Add Client</button>
                         </div>
                     </div>
                     <div class="card table-card">
@@ -548,86 +443,14 @@
                                         <th class="text-right">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody id="clients-table-body">
-                                    <tr>
-                                        <td>
-                                            <div class="client-cell">
-                                                <span class="avatar-sm">EV</span>
-                                                <strong>Eleanor Vance</strong>
-                                            </div>
-                                        </td>
-                                        <td>+1 (555) 389-2026</td>
-                                        <td>eleanor@vance-estate.com</td>
-                                        <td><strong>4 Shoots</strong></td>
-                                        <td>June 28, 2026</td>
-                                        <td><span class="status status-vip">VIP Account</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="View Profile">👤</button>
-                                            <button class="btn-action" title="Send Email">✉️</button>
-                                            <button class="btn-action text-error" title="Delete Client" onclick="deleteRow(this)">🗑️</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="client-cell">
-                                                <span class="avatar-sm">CH</span>
-                                                <strong>Chronos Horology Group</strong>
-                                            </div>
-                                        </td>
-                                        <td>+1 (555) 902-1140</td>
-                                        <td>brand@chronos-luxury.ch</td>
-                                        <td><strong>12 Shoots</strong></td>
-                                        <td>July 02, 2026</td>
-                                        <td><span class="status status-vip">VIP Account</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="View Profile">👤</button>
-                                            <button class="btn-action" title="Send Email">✉️</button>
-                                            <button class="btn-action text-error" title="Delete Client" onclick="deleteRow(this)">🗑️</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="client-cell">
-                                                <span class="avatar-sm">VS</span>
-                                                <strong>Victoria Sterling</strong>
-                                            </div>
-                                        </td>
-                                        <td>+1 (555) 441-8890</td>
-                                        <td>v.sterling@vogue.com</td>
-                                        <td><strong>6 Shoots</strong></td>
-                                        <td>May 15, 2026</td>
-                                        <td><span class="status status-active">Active</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="View Profile">👤</button>
-                                            <button class="btn-action" title="Send Email">✉️</button>
-                                            <button class="btn-action text-error" title="Delete Client" onclick="deleteRow(this)">🗑️</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="client-cell">
-                                                <span class="avatar-sm">ER</span>
-                                                <strong>David & Elena Rostova</strong>
-                                            </div>
-                                        </td>
-                                        <td>+1 (555) 773-0091</td>
-                                        <td>elena@rostova.art</td>
-                                        <td><strong>1 Shoot</strong></td>
-                                        <td>July 01, 2026</td>
-                                        <td><span class="status status-new">New Client</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="View Profile">👤</button>
-                                            <button class="btn-action" title="Send Email">✉️</button>
-                                            <button class="btn-action text-error" title="Delete Client" onclick="deleteRow(this)">🗑️</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="clients-table-body"></tbody>
                             </table>
                         </div>
-                        <div id="clients-empty-state" class="empty-state hidden" role="status">
+                        <div id="clients-empty-state" class="empty-state" role="status">
                             <div class="empty-icon">👥</div>
                             <h3>No data found</h3>
-                            <p>No client records match your search criteria.</p>
+                            <p>No client records in localStorage. Add a client manually or create a booking to populate automatically.</p>
+                            <button class="btn btn-sm btn-primary" onclick="openAddClientModal()">+ Add First Client</button>
                         </div>
                     </div>
                 </section>
@@ -726,99 +549,36 @@
                         <div class="card calendar-card">
                             <div class="calendar-header">
                                 <div>
-                                    <h2>July 2026 // Monthly Schedule</h2>
+                                    <h2 id="calendar-month-title">July 2026 // Monthly Schedule</h2>
                                     <p class="text-muted">Studio Cyclorama and On-Location Shoot Roster</p>
                                 </div>
                                 <div class="calendar-nav">
-                                    <button class="btn btn-sm btn-outline">← Jun</button>
-                                    <button class="btn btn-sm btn-primary">Today</button>
-                                    <button class="btn btn-sm btn-outline">Aug →</button>
+                                    <button class="btn btn-sm btn-outline" onclick="changeCalendarMonth(-1)">← Prev</button>
+                                    <button class="btn btn-sm btn-primary" onclick="resetCalendarMonth()">Today</button>
+                                    <button class="btn btn-sm btn-outline" onclick="changeCalendarMonth(1)">Next →</button>
                                 </div>
                             </div>
-                            <div class="calendar-grid-container">
-                                <div class="cal-day-header">Sun</div>
-                                <div class="cal-day-header">Mon</div>
-                                <div class="cal-day-header">Tue</div>
-                                <div class="cal-day-header">Wed</div>
-                                <div class="cal-day-header">Thu</div>
-                                <div class="cal-day-header">Fri</div>
-                                <div class="cal-day-header">Sat</div>
-                                <div class="cal-day muted">28</div>
-                                <div class="cal-day muted">29</div>
-                                <div class="cal-day muted">30</div>
-                                <div class="cal-day">1</div>
-                                <div class="cal-day">2 <span class="cal-badge badge-comm">Commercial</span></div>
-                                <div class="cal-day">3</div>
-                                <div class="cal-day">4 <span class="cal-badge badge-wed">Wedding</span></div>
-                                <div class="cal-day">5 <span class="cal-badge badge-port">Portrait</span></div>
-                                <div class="cal-day active-today">6 <span class="cal-badge badge-wed">2 Shoots Today</span></div>
-                                <div class="cal-day">7</div>
-                                <div class="cal-day">8 <span class="cal-badge badge-fash">Fashion</span></div>
-                                <div class="cal-day">9</div>
-                                <div class="cal-day">10</div>
-                                <div class="cal-day">11 <span class="cal-badge badge-wed">Wedding</span></div>
-                                <div class="cal-day">12 <span class="cal-badge badge-wed">St. Patrick's</span></div>
-                                <div class="cal-day">13</div>
-                                <div class="cal-day">14 <span class="cal-badge badge-comm">Chronos Watch</span></div>
-                                <div class="cal-day">15 <span class="cal-badge badge-fash">Vogue Italia</span></div>
-                                <div class="cal-day">16</div>
-                                <div class="cal-day">17</div>
-                                <div class="cal-day">18 <span class="cal-badge badge-port">Rostova Art</span></div>
-                                <div class="cal-day">19</div>
-                                <div class="cal-day">20</div>
-                                <div class="cal-day">21</div>
-                                <div class="cal-day">22 <span class="cal-badge badge-comm">Aether EV</span></div>
-                                <div class="cal-day">23</div>
-                                <div class="cal-day">24</div>
-                                <div class="cal-day">25 <span class="cal-badge badge-wed">Como Soirée</span></div>
-                                <div class="cal-day">26</div>
-                                <div class="cal-day">27</div>
-                                <div class="cal-day">28</div>
-                                <div class="cal-day">29</div>
-                                <div class="cal-day">30</div>
-                                <div class="cal-day">31</div>
-                                <div class="cal-day muted">1</div>
-                            </div>
+                            <div class="calendar-grid-container" id="calendar-days-grid"></div>
                         </div>
                         <div class="schedule-sidebar">
                             <div class="card">
-                                <h3>Today's Shoots (July 6)</h3>
-                                <div class="event-list">
-                                    <div class="event-item">
-                                        <div class="event-time">09:00 AM - 11:00 AM</div>
-                                        <strong>Eleanor Vance // Wedding Prep</strong>
-                                        <p class="text-muted">Studio A (Cyclorama) • Alex Rivera</p>
-                                    </div>
-                                    <div class="event-item">
-                                        <div class="event-time">02:00 PM - 06:00 PM</div>
-                                        <strong>Victoria Sterling // Lookbook</strong>
-                                        <p class="text-muted">Soho Rooftop • Elena Rostova</p>
-                                    </div>
-                                </div>
+                                <h3>Today's Shoots</h3>
+                                <div class="event-list" id="calendar-today-list"></div>
+                                <div id="schedule-today-empty" class="text-muted" style="font-size: 0.88rem; margin-top: 10px;">No shoots scheduled for today.</div>
                             </div>
                             <div class="card" style="margin-top: 20px;">
                                 <h3>Upcoming Events</h3>
-                                <div class="event-list">
-                                    <div class="event-item">
-                                        <div class="event-time">July 12 • All Day</div>
-                                        <strong>St. Patrick's Cathedral Wedding</strong>
-                                        <p class="text-muted">Full Team Deployment (10 Hrs)</p>
-                                    </div>
-                                    <div class="event-item">
-                                        <div class="event-time">July 14 • 10:00 AM</div>
-                                        <strong>Chronos Luxury Horology Shoot</strong>
-                                        <p class="text-muted">Studio B (Macro Stage) • Marcus V.</p>
-                                    </div>
-                                </div>
+                                <div class="event-list" id="calendar-upcoming-list"></div>
+                                <div id="schedule-upcoming-empty" class="text-muted" style="font-size: 0.88rem; margin-top: 10px;">No upcoming events in localStorage.</div>
                             </div>
                             <div class="card" style="margin-top: 20px;">
                                 <h3>Available Studio Dates</h3>
                                 <p class="text-muted">Quick reference for new booking consultations:</p>
                                 <div class="avail-tags">
-                                    <span class="tag tag-avail">July 7 (Full Day)</span>
-                                    <span class="tag tag-avail">July 9 (Afternoon)</span>
-                                    <span class="tag tag-avail">July 10 (Full Day)</span>
-                                    <span class="tag tag-avail">July 13 (Studio A)</span>
+                                    <span class="tag tag-avail">Studio A (Open Today)</span>
+                                    <span class="tag tag-avail">Studio B (Open Today)</span>
+                                    <span class="tag tag-avail">Cyclorama Stage (Open)</span>
+                                    <span class="tag tag-avail">Darkroom Vault (Open)</span>
                                 </div>
                             </div>
                         </div>
@@ -839,76 +599,15 @@
                             </div>
                         </div>
                         <div class="toolbar-right">
-                            <button class="btn btn-primary" onclick="uploadSimulatedPhoto()">+ Upload Photo</button>
+                            <button class="btn btn-primary" onclick="openUploadPhotoModal()">+ Upload Photo</button>
                         </div>
                     </div>
-                    <div class="gallery-admin-grid" id="gallery-admin-grid">
-                        <div class="gallery-card card" data-cat="wedding">
-                            <div class="photo-placeholder photo-wed-1">
-                                <span class="photo-cat-badge">Wedding</span>
-                                <button class="photo-delete-btn" title="Delete Photo" onclick="deletePhotoCard(this)">✕</button>
-                            </div>
-                            <div class="photo-meta">
-                                <strong>St. Patrick's Vows #01</strong>
-                                <span class="text-muted">Uploaded by Alex R. • 45.2 MB</span>
-                            </div>
-                        </div>
-                        <div class="gallery-card card" data-cat="portrait">
-                            <div class="photo-placeholder photo-port-1">
-                                <span class="photo-cat-badge">Portrait</span>
-                                <button class="photo-delete-btn" title="Delete Photo" onclick="deletePhotoCard(this)">✕</button>
-                            </div>
-                            <div class="photo-meta">
-                                <strong>Chiaroscuro Study No. 4</strong>
-                                <span class="text-muted">Uploaded by Elena R. • 38.8 MB</span>
-                            </div>
-                        </div>
-                        <div class="gallery-card card" data-cat="fashion">
-                            <div class="photo-placeholder photo-fash-1">
-                                <span class="photo-cat-badge">Fashion</span>
-                                <button class="photo-delete-btn" title="Delete Photo" onclick="deletePhotoCard(this)">✕</button>
-                            </div>
-                            <div class="photo-meta">
-                                <strong>Vogue Italia Editorial #12</strong>
-                                <span class="text-muted">Uploaded by Elena R. • 62.1 MB</span>
-                            </div>
-                        </div>
-                        <div class="gallery-card card" data-cat="commercial">
-                            <div class="photo-placeholder photo-comm-1">
-                                <span class="photo-cat-badge">Commercial</span>
-                                <button class="photo-delete-btn" title="Delete Photo" onclick="deletePhotoCard(this)">✕</button>
-                            </div>
-                            <div class="photo-meta">
-                                <strong>Chronos Horology Master</strong>
-                                <span class="text-muted">Uploaded by Marcus V. • 55.4 MB</span>
-                            </div>
-                        </div>
-                        <div class="gallery-card card" data-cat="events">
-                            <div class="photo-placeholder photo-event-1">
-                                <span class="photo-cat-badge">Events</span>
-                                <button class="photo-delete-btn" title="Delete Photo" onclick="deletePhotoCard(this)">✕</button>
-                            </div>
-                            <div class="photo-meta">
-                                <strong>Met Gala Red Carpet 2025</strong>
-                                <span class="text-muted">Uploaded by Alex R. • 48.0 MB</span>
-                            </div>
-                        </div>
-                        <div class="gallery-card card" data-cat="nature">
-                            <div class="photo-placeholder photo-nat-1">
-                                <span class="photo-cat-badge">Nature</span>
-                                <button class="photo-delete-btn" title="Delete Photo" onclick="deletePhotoCard(this)">✕</button>
-                            </div>
-                            <div class="photo-meta">
-                                <strong>Nordic Silence // Iceland</strong>
-                                <span class="text-muted">Uploaded by Marcus V. • 71.3 MB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="gallery-empty-state" class="empty-state hidden" role="status">
+                    <div class="gallery-admin-grid" id="gallery-admin-grid"></div>
+                    <div id="gallery-empty-state" class="empty-state" role="status">
                         <div class="empty-icon">🖼️</div>
                         <h3>No data found</h3>
-                        <p>No photos available in this category or archive. Click '+ Upload Photo' to add new media.</p>
-                        <button class="btn btn-sm btn-secondary" onclick="filterGalleryAdmin('all')">View All Photos</button>
+                        <p>No photos stored in localStorage for this category. Click '+ Upload Photo' to manually add media.</p>
+                        <button class="btn btn-sm btn-primary" onclick="openUploadPhotoModal()">+ Upload First Photo</button>
                     </div>
                 </section>
                 <section id="view-payments" class="template-view hidden" role="tabpanel">
@@ -918,38 +617,38 @@
                                 <span class="stat-title">Total Revenue</span>
                                 <span class="stat-icon">💰</span>
                             </div>
-                            <div class="stat-value">$148,500</div>
-                            <div class="stat-trend trend-up">↑ 18% YTD Growth</div>
+                            <div class="stat-value" id="pay-total-revenue">$0</div>
+                            <div class="stat-trend">from localStorage records</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-header">
                                 <span class="stat-title">Pending Payments</span>
                                 <span class="stat-icon">⏳</span>
                             </div>
-                            <div class="stat-value">$14,250</div>
-                            <div class="stat-trend trend-warn">14 Open Invoices</div>
+                            <div class="stat-value" id="pay-pending-amount">$0</div>
+                            <div class="stat-trend" id="pay-pending-count">0 Open Invoices</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-header">
                                 <span class="stat-title">Completed Payments</span>
                                 <span class="stat-icon">✓</span>
                             </div>
-                            <div class="stat-value">$134,250</div>
-                            <div class="stat-trend">380 Settled Invoices</div>
+                            <div class="stat-value" id="pay-completed-amount">$0</div>
+                            <div class="stat-trend" id="pay-completed-count">0 Settled Invoices</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-header">
                                 <span class="stat-title">Total Invoices</span>
                                 <span class="stat-icon">📄</span>
                             </div>
-                            <div class="stat-value">422</div>
-                            <div class="stat-trend">380 Paid / 42 Open</div>
+                            <div class="stat-value" id="pay-total-invoices">0</div>
+                            <div class="stat-trend">0 Paid / 0 Open</div>
                         </div>
                     </div>
                     <div class="view-toolbar" style="margin-top: 24px;">
                         <div class="toolbar-left">
-                            <input type="search" placeholder="Search invoice # or client name..." class="form-input" style="width: 300px;">
-                            <select class="form-select">
+                            <input type="search" id="invoice-search" placeholder="Search invoice # or client name..." class="form-input" style="width: 300px;">
+                            <select id="invoice-filter" class="form-select">
                                 <option value="all">Status: All Invoices</option>
                                 <option value="Paid">Paid</option>
                                 <option value="Pending">Pending</option>
@@ -958,7 +657,7 @@
                             <button class="btn btn-outline btn-test-empty" onclick="toggleTableEmptyState('payments-table-body', 'payments-empty-state')">Test Empty State</button>
                         </div>
                         <div class="toolbar-right">
-                            <button class="btn btn-primary" onclick="alert('Create Invoice: Generating standard invoice template for client billing...')">+ Create Invoice</button>
+                            <button class="btn btn-primary" onclick="openCreateInvoiceModal()">+ Create Invoice</button>
                         </div>
                     </div>
                     <div class="card table-card">
@@ -975,62 +674,14 @@
                                         <th class="text-right">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody id="payments-table-body">
-                                    <tr>
-                                        <td><strong>#INV-2042</strong></td>
-                                        <td>Vogue Italia Editorial</td>
-                                        <td><strong>$4,800.00</strong></td>
-                                        <td>July 04, 2026</td>
-                                        <td>Bank Wire Transfer</td>
-                                        <td><span class="status status-completed">Paid</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="Download PDF">📥</button>
-                                            <button class="btn-action" title="Send Receipt">✉️</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>#INV-2041</strong></td>
-                                        <td>Eleanor Vance (Wedding)</td>
-                                        <td><strong>$2,500.00</strong></td>
-                                        <td>July 02, 2026</td>
-                                        <td>Stripe Credit Card</td>
-                                        <td><span class="status status-pending">Pending</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="Download PDF">📥</button>
-                                            <button class="btn-action" title="Send Reminder">🔔</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>#INV-2040</strong></td>
-                                        <td>Chronos Horology Group</td>
-                                        <td><strong>$4,800.00</strong></td>
-                                        <td>June 28, 2026</td>
-                                        <td>Corporate Check</td>
-                                        <td><span class="status status-completed">Paid</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="Download PDF">📥</button>
-                                            <button class="btn-action" title="Send Receipt">✉️</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>#INV-2039</strong></td>
-                                        <td>Aether EV Motors</td>
-                                        <td><strong>$6,950.00</strong></td>
-                                        <td>June 15, 2026</td>
-                                        <td>Bank Wire Transfer</td>
-                                        <td><span class="status status-overdue">Overdue (7d)</span></td>
-                                        <td class="text-right">
-                                            <button class="btn-action" title="Download PDF">📥</button>
-                                            <button class="btn-action text-error" title="Send Urgent Reminder">🚨</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="payments-table-body"></tbody>
                             </table>
                         </div>
-                        <div id="payments-empty-state" class="empty-state hidden" role="status">
+                        <div id="payments-empty-state" class="empty-state" role="status">
                             <div class="empty-icon">💳</div>
                             <h3>No data found</h3>
-                            <p>No invoices or payment records match your search filter.</p>
+                            <p>No invoices stored in localStorage. Create a booking or manually generate an invoice to view records.</p>
+                            <button class="btn btn-sm btn-primary" onclick="openCreateInvoiceModal()">+ Create First Invoice</button>
                         </div>
                     </div>
                 </section>
@@ -1040,66 +691,14 @@
                             <h2>Client Review & Testimonial Repository</h2>
                             <p class="text-muted">Approved client feedback formatted for publication and internal quality benchmarking.</p>
                         </div>
-                        <button class="btn btn-primary" onclick="alert('Request Review: Sending automated feedback questionnaire link to completed clients...')">+ Request New Review</button>
+                        <button class="btn btn-primary" onclick="openAddReviewModal()">+ Add New Review</button>
                     </div>
-                    <div class="testimonials-grid">
-                        <div class="testimonial-card card">
-                            <div class="review-header">
-                                <div class="reviewer-profile">
-                                    <div class="avatar-md">VS</div>
-                                    <div>
-                                        <h3 class="reviewer-name">Victoria Sterling</h3>
-                                        <span class="reviewer-role">Vogue Editorial Director</span>
-                                    </div>
-                                </div>
-                                <div class="review-stars" aria-label="5 out of 5 stars">★ ★ ★ ★ ★</div>
-                            </div>
-                            <blockquote class="review-body">
-                                "LUMEN Studio transformed our wedding ceremony into a cinematic masterpiece. The monochromatic composition and light play were nothing short of breathtaking. They captured moments we didn't even realize were happening."
-                            </blockquote>
-                            <div class="review-footer">
-                                <span class="tag">Verified Client • Wedding</span>
-                                <button class="btn btn-sm btn-outline">Publish to Web</button>
-                            </div>
-                        </div>
-                        <div class="testimonial-card card">
-                            <div class="review-header">
-                                <div class="reviewer-profile">
-                                    <div class="avatar-md">MV</div>
-                                    <div>
-                                        <h3 class="reviewer-name">Marcus Vance</h3>
-                                        <span class="reviewer-role">CEO, Chronos Horology Group</span>
-                                    </div>
-                                </div>
-                                <div class="review-stars" aria-label="5 out of 5 stars">★ ★ ★ ★ ★</div>
-                            </div>
-                            <blockquote class="review-body">
-                                "As an architecture and luxury watch brand, we demand absolute precision. The team at LUMEN exceeded every benchmark. Their technical mastery of reflective lighting and shadow detail is unmatched in New York."
-                            </blockquote>
-                            <div class="review-footer">
-                                <span class="tag">Verified Client • Commercial</span>
-                                <button class="btn btn-sm btn-outline">Publish to Web</button>
-                            </div>
-                        </div>
-                        <div class="testimonial-card card">
-                            <div class="review-header">
-                                <div class="reviewer-profile">
-                                    <div class="avatar-md">ER</div>
-                                    <div>
-                                        <h3 class="reviewer-name">Elena & David Rostova</h3>
-                                        <span class="reviewer-role">Private Portrait Clients</span>
-                                    </div>
-                                </div>
-                                <div class="review-stars" aria-label="5 out of 5 stars">★ ★ ★ ★ ★</div>
-                            </div>
-                            <blockquote class="review-body">
-                                "From our first consultation to the delivery of our fine-art Italian leather album, the professionalism was elite. They made us feel completely at ease in front of the lens, resulting in the most natural portraits."
-                            </blockquote>
-                            <div class="review-footer">
-                                <span class="tag">Verified Client • Portrait</span>
-                                <button class="btn btn-sm btn-outline">Publish to Web</button>
-                            </div>
-                        </div>
+                    <div class="testimonials-grid" id="testimonials-grid-container"></div>
+                    <div id="testimonials-empty-state" class="empty-state" role="status">
+                        <div class="empty-icon">★</div>
+                        <h3>No testimonials found</h3>
+                        <p>No client reviews stored in localStorage. Click '+ Add New Review' to manually enter client feedback.</p>
+                        <button class="btn btn-sm btn-primary" onclick="openAddReviewModal()">+ Add First Review</button>
                     </div>
                 </section>
                 <section id="view-info" class="template-view hidden" role="tabpanel">
@@ -1112,7 +711,7 @@
                             <div class="info-list">
                                 <div class="info-item">
                                     <span class="info-label">Studio Name</span>
-                                    <span class="info-value"><strong>LUMEN // STUDIO FLAGSHIP</strong></span>
+                                    <span class="info-value" id="info-studio-name"><strong>LUMEN // STUDIO FLAGSHIP</strong></span>
                                 </div>
                                 <div class="info-item">
                                     <span class="info-label">Physical Address</span>
@@ -1156,7 +755,7 @@
                                         </div>
                                         <div class="pin-pulse"></div>
                                         <div class="pin-card">
-                                            <strong>LUMEN // STUDIO</strong>
+                                            <strong id="map-pin-name">LUMEN // STUDIO</strong>
                                             <span>742 Evergreen Terr, Soho NY</span>
                                         </div>
                                     </div>
@@ -1222,7 +821,7 @@
                                             <p class="text-muted">Receive instant email notifications whenever a client confirms a session.</p>
                                         </div>
                                         <label class="switch">
-                                            <input type="checkbox" checked>
+                                            <input type="checkbox" id="notif-email-chk" checked>
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -1232,7 +831,7 @@
                                             <p class="text-muted">Send automatic SMS dispatch 2 hours before scheduled shoot time.</p>
                                         </div>
                                         <label class="switch">
-                                            <input type="checkbox" checked>
+                                            <input type="checkbox" id="notif-sms-chk" checked>
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -1242,10 +841,18 @@
                                             <p class="text-muted">Email summary of daily revenue, completed shoots, and pending invoices at 7:00 PM.</p>
                                         </div>
                                         <label class="switch">
-                                            <input type="checkbox">
+                                            <input type="checkbox" id="notif-digest-chk">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
+                                </div>
+                                <div class="form-section-title" style="margin-top: 24px; color: var(--error-color);">Data Management (Zero State)</div>
+                                <div class="toggle-item" style="border-color: rgba(255,59,48,0.3);">
+                                    <div class="toggle-info">
+                                        <strong style="color: var(--error-color);">Wipe & Reset All LocalStorage Data</strong>
+                                        <p class="text-muted">Delete all manually entered bookings, clients, photos, invoices, and reviews to start from zero.</p>
+                                    </div>
+                                    <button type="button" class="btn btn-outline text-error" onclick="clearAllLocalStorage()">Wipe All Data</button>
                                 </div>
                                 <div class="form-actions" style="margin-top: 32px;">
                                     <button type="submit" class="btn btn-primary btn-lg">Save Settings</button>
