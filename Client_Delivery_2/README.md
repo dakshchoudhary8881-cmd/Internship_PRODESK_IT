@@ -1,107 +1,66 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
-  <img src="https://img.shields.io/badge/React_Router-7-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Context_API-Global_State-7B61FF?style=for-the-badge"/>
-</p>
+# 📸 LUMEN Studio – Photography Studio Management UI
 
-<h1 align="center">🛍️ Aurora — Modern React E-Commerce SPA</h1>
+A modern **Photography Studio Management Dashboard** built with **HTML5, CSS3, and Vanilla JavaScript**. This project provides responsive UI templates for managing bookings, clients, schedules, gallery, payments, and studio operations through a clean enterprise-style interface.
 
-<p align="center">
-A responsive Single Page E-Commerce application built with <strong>React + Vite</strong>, featuring dynamic routing, Context API, shopping cart management, guest authentication, and protected checkout.
-</p>
+## 🌐 Live Demo
 
-<p align="center">
-  <a href="https://internship-prodesk-it-tdeo.vercel.app/">
-    <img src="https://img.shields.io/badge/🌐_Live_Demo-Visit_Website-4CAF50?style=for-the-badge"/>
-  </a>
-</p>
+**Website:** https://internship-prodesk-it-w5mo.vercel.app/
 
----
+## 🚀 Features
 
-## ✨ Features
-
-- 🛒 Modern Responsive E-Commerce UI
-- 📦 Dynamic Product Listing
-- 🔍 Product Details with Multiple Images
-- ➕ Add & Remove Cart Items
-- 📊 Quantity Management
-- 💾 Local Storage Persistence
-- 👤 Guest Login Authentication
-- 🔒 Protected Checkout Route
-- 🌙 Dark & Light Theme
-- ⭐ Trending Products Section
-- 💬 Customer Testimonials
-- 📱 Fully Responsive Design
-
----
+* 📊 Interactive Dashboard
+* 📅 Booking Management
+* ➕ Add Booking Form with Validation
+* 👥 Client Management
+* 💼 Photography Packages
+* 🗓️ Studio Schedule
+* 🖼️ Gallery Management
+* 💳 Payments & Invoices
+* ⭐ Testimonials
+* ⚙️ Studio Settings
+* 🌙 Light / Dark Theme
+* 📱 Fully Responsive Design
+* ♿ Accessible UI
+* 🔒 Input Sanitization (XSS Protection)
+* 📈 Analytics Event Simulation
+* ⚡ Loading & Empty States
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| React | Frontend Framework |
-| Vite | Development Environment |
-| React Router DOM | Client-side Routing |
-| Context API | Global State Management |
-| Fetch API | API Integration |
-| Local Storage | Data Persistence |
-| CSS3 | Styling & Responsive UI |
-
----
+* HTML5
+* CSS3
+* Vanilla JavaScript
 
 ## 📂 Project Structure
 
 ```text
-src/
-├── assets/
-├── components/
-├── context/
-├── pages/
-├── services/
-├── App.jsx
-└── main.jsx
+├── index.html
+├── style.css
+├── script.js
+└── README.md
 ```
 
----
+## 💡 Highlights
 
-## 🚀 Getting Started
+* Enterprise-style dashboard interface
+* Semantic HTML & accessible components
+* Responsive layout for all devices
+* Form validation with error handling
+* Dynamic UI interactions
+* Clean monochromatic design system
+
+## ▶️ Getting Started
 
 ```bash
-git clone <repository-url>
-
-cd <project-folder>
-
-npm install
-
-npm run dev
+git clone https://github.com/dakshchoudhary8881-cmd/Internship_PRODESK_IT.git
 ```
 
----
-
-## 🎯 Highlights
-
-- Dynamic Routing with React Router
-- Context API for Global Cart State
-- Protected Authentication Flow
-- Persistent Shopping Cart
-- Live Product Data using DummyJSON API
-- Responsive & Modern UI
-
----
-
-## 🌐 Live Demo
-
-🔗 https://internship-prodesk-it-tdeo.vercel.app/
-
----
+Open `index.html` in your browser—no additional setup is required.
 
 ## 👨‍💻 Author
 
 **Daksh Choudhary**
 
+Frontend Developer • AI & ML Student
+
 GitHub: https://github.com/dakshchoudhary8881-cmd
-
----
-
-⭐ If you like this project, consider giving it a **Star** on GitHub!
