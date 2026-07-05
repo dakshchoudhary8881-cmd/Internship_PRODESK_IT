@@ -92,7 +92,8 @@ function initSidebarToggle() {
     const closeBtn = document.getElementById('close-sidebar-btn');
 
     if (openBtn && sidebar) {
-        openBtn.addEventListener('click', () => {
+        openBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             sidebar.classList.add('open');
             openBtn.setAttribute('aria-expanded', 'true');
         });
@@ -104,6 +105,15 @@ function initSidebarToggle() {
             if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
         });
     }
+
+    document.addEventListener('click', (e) => {
+        if (sidebar && sidebar.classList.contains('open') && window.innerWidth <= 900) {
+            if (!sidebar.contains(e.target) && (!openBtn || !openBtn.contains(e.target))) {
+                sidebar.classList.remove('open');
+                if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
 }
 
 function sanitizeInput(str) {

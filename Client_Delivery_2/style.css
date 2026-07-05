@@ -1581,6 +1581,17 @@ input:checked + .slider:before {
   100% { background-position: 200% 0; }
 }
 
+@media (min-width: 1600px) {
+  .content-area {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .stats-grid {
+    gap: 24px;
+  }
+}
+
 @media (max-width: 1200px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .dashboard-grid { grid-template-columns: 1fr; }
@@ -1589,28 +1600,75 @@ input:checked + .slider:before {
   .gallery-admin-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid { grid-template-columns: 1fr; }
   .info-grid { grid-template-columns: 1fr; }
+  .form-grid-3 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 900px) {
   .sidebar {
     transform: translateX(-100%);
+    width: 280px;
+    box-shadow: none;
   }
   .sidebar.open {
     transform: translateX(0);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.75);
   }
   .sidebar-close-btn { display: block; }
-  .main-wrapper { margin-left: 0; }
+  .main-wrapper { margin-left: 0; width: 100%; }
   .hamburger-btn { display: block; }
+  .topbar { padding: 0 16px; gap: 12px; }
+  .topbar-center { max-width: none; margin: 0 8px; }
+  #toggle-skeleton-btn .btn-text { display: none; }
   .form-grid-3 { grid-template-columns: 1fr; }
-  .view-toolbar { flex-direction: column; align-items: stretch; }
-  .toolbar-left, .toolbar-right { justify-content: space-between; }
+  .view-toolbar { flex-direction: column; align-items: stretch; gap: 14px; }
+  .toolbar-left, .toolbar-right { width: 100%; justify-content: space-between; gap: 10px; }
+  .toolbar-left .search-box, .toolbar-left .filter-box { flex-grow: 1; width: 100%; }
+  .toolbar-left input, .toolbar-left select { width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .gallery-admin-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .welcome-banner { flex-direction: column; align-items: flex-start; padding: 20px; gap: 16px; }
+  .quick-actions { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+  .quick-actions .btn { width: 100%; justify-content: center; }
+  .card { padding: 16px; }
+  .card-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .card-header .btn { align-self: flex-start; }
+  .data-table th, .data-table td { padding: 12px 14px; font-size: 0.85rem; }
+  .form-actions { flex-direction: column; width: 100%; gap: 10px; }
+  .form-actions .btn { width: 100%; }
+  .calendar-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .calendar-nav { width: 100%; justify-content: space-between; }
+  .cal-day { min-height: 64px; padding: 4px; font-size: 0.78rem; }
+  .cal-badge { font-size: 0.6rem; padding: 1px 4px; }
+  .notif-panel { width: calc(100vw - 24px); right: 12px; left: 12px; top: 60px; max-height: 70vh; }
 }
 
 @media (max-width: 600px) {
   .stats-grid { grid-template-columns: 1fr; }
   .gallery-admin-grid { grid-template-columns: 1fr; }
-  .topbar { padding: 0 var(--space-sm); }
-  .content-area { padding: var(--space-sm); }
-  .welcome-banner { flex-direction: column; align-items: flex-start; }
+  .topbar { padding: 8px 12px; height: auto; min-height: 64px; flex-wrap: wrap; }
+  .topbar-left { width: 100%; justify-content: space-between; margin-bottom: 6px; }
+  .topbar-center { order: 3; width: 100%; margin: 6px 0 0 0; }
+  .topbar-right { order: 2; }
+  .content-area { padding: 12px; }
+  .stat-value { font-size: 1.8rem; }
+  .package-name { font-size: 1.3rem; }
+  .package-price .amount { font-size: 2rem; }
+  .review-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .logo-upload-group { flex-direction: column; align-items: flex-start; }
+  .toggle-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .toggle-item .switch { align-self: flex-end; }
+  .pagination-ui { flex-direction: column; align-items: stretch; text-align: center; gap: 12px; }
+  .page-controls { justify-content: center; }
+}
+
+@media (max-width: 400px) {
+  .page-title { font-size: 1.15rem; }
+  .btn { padding: 8px 14px; font-size: 0.82rem; }
+  .stat-card { padding: 14px; }
+  .cal-day-header { font-size: 0.7rem; }
+  .cal-day { min-height: 50px; font-size: 0.72rem; }
+  .cal-badge { padding: 2px; font-size: 0; width: 100%; height: 6px; border-radius: 2px; margin-top: 2px; }
 }
