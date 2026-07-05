@@ -42,6 +42,7 @@ Each sprint focuses on a different aspect of software development, encouraging p
 ```text
 Internship-Sprints/
 ├── Client_Delivery_1/
+├── Client_Delivery_2/
 ├── Sprint_1/
 ├── Sprint_2/
 ├── Sprint_3/
