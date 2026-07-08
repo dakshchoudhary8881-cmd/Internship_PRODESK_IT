@@ -1,0 +1,43 @@
+.step-two {
+  width: 100%;
+  animation: fadeIn 0.35s ease forwards;
+}
+
+.step-two__header {
+  margin-bottom: 24px;
+}
+
+.step-two__title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.step-two__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.step-two__password-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .step-two__title {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (max-width: 380px) {
+  .step-two__title {
+    font-size: var(--font-size-lg);
+  }
+  .step-two__subtitle {
+    font-size: var(--font-size-xs);
+  }
+}

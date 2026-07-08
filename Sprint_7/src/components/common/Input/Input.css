@@ -1,0 +1,114 @@
+.nexora-field {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+.nexora-field__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input-group__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-group__icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  color: #64748B;
+  pointer-events: none;
+  transition: color var(--transition-fast);
+  z-index: 1;
+}
+
+.input-group__field {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #F8FAFC;
+  background: #182039;
+  border: 1px solid #232E50;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+  caret-color: var(--primary);
+}
+
+.input-group__field::placeholder {
+  color: #64748B;
+  opacity: 1;
+}
+
+.input-group__field:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+  background: #1A2442;
+}
+
+.input-group__field:focus ~ .input-group__icon {
+  color: var(--primary);
+}
+
+.input-group--success .input-group__field {
+  border-color: var(--success);
+}
+
+.input-group--success .input-group__field:focus {
+  box-shadow: 0 0 0 4px var(--success-glow);
+}
+
+.input-group--success .input-group__icon {
+  color: var(--success);
+}
+
+.input-group--error .input-group__field {
+  border-color: var(--danger);
+}
+
+.input-group--error .input-group__field:focus {
+  box-shadow: 0 0 0 4px var(--danger-glow);
+}
+
+.input-group--error .input-group__icon {
+  color: var(--danger);
+}
+
+.input-group__error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--danger);
+  animation: fadeIn 0.25s ease;
+}
+
+@media (max-width: 480px) {
+  .input-group__field {
+    padding: 12px 14px 12px 38px;
+    font-size: var(--font-size-sm);
+  }
+  .input-group__icon {
+    left: 12px;
+    font-size: 1rem;
+  }
+}

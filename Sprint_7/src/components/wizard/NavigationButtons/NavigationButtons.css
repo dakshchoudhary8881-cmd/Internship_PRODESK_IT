@@ -1,0 +1,35 @@
+.wizard-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 16px;
+}
+
+.wizard-navigation__spacer {
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .wizard-navigation {
+    margin-top: 24px;
+    padding-top: 16px;
+    gap: 10px;
+  }
+  .wizard-navigation .btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .wizard-navigation {
+    gap: 8px;
+    flex-direction: column-reverse;
+  }
+  .wizard-navigation .btn {
+    width: 100%;
+  }
+}
