@@ -1,265 +1,136 @@
+<div align="center">
+
 # 🚀 Sprint 07 — Multi-Step Onboarding Wizard
 
-A production-inspired **Multi-Step Onboarding Wizard** built with **React 19**, **Vite**, **React Hook Form**, and **Zod**. This project simulates a modern SaaS registration experience with real-time validation, smooth navigation, responsive UI, and enterprise-level component architecture.
+A **production-inspired SaaS onboarding experience** built with **React 19**, **Vite**, **React Hook Form**, and **Zod**, featuring a responsive multi-step registration flow, real-time validation, reusable components, and modern UI animations.
 
-> Developed as part of the **Prodesk IT Internship – Sprint 07**.
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript)
+![React Hook Form](https://img.shields.io/badge/React_Hook_Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white)
+![Zod](https://img.shields.io/badge/Zod-3B82F6?style=for-the-badge)
+
+### 🌐 Live Demo
+
+**🔗 https://internship-prodesk-it-qdta.vercel.app/**
+
+</div>
 
 ---
 
 ## 📸 Preview
 
-> Add screenshots or GIFs here
+> Replace these with your screenshots or GIFs.
 
 | Step 1 | Step 2 |
-|--------|--------|
-| ![Step 1](./step_1.png) | ![Step 2](./step_2.png) |
+|:-------:|:-------:|
+| ![](./step_1.png) | ![](./step_2.png) |
 
-| Step 3 | Success |
-|--------|---------|
-| ![Step 3](./step_3.png) | ![Success](./success.png) |
-
----
-
-# ✨ Features
-
-### 🔹 Multi-Step Form
-- Three-step onboarding flow
-- Personal Information
-- Account Details
-- Review & Submit
-
-### 🔹 Real-Time Validation
-- React Hook Form
-- Zod Schema Validation
-- Instant error messages
-- Disabled Next button until valid
-
-### 🔹 Password Experience
-- Show / Hide Password
-- Password Strength Meter
-- Confirm Password Matching
-- Strong Password Validation
-
-### 🔹 Premium User Experience
-- Animated Progress Bar
-- Interactive Step Indicator
-- Glassmorphism UI
-- Smooth Transitions
-- Responsive Layout
-
-### 🔹 Review Screen
-- Displays all entered information
-- Secure password masking
-- Back navigation for editing
-
-### 🔹 Success Screen
-- Animated Success State
-- Registration Confirmation
-- Reset & Create Another
-
-### 🔹 Responsive Design
-- Desktop
-- Laptop
-- Tablet
-- Mobile
+| Review | Success |
+|:-------:|:-------:|
+| ![](./step_3.png) | ![](./success.png) |
 
 ---
 
-# 🛠 Tech Stack
+## ✨ Features
 
-| Technology | Usage |
-|------------|-------|
-| React 19 | Frontend Framework |
-| Vite | Build Tool |
-| JavaScript (ES6+) | Programming Language |
-| React Hook Form | Form Management |
-| Zod | Schema Validation |
-| CSS3 | Styling |
-| HTML5 | Markup |
+- 🚀 Three-Step SaaS Onboarding Flow
+- ✅ Real-Time Validation with React Hook Form & Zod
+- 🔒 Password Strength Meter & Show/Hide Password
+- 📊 Animated Progress Bar & Step Indicator
+- 📋 Review Before Submission
+- 🎉 Success Confirmation Screen
+- 📱 Fully Responsive Design
+- ♿ Accessible Form Components
+- 🎨 Modern Glassmorphism UI
+- ⚡ Reusable & Scalable Component Architecture
 
 ---
 
-# 📂 Project Structure
+## 🛠 Tech Stack
+
+| Frontend | Validation | Styling |
+|----------|------------|----------|
+| React 19 | React Hook Form | CSS3 |
+| Vite | Zod | Responsive Design |
+| JavaScript | @hookform/resolvers | Modern Animations |
+
+---
+
+## 📂 Project Structure
 
 ```text
-Sprint_7/
-│
-├── public/
-│
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── Button/
-│   │   ├── FormField/
-│   │   ├── NavigationButtons/
-│   │   ├── PasswordField/
-│   │   ├── ProgressBar/
-│   │   ├── SelectField/
-│   │   ├── StepIndicator/
-│   │   ├── StepOne/
-│   │   ├── StepTwo/
-│   │   ├── StepThree/
-│   │   └── SuccessScreen/
-│   │
-│   ├── constants/
-│   ├── hooks/
-│   ├── schemas/
-│   ├── styles/
-│   ├── utils/
-│   │
-│   ├── App.jsx
-│   └── main.jsx
-│
-├── package.json
-└── vite.config.js
+src/
+├── components/
+├── hooks/
+├── schemas/
+├── styles/
+├── utils/
+├── App.jsx
+└── main.jsx
 ```
 
 ---
 
-# ⚙️ Installation
-
-Clone the repository
+## 🚀 Getting Started
 
 ```bash
 git clone <repository-url>
-```
 
-Navigate into the project
-
-```bash
 cd Sprint_7
-```
 
-Install dependencies
-
-```bash
 npm install
-```
 
-Run the development server
-
-```bash
 npm run dev
 ```
 
-Build for production
+---
 
-```bash
-npm run build
-```
+## 🎯 Highlights
+
+✔ Multi-Step Form Navigation
+
+✔ Lifted State Management
+
+✔ Schema-Based Validation
+
+✔ Password Strength Checker
+
+✔ Review & Submit Workflow
+
+✔ Animated Success Screen
+
+✔ Responsive Across Devices
+
+✔ Reusable React Components
 
 ---
 
-# 📋 Validation Rules
+## 📱 Responsive
 
-## Personal Information
-
-- Full Name (Minimum 3 characters)
-- Valid Email Address
-- 10-digit Phone Number
-- Country Required
-
-## Account Details
-
-- Username (Minimum 5 characters)
-- Password (Minimum 8 characters)
-- Uppercase Letter
-- Lowercase Letter
-- Number
-- Special Character
-- Confirm Password Match
-- Role Selection
+| Desktop | Tablet | Mobile |
+|:-------:|:------:|:------:|
+| ✅ | ✅ | ✅ |
 
 ---
 
-# 🎯 Key Functionalities
+## 💡 Future Enhancements
 
-✅ Multi-Step Navigation
-
-✅ Lifted State Management
-
-✅ Real-Time Validation
-
-✅ Password Strength Meter
-
-✅ Show / Hide Password
-
-✅ Responsive Layout
-
-✅ Animated Progress Bar
-
-✅ Animated Step Indicator
-
-✅ Review & Submit
-
-✅ Success Screen
-
-✅ Form Reset
-
----
-
-# 🎨 UI Highlights
-
-- Dark Modern Theme
-- Glassmorphism Cards
-- Smooth Animations
-- Premium Typography
-- Interactive Buttons
-- Floating Labels
-- Responsive Components
-- Accessible Form Inputs
-
----
-
-# 📱 Responsive Support
-
-| Device | Supported |
-|---------|-----------|
-| Desktop | ✅ |
-| Laptop | ✅ |
-| Tablet | ✅ |
-| Mobile | ✅ |
-
----
-
-# 🚀 Future Improvements
-
-- Save progress using Local Storage
-- API Integration
-- Email Verification
-- OTP Authentication
-- Social Login
-- Multi-language Support
+- Local Storage Persistence
+- Backend/API Integration
+- OTP & Email Verification
+- Social Authentication
 - Theme Switcher
-- Profile Picture Upload
-- Backend Integration
+- Profile Avatar Upload
 
 ---
 
-# 📚 Learning Outcomes
+<div align="center">
 
-This project demonstrates practical experience with:
+### 👨‍💻 Developed by **Daksh Choudhary**
 
-- React Component Architecture
-- State Management
-- Form Handling
-- Schema Validation
-- Reusable Components
-- Responsive Design
-- Modern CSS Techniques
-- Accessibility Best Practices
-- Professional Project Structure
+**AI & ML Undergraduate • Frontend Developer**
 
----
+⭐ **If you like this project, consider giving it a star!**
 
-# 👨‍💻 Author
-
-**Daksh Choudhary**
-
-AI & ML Undergraduate | Frontend Developer
-
-GitHub: https://github.com/dakshchoudhary8881-cmd
-
----
-
-## ⭐ If you found this project helpful, consider giving it a star!
+</div>
