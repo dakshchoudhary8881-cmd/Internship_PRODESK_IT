@@ -111,13 +111,25 @@ export default function App() {
     refetch();
   }, [refetch]);
 
+  const heroMovies = useMemo(() => displayedMovies.slice(0, 6), [displayedMovies]);
+
+  const handleModalClose = useCallback(() => {
+    setSelectedMovie(null);
+  }, []);
+
+  const handleModalSelectGenre = useCallback((genre) => {
+    setSelectedMovie(null);
+    handleSearchChange(genre);
+    setActiveView(VIEWS.SEARCH);
+  }, [handleSearchChange]);
+
   return (
     <div className="app-shell">
       <Header activeView={activeView} onViewChange={handleViewChange} />
 
       {!showInitialLoading && !showError && displayedMovies.length > 0 && (
         <HeroBanner
-          movies={displayedMovies.slice(0, 6)}
+          movies={heroMovies}
           featuredMovie={displayedMovies[0]}
           onSelectMovie={setSelectedMovie}
         />
@@ -174,12 +186,8 @@ export default function App() {
 
       <MovieDetailsModal
         movie={selectedMovie}
-        onClose={() => setSelectedMovie(null)}
-        onSelectGenre={(genre) => {
-          setSelectedMovie(null);
-          handleSearchChange(genre);
-          setActiveView(VIEWS.SEARCH);
-        }}
+        onClose={handleModalClose}
+        onSelectGenre={handleModalSelectGenre}
         onSelectMovie={setSelectedMovie}
       />
     </div>

@@ -14,6 +14,8 @@ function HeroBanner({ movies, featuredMovie, onSelectMovie }) {
 
   const validItems = itemsList.filter((item) => item && !errorIds.has(item.id));
   const activeMovie = validItems[currentIndex % (validItems.length || 1)] || validItems[0] || featuredMovie;
+  const [loadedId, setLoadedId] = useState(null);
+  const imgLoaded = activeMovie && loadedId === activeMovie.id;
 
   const nextSlide = useCallback(() => {
     if (validItems.length <= 1) return;
@@ -47,7 +49,10 @@ function HeroBanner({ movies, featuredMovie, onSelectMovie }) {
             src={bgImage}
             alt={title}
             className="hero-banner-bg-img"
+            decoding="async"
+            onLoad={() => setLoadedId(activeMovie?.id)}
             onError={() => setErrorIds((prev) => new Set(prev).add(activeMovie.id))}
+            style={{ opacity: imgLoaded ? 1 : 0, transition: 'opacity .3s ease' }}
           />
         </div>
       ) : (

@@ -4,6 +4,7 @@ import FavoriteButton from './FavoriteButton';
 
 function MovieCard({ movie, onSelectMovie }) {
   const [imgError, setImgError] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   if (!movie) return null;
   const { title, posterUrl, releaseYear, rating } = movie;
@@ -24,13 +25,23 @@ function MovieCard({ movie, onSelectMovie }) {
     >
       <div className="cf-card__poster">
         {posterUrl && !imgError ? (
-          <img
-            className="cf-card__img"
-            src={posterUrl}
-            alt={`${title} poster`}
-            loading="lazy"
-            onError={() => setImgError(true)}
-          />
+          <>
+            {!imgLoaded && (
+              <div className="cf-card__img-skeleton" aria-hidden="true">
+                <div className="cf-card__img-skeleton-shimmer" />
+              </div>
+            )}
+            <img
+              className="cf-card__img"
+              src={posterUrl}
+              alt={`${title} poster`}
+              loading="lazy"
+              decoding="async"
+              onLoad={() => setImgLoaded(true)}
+              onError={() => setImgError(true)}
+              style={{ opacity: imgLoaded ? 1 : 0 }}
+            />
+          </>
         ) : (
           <div className="cf-card__poster-fallback" aria-label={`${title} — no poster available`}>
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
