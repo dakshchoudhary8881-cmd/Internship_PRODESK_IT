@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
   <img src="logo.png" alt="Prodesk IT Logo" width="200" />
 </p>
@@ -50,6 +51,7 @@ Internship-Sprints/
 ├── Sprint_5/
 ├── Sprint_6/
 ├── Sprint_7/
+├── Sprint_8/
 ├── .gitignore
 ├── logo.png
 └── README.md
@@ -68,7 +70,7 @@ Internship-Sprints/
 | Sprint 05 | TaskFlow — Kanban Task Board | React 19 + Vite Kanban board with drag-and-drop (@dnd-kit), task priorities, inline editing, global search, and LocalStorage persistence | [🌐 Live](https://internship-prodesk-it-k7fs.vercel.app/) |
 | Sprint 06 | Aurora — React E-Commerce SPA | Modern React + Vite e-commerce application featuring React Router, Context API, dynamic product pages, global shopping cart, LocalStorage persistence, guest authentication, protected checkout, and responsive UI powered by the DummyJSON API. | [🌐 Live](https://internship-prodesk-it-tdeo.vercel.app/) |
 | Sprint 07 | Vision — Multi-Step Onboarding Wizard| Developed a production-inspired multi-step onboarding wizard using React 19, Vite, React Hook Form, and Zod. Implemented real-time validation, reusable components, responsive design, password strength indicators, and a polished SaaS-style user experience following modern frontend development practices.| [🌐 Live](https://internship-prodesk-it-qdta.vercel.app/) |
-
+| Sprint 08 | CineVerse AI — Netflix-Lite Movie Discovery Platform | Developed a production-inspired AI-powered movie discovery platform using React 19, Vite, TMDB API, and Google Gemini AI. Implemented real-time movie search with debouncing, AI mood-based recommendations, infinite scrolling, lazy loading, persistent favorites with Local Storage, responsive Netflix-inspired UI, and performance optimizations to deliver a seamless streaming-style user experience. | [🌐 Live](https://internship-prodesk-it-worl.vercel.app/)|
 
 ---
 
