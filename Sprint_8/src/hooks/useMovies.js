@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getPopularMovies, searchMovies, discoverMoviesByMood, TmdbConfigError } from '../services/tmdbApi';
 import { normalizeMovieList, mergeUniqueMovies } from '../utils/movieUtils';
@@ -84,9 +83,7 @@ export function useMovies({ mode, query = '', genre = 'Drama' }) {
     setCurrentPage(0);
     setTotalPages(0);
     fetchPage(1, { isFirstPage: true });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, query, genre]);
+  }, [mode, query, genre]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     return () => {

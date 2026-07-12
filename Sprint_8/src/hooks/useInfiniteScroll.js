@@ -4,6 +4,7 @@ export function useInfiniteScroll({ onIntersect, enabled, isLoading }) {
   const sentinelRef = useRef(null);
   const onIntersectRef = useRef(onIntersect);
   const isLoadingRef = useRef(isLoading);
+
   useEffect(() => {
     onIntersectRef.current = onIntersect;
   }, [onIntersect]);

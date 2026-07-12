@@ -1,4 +1,3 @@
-/* global process */
 const GEMINI_API_KEY = ((typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_GEMINI_API_KEY) || (typeof process !== 'undefined' && process.env && process.env.VITE_GEMINI_API_KEY) || '').trim();
 const GEMINI_MODEL = 'gemini-3.1-flash-lite';
 
@@ -129,7 +128,7 @@ export function sanitizeMovieTitle(rawText) {
     /^(title|movie|answer|recommendation|genre)\s*[:-]\s*/i,
     ''
   );
-  title = title.replace(/^["'“”‘’]+|["'“”‘’]+$/g, '');
+  title = title.replace(/^["'""'']+|["'""'']+$/g, '');
   title = title.replace(/\s+/g, ' ').trim();
 
   return title;

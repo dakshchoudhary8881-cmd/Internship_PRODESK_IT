@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState, memo } from 'react';
 import RatingBadge from './RatingBadge';
 import FavoriteButton from './FavoriteButton';
@@ -90,8 +89,8 @@ function MovieDetailsModal({ movie, onClose, onSelectGenre, onSelectMovie }) {
   const trailerEmbedUrl = youtubeKey
     ? `https://www.youtube-nocookie.com/embed/${youtubeKey}?autoplay=1`
     : `https://www.youtube-nocookie.com/embed?listType=search&list=${encodeURIComponent(
-        `${title} ${releaseYear} official movie trailer`
-      )}&autoplay=1`;
+      `${title} ${releaseYear} official movie trailer`
+    )}&autoplay=1`;
 
   const handleShare = () => {
     const textToCopy = `${title} (${releaseYear || 'Movie'}) - Stream now on CINEVERSE AI!`;
@@ -219,37 +218,30 @@ function MovieDetailsModal({ movie, onClose, onSelectGenre, onSelectMovie }) {
         )}
 
         <div className="movie-details-body">
-          <div className="movie-details-section" style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+          <div className="movie-details-section movie-details-synopsis-row">
             {posterUrl && (
-              <div style={{ flexShrink: 0 }}>
+              <div className="movie-details-poster-wrap">
                 <img
                   src={posterUrl}
                   alt={`${title} official poster`}
-                  style={{
-                    width: '180px',
-                    height: '270px',
-                    objectFit: 'cover',
-                    borderRadius: '12px',
-                    boxShadow: '0 12px 30px rgba(0, 0, 0, 0.75)',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                  }}
+                  className="movie-details-poster-thumb"
                   loading="lazy"
                 />
               </div>
             )}
-            <div style={{ flex: '1 1 300px' }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap', marginBottom: '8px' }}>
-                <h3 className="movie-details-section-title" style={{ margin: 0 }}>
+            <div className="movie-details-synopsis-content">
+              <div className="movie-details-synopsis-heading">
+                <h3 className="movie-details-section-title">
                   {title} — Synopsis
                 </h3>
                 {originalTitle && (
-                  <span style={{ fontSize: '0.92rem', color: '#9CA3AF', fontWeight: '500' }}>
+                  <span className="movie-details-original-title">
                     (Original Title: {originalTitle})
                   </span>
                 )}
               </div>
               {tagline && (
-                <div style={{ fontSize: '1.02rem', fontStyle: 'italic', color: '#60A5FA', marginBottom: '12px' }}>
+                <div className="movie-details-tagline">
                   "{tagline}"
                 </div>
               )}
@@ -335,14 +327,13 @@ function MovieDetailsModal({ movie, onClose, onSelectGenre, onSelectMovie }) {
           </div>
 
           {recommendations.length > 0 && (
-            <div className="movie-details-section" style={{ marginTop: '24px' }}>
+            <div className="movie-details-section movie-details-related-section">
               <h3 className="movie-details-section-title">Recommendations</h3>
-              <div className="movie-details-mini-grid" style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '12px' }}>
+              <div className="movie-details-mini-grid">
                 {recommendations.slice(0, 8).map((rec) => (
                   <div
                     key={rec.id}
                     className="movie-details-mini-card"
-                    style={{ minWidth: '120px', cursor: 'pointer' }}
                     onClick={() => handleSelectRelated(rec)}
                     role="button"
                     tabIndex={0}
@@ -357,9 +348,9 @@ function MovieDetailsModal({ movie, onClose, onSelectGenre, onSelectMovie }) {
                       src={buildPosterUrl(rec.poster_path, 'w200') || posterUrl}
                       alt={rec.title}
                       loading="lazy"
-                      style={{ width: '120px', height: '180px', objectFit: 'cover', borderRadius: '8px' }}
+                      className="movie-details-mini-card-img"
                     />
-                    <div style={{ fontSize: '13px', marginTop: '6px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div className="movie-details-mini-card-title">
                       {rec.title}
                     </div>
                   </div>
@@ -369,14 +360,13 @@ function MovieDetailsModal({ movie, onClose, onSelectGenre, onSelectMovie }) {
           )}
 
           {similar.length > 0 && (
-            <div className="movie-details-section" style={{ marginTop: '24px' }}>
+            <div className="movie-details-section movie-details-related-section">
               <h3 className="movie-details-section-title">Similar Movies</h3>
-              <div className="movie-details-mini-grid" style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '12px' }}>
+              <div className="movie-details-mini-grid">
                 {similar.slice(0, 8).map((sim) => (
                   <div
                     key={sim.id}
                     className="movie-details-mini-card"
-                    style={{ minWidth: '120px', cursor: 'pointer' }}
                     onClick={() => handleSelectRelated(sim)}
                     role="button"
                     tabIndex={0}
@@ -391,9 +381,9 @@ function MovieDetailsModal({ movie, onClose, onSelectGenre, onSelectMovie }) {
                       src={buildPosterUrl(sim.poster_path, 'w200') || posterUrl}
                       alt={sim.title}
                       loading="lazy"
-                      style={{ width: '120px', height: '180px', objectFit: 'cover', borderRadius: '8px' }}
+                      className="movie-details-mini-card-img"
                     />
-                    <div style={{ fontSize: '13px', marginTop: '6px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div className="movie-details-mini-card-title">
                       {sim.title}
                     </div>
                   </div>

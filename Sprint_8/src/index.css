@@ -53,10 +53,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* =========================================================
-   RESET
-   ========================================================= */
-
 *,
 *::before,
 *::after {
@@ -126,10 +122,6 @@ a {
   min-height: 100vh;
 }
 
-/* =========================================================
-   APP SHELL
-   ========================================================= */
-
 .app-shell {
   display: flex;
   flex-direction: column;
@@ -141,10 +133,6 @@ a {
       transparent 20rem
     );
 }
-
-/* =========================================================
-   HEADER (FLOATING GLASS NAV)
-   ========================================================= */
 
 .app-header {
   position: sticky;
@@ -313,10 +301,6 @@ a {
   box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
 }
 
-/* =========================================================
-   SEARCH / DISCOVERY COMMAND HUB
-   ========================================================= */
-
 .search-section {
   display: grid;
   grid-template-columns:
@@ -443,10 +427,6 @@ a {
   transform: scale(1.08);
 }
 
-/* =========================================================
-   MOOD MATCHER (AI VIBE ENGINE)
-   ========================================================= */
-
 .mood-matcher {
   display: flex;
   flex-direction: column;
@@ -564,10 +544,6 @@ a {
   cursor: not-allowed;
 }
 
-/* =========================================================
-   CONTENT SECTION
-   ========================================================= */
-
 .content-section {
   flex: 1;
 
@@ -606,10 +582,6 @@ a {
   font-size: 0.88rem;
 }
 
-/* =========================================================
-   MOVIE GRID
-   ========================================================= */
-
 .movie-grid {
   display: grid;
 
@@ -618,10 +590,6 @@ a {
 
   gap: clamp(0.85rem, 1.6vw, 1.35rem);
 }
-
-/* =========================================================
-   MOVIE CARD
-   ========================================================= */
 
 .movie-card {
   position: relative;
@@ -779,10 +747,6 @@ a {
   color: var(--muted);
 }
 
-/* =========================================================
-   RATING BADGE
-   ========================================================= */
-
 .rating-badge {
   display: inline-flex;
   align-items: center;
@@ -804,10 +768,6 @@ a {
   font-size: 0.74rem;
   font-weight: 800;
 }
-
-/* =========================================================
-   FAVORITE BUTTON
-   ========================================================= */
 
 .favorite-button {
   position: absolute;
@@ -864,10 +824,6 @@ a {
     0 8px 24px rgba(232, 93, 74, 0.34);
 }
 
-/* =========================================================
-   LOADING
-   ========================================================= */
-
 .loading-state {
   display: flex;
   align-items: center;
@@ -900,10 +856,6 @@ a {
     transform: rotate(360deg);
   }
 }
-
-/* =========================================================
-   ERROR STATE
-   ========================================================= */
 
 .error-state {
   width: min(100%, 620px);
@@ -968,10 +920,6 @@ a {
   background: var(--accent-hover);
 }
 
-/* =========================================================
-   EMPTY STATE
-   ========================================================= */
-
 .empty-state {
   width: min(100%, 620px);
 
@@ -1007,10 +955,6 @@ a {
   line-height: 1.65;
 }
 
-/* =========================================================
-   INFINITE SCROLL SENTINEL
-   ========================================================= */
-
 .infinite-scroll-sentinel {
   display: flex;
   align-items: center;
@@ -1026,10 +970,6 @@ a {
   font-size: 0.86rem;
 }
 
-/* =========================================================
-   BUTTON / INPUT FOCUS
-   ========================================================= */
-
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
@@ -1037,10 +977,6 @@ a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
-
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -1060,10 +996,6 @@ a:focus-visible {
 ::-webkit-scrollbar-thumb:hover {
   background: #3a3e48;
 }
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 
 @media (max-width: 1250px) {
   .movie-grid {
@@ -1193,10 +1125,6 @@ a:focus-visible {
   }
 }
 
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1207,20 +1135,6 @@ a:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
-
-/* =========================================================
-   CINEFLOW UPGRADE LAYER
-   Compatible with Lovable cf-* component class names.
-   Keeps the original stylesheet intact and adds:
-   - premium card styling
-   - visible/clickable favorites
-   - active heart state
-   - stronger rating overlays
-   - better keyboard focus
-   - responsive/touch behavior
-   ========================================================= */
-
-/* ---------- Card shell ---------- */
 
 .cf-card {
   position: relative;
@@ -1261,8 +1175,6 @@ a:focus-visible {
     0 0 30px rgba(0, 240, 255, 0.2);
 }
 
-/* ---------- Poster ---------- */
-
 .cf-card__poster {
   position: relative;
   width: 100%;
@@ -1295,8 +1207,6 @@ a:focus-visible {
   filter: saturate(1.15) contrast(1.05);
 }
 
-/* ---------- Poster overlay ---------- */
-
 .cf-card__overlay {
   position: absolute;
   inset: 0;
@@ -1320,8 +1230,6 @@ a:focus-visible {
   opacity: 1;
 }
 
-/* ---------- Rating placement ---------- */
-
 .cf-card__rating {
   position: absolute;
   left: 0.8rem;
@@ -1332,7 +1240,6 @@ a:focus-visible {
   align-items: center;
 }
 
-/* Support both old and current rating badge classes */
 .cf-card__rating .rating-badge,
 .cf-card__rating .cf-rating-badge,
 .rating-badge {
@@ -1362,8 +1269,6 @@ a:focus-visible {
   line-height: 1;
 }
 
-/* ---------- Favorite wrapper ---------- */
-
 .cf-card__fav {
   position: absolute;
   top: 0.8rem;
@@ -1374,8 +1279,6 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
 }
-
-/* ---------- Favorite button ---------- */
 
 .cf-favorite-btn {
   display: inline-flex;
@@ -1438,8 +1341,6 @@ a:focus-visible {
   transform: scale(1.1);
 }
 
-/* ---------- Active favorite ---------- */
-
 .cf-favorite-btn--active,
 .cf-favorite-btn[aria-pressed="true"] {
   color: #ffffff;
@@ -1491,8 +1392,6 @@ a:focus-visible {
   }
 }
 
-/* ---------- Card metadata ---------- */
-
 .cf-card__meta {
   display: flex;
   align-items: flex-start;
@@ -1536,8 +1435,6 @@ a:focus-visible {
   font-size: 0.75rem;
   font-weight: 700;
 }
-
-/* ---------- Poster fallback ---------- */
 
 .cf-card__poster-fallback {
   display: flex;
@@ -1595,8 +1492,6 @@ a:focus-visible {
   z-index: 1;
 }
 
-/* ---------- Keyboard accessibility ---------- */
-
 .cf-favorite-btn:focus {
   outline: none;
 }
@@ -1609,8 +1504,6 @@ a:focus-visible {
     0 0 0 5px rgba(0, 240, 255, 0.25),
     0 10px 28px rgba(0, 0, 0, 0.36);
 }
-
-/* ---------- Legacy favorite compatibility ---------- */
 
 .favorite-button {
   z-index: 20;
@@ -1628,16 +1521,11 @@ a:focus-visible {
   border-color: #f43f5e;
 }
 
-/* ---------- Grid compatibility ---------- */
-
-/* Your MovieGrid may use either .movie-grid or .cf-grid */
 .cf-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: clamp(0.85rem, 1.6vw, 1.35rem);
 }
-
-/* ---------- Responsive ---------- */
 
 @media (max-width: 1250px) {
   .cf-grid {
@@ -1711,8 +1599,6 @@ a:focus-visible {
   }
 }
 
-/* ---------- Touch devices ---------- */
-
 @media (hover: none) {
   .cf-card:hover {
     transform: none;
@@ -1726,8 +1612,6 @@ a:focus-visible {
     transform: none;
   }
 }
-
-/* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   .cf-card,
@@ -1743,14 +1627,6 @@ a:focus-visible {
     animation: none !important;
   }
 }
-
-/* =========================================================
-   MOVIE DETAILS MODAL (PREMIUM PLATFORM EXPERIENCE)
-   ========================================================= */
-
-/* =========================================================
-   MOVIE DETAILS MODAL (PREMIUM CYBER-COCKPIT EXPERIENCE)
-   ========================================================= */
 
 .movie-details-backdrop {
   position: fixed;
@@ -2094,10 +1970,6 @@ a:focus-visible {
     flex-wrap: wrap;
   }
 }
-
-/* =========================================================
-   HERO BANNER (FUTURISTIC CYBER-COCKPIT)
-   ========================================================= */
 
 .hero-banner {
   position: relative;
@@ -2452,10 +2324,6 @@ a:focus-visible {
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
 }
 
-/* ========================================================
-   COMPREHENSIVE RESPONSIVE DISPLAY SIZES
-======================================================== */
-
 @media (max-width: 1200px) {
   .hero-banner {
     min-height: 540px;
@@ -2586,7 +2454,6 @@ a:focus-visible {
   }
 }
 
-/* End of results indicator */
 .end-of-results {
   text-align: center;
   padding: 3rem 1rem;
@@ -2598,7 +2465,6 @@ a:focus-visible {
   margin-top: 2rem;
 }
 
-/* Footer styling */
 .app-footer {
   margin-top: 4rem;
   padding: 3rem 1.5rem;
@@ -2657,5 +2523,560 @@ a:focus-visible {
   }
   .app-footer-links {
     gap: 1rem;
+  }
+}
+
+.movie-details-synopsis-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.movie-details-poster-wrap {
+  flex-shrink: 0;
+}
+
+.movie-details-poster-thumb {
+  width: 180px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.movie-details-synopsis-content {
+  flex: 1 1 300px;
+}
+
+.movie-details-synopsis-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.movie-details-synopsis-heading .movie-details-section-title {
+  margin: 0;
+}
+
+.movie-details-original-title {
+  font-size: 0.92rem;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+.movie-details-tagline {
+  font-size: 1.02rem;
+  font-style: italic;
+  color: #60A5FA;
+  margin-bottom: 12px;
+}
+
+.movie-details-related-section {
+  margin-top: 24px;
+}
+
+.movie-details-mini-grid {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.movie-details-mini-card {
+  min-width: 120px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.movie-details-mini-card-img {
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.movie-details-mini-card-title {
+  font-size: 13px;
+  margin-top: 6px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    min-height: 56px;
+    padding: 0.5rem 0.75rem;
+    top: 8px;
+    width: calc(100% - 1rem);
+    border-radius: 16px;
+  }
+
+  .brand-logo-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .brand-name {
+    font-size: 1.1rem;
+  }
+
+  .brand-tag {
+    font-size: 0.58rem;
+  }
+
+  .nav-actions {
+    gap: 0.15rem;
+  }
+
+  .nav-actions button,
+  .nav-button {
+    min-height: 34px;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.72rem;
+    border-radius: 10px;
+  }
+
+  .search-section {
+    width: calc(100% - 1rem);
+    padding-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  .search-section::before {
+    font-size: clamp(1.6rem, 10vw, 2.4rem);
+  }
+
+  .search-bar-wrapper {
+    min-height: 52px;
+    border-radius: 14px;
+  }
+
+  .search-bar input,
+  .search-input {
+    min-height: 52px;
+    font-size: 0.92rem;
+    padding: 0 3rem 0 0.75rem;
+  }
+
+  .search-bar-icon {
+    padding-left: 0.85rem;
+  }
+
+  .mood-matcher {
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+  }
+
+  .mood-ai-badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .mood-ai-hint {
+    font-size: 0.68rem;
+  }
+
+  .mood-matcher-input {
+    height: 42px;
+    font-size: 0.86rem;
+    border-radius: 10px;
+  }
+
+  .mood-matcher-submit {
+    height: 42px;
+    font-size: 0.82rem;
+    padding: 0 1rem;
+    border-radius: 10px;
+  }
+
+  .mood-input-wrapper {
+    flex-direction: column;
+  }
+
+  .mood-matcher-submit {
+    width: 100%;
+  }
+
+  .content-section {
+    width: calc(100% - 1rem);
+    padding: 1rem 0 2.5rem;
+  }
+
+  .section-header h1,
+  .section-header h2,
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .movie-card-content {
+    padding: 0.6rem;
+  }
+
+  .movie-title {
+    font-size: 0.82rem;
+  }
+
+  .movie-meta {
+    font-size: 0.7rem;
+  }
+
+  .cf-card__meta {
+    min-height: 58px;
+    padding: 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .cf-card__title {
+    font-size: 0.82rem;
+  }
+
+  .cf-card__year {
+    font-size: 0.68rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .cf-card__fav {
+    top: 0.4rem;
+    right: 0.4rem;
+  }
+
+  .cf-favorite-btn {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+    border-radius: 10px;
+  }
+
+  .cf-favorite-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .cf-card__rating {
+    left: 0.4rem;
+    bottom: 0.4rem;
+  }
+
+  .cf-card__rating .rating-badge,
+  .cf-card__rating .cf-rating-badge,
+  .rating-badge {
+    min-height: 24px;
+    padding: 0.2rem 0.45rem;
+    font-size: 0.68rem;
+  }
+
+  .favorite-button {
+    width: 30px;
+    height: 30px;
+    top: 0.35rem;
+    right: 0.35rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-banner {
+    min-height: 420px;
+    width: calc(100% - 0.75rem);
+    margin: 0.75rem auto 1rem;
+    border-radius: 14px;
+  }
+
+  .hero-banner-content {
+    padding: 1rem 0.85rem 3rem;
+    gap: 0.6rem;
+  }
+
+  .hero-banner-tag {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-banner-status {
+    font-size: 0.65rem;
+  }
+
+  .hero-banner-title {
+    font-size: clamp(1.35rem, 6.5vw, 2rem);
+  }
+
+  .hero-banner-meta {
+    gap: 0.4rem;
+    font-size: 0.78rem;
+  }
+
+  .hero-banner-rating {
+    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .hero-banner-badge {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.62rem;
+  }
+
+  .hero-banner-overview {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    -webkit-line-clamp: 2;
+  }
+
+  .hero-banner-actions {
+    gap: 0.5rem;
+  }
+
+  .hero-btn {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.82rem;
+    border-radius: 10px;
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .hero-banner-fav {
+    width: 100%;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .hero-carousel-indicators {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 0.5rem;
+    padding: 0.3rem 0.55rem;
+    gap: 0.4rem;
+  }
+
+  .hero-carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .hero-carousel-dot.active {
+    width: 22px;
+  }
+
+  .movie-details-backdrop {
+    padding: 0.5rem;
+  }
+
+  .movie-details-card {
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+
+  .movie-details-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .movie-details-hero {
+    height: 280px;
+  }
+
+  .movie-details-hero-content {
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+
+  .movie-details-title {
+    font-size: 1.4rem;
+  }
+
+  .movie-details-meta {
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    flex-wrap: wrap;
+  }
+
+  .movie-details-actions {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .movie-details-btn-play {
+    font-size: 0.88rem;
+    padding: 0.65rem 1.2rem;
+    border-radius: 10px;
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .movie-details-btn-share {
+    font-size: 0.82rem;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    flex: 1;
+  }
+
+  .movie-details-action-fav {
+    transform: scale(1);
+  }
+
+  .movie-details-body {
+    padding: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .movie-details-section-title {
+    font-size: 1.1rem;
+  }
+
+  .movie-details-overview {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .movie-details-poster-thumb {
+    width: 100%;
+    height: auto;
+    max-width: 140px;
+    max-height: 210px;
+  }
+
+  .movie-details-synopsis-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .movie-details-poster-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .movie-details-synopsis-content {
+    flex-basis: 100%;
+  }
+
+  .movie-details-grid-info {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .movie-details-info-label {
+    font-size: 0.72rem;
+  }
+
+  .movie-details-info-value {
+    font-size: 0.88rem;
+  }
+
+  .movie-details-video-wrapper {
+    height: 240px;
+  }
+
+  .movie-details-tag-chip {
+    font-size: 0.7rem;
+    padding: 0.28rem 0.65rem;
+  }
+
+  .movie-details-mini-card {
+    min-width: 100px;
+  }
+
+  .movie-details-mini-card-img {
+    width: 100px;
+    height: 150px;
+    border-radius: 6px;
+  }
+
+  .movie-details-mini-card-title {
+    font-size: 11px;
+    max-width: 100px;
+  }
+
+  .end-of-results {
+    padding: 2rem 0.75rem;
+    font-size: 0.82rem;
+    margin-top: 1.5rem;
+  }
+
+  .loading-state {
+    min-height: 120px;
+    padding: 1.5rem 0.75rem;
+    font-size: 0.88rem;
+  }
+
+  .empty-state {
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
+
+  .empty-state h2,
+  .empty-state h3 {
+    font-size: 1.15rem;
+  }
+
+  .error-state {
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
+
+  .error-state h2,
+  .error-state h3 {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .movie-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .cf-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-actions button,
+  .nav-button {
+    padding: 0.35rem 0.4rem;
+    font-size: 0.68rem;
+  }
+
+  .hero-banner-title {
+    font-size: 1.2rem;
+  }
+
+  .hero-banner-overview {
+    display: none;
+  }
+
+  .movie-details-hero {
+    height: 220px;
+  }
+
+  .movie-details-title {
+    font-size: 1.2rem;
+  }
+
+  .movie-details-grid-info {
+    grid-template-columns: 1fr;
+  }
+
+  .movie-details-body {
+    padding: 1rem;
+  }
+
+  .search-section::before {
+    font-size: 1.4rem;
   }
 }

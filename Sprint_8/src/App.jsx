@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Header from './components/Header';
 import HeroBanner from './components/HeroBanner';
@@ -39,8 +38,7 @@ export default function App() {
     if (activeView === VIEWS.FAVORITES) return;
     if (activeView === VIEWS.MOOD && !debouncedQuery.trim()) return;
     setActiveView(debouncedQuery.trim() ? VIEWS.SEARCH : VIEWS.POPULAR);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedQuery]);
+  }, [debouncedQuery]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchMode =
     activeView === VIEWS.SEARCH
