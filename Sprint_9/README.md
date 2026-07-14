@@ -1,306 +1,265 @@
-# The Data Hub – RESTful Blog API
+# 🚀 Sprint 09 — The Data Hub RESTful Blog API
 
-A production-quality RESTful Blog API built with Node.js and Express.js. This API provides full CRUD operations for managing blog posts, mock authentication, health checks, and follows clean architectural patterns with separated concerns.
+A production-ready **RESTful Blog API** built with **Node.js** and **Express.js**, implementing CRUD operations, modular architecture, custom middleware, mock authentication, and robust error handling.
 
-## Features
+> **Internship Sprint 09 — Prodesk IT**  
+> **Track B: Fullstack Developers**
 
-- Full CRUD operations for blog posts (Create, Read, Update, Delete)
-- Mock authentication with token generation
-- Custom request logging middleware
-- Global 404 and error handling
-- Health check endpoints
-- Clean MVC-style project architecture
-- Proper HTTP status codes and JSON responses
-- Input validation and meaningful error messages
-- In-memory data storage (no database required)
+---
 
-## Tech Stack
+## 📌 Project Overview
 
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Language:** JavaScript (ES6)
-- **Storage:** In-memory array
-- **Testing:** Postman / Thunder Client compatible
+The Data Hub is a backend REST API that allows clients to create, retrieve, update, and delete blog posts through standardized HTTP endpoints.
 
-## Installation
+It follows clean backend architecture using Express Router, Controllers, Middleware, and utility modules while maintaining an in-memory data store.
 
-```bash
-git clone <repository-url>
-cd Sprint_9
-npm install
+---
+
+## ✨ Features
+
+- 📄 Complete CRUD operations
+- ⚡ RESTful API architecture
+- 🧩 Modular MVC-inspired folder structure
+- 📝 Custom request logging middleware
+- 🔐 Mock JWT authentication
+- 🚨 Global error handling
+- ❌ Custom 404 handler
+- ❤️ Health check endpoints
+- 📊 Proper HTTP status codes
+- 🧪 Thunder Client / Postman compatible
+
+---
+
+# 🏗️ Tech Stack
+
+| Technology | Purpose |
+|------------|----------|
+| Node.js | JavaScript Runtime |
+| Express.js | Backend Framework |
+| JavaScript (ES6) | Programming Language |
+| Express Router | Route Management |
+| Middleware | Request Processing |
+| Thunder Client | API Testing |
+
+---
+
+# 📁 Folder Structure
+
+```text
+Sprint_9
+│
+├── controllers
+│   ├── authController.js
+│   ├── blogController.js
+│   └── healthController.js
+│
+├── middleware
+│   ├── requestLogger.js
+│   ├── errorHandler.js
+│   └── notFoundHandler.js
+│
+├── models
+│   └── blogModel.js
+│
+├── routes
+│   ├── authRoutes.js
+│   ├── blogRoutes.js
+│   └── healthRoutes.js
+│
+├── utils
+│   └── tokenGenerator.js
+│
+├── server.js
+├── package.json
+├── package-lock.json
+├── .gitignore
+└── README.md
 ```
 
-## Usage
+---
 
-**Start the server:**
+# 🔄 Request Flow
 
-```bash
-npm start
+```text
+                Client
+                   │
+                   ▼
+          Incoming Request
+                   │
+                   ▼
+        Request Logger Middleware
+                   │
+                   ▼
+             Express Router
+                   │
+                   ▼
+             Route Handler
+                   │
+                   ▼
+             Controller Logic
+                   │
+                   ▼
+         In-Memory Blog Storage
+                   │
+                   ▼
+          JSON Response Sent
 ```
 
-**Start with auto-reload (development):**
+---
 
-```bash
-npm run dev
-```
+# 🌐 API Endpoints
 
-The server runs on **http://localhost:5000**
+## Health
 
-## Available Endpoints
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/` | API Status |
+| GET | `/health` | Health Check |
 
-### Health
+---
 
-| Method | Endpoint  | Description                |
-| ------ | --------- | -------------------------- |
-| GET    | `/`       | API running confirmation   |
-| GET    | `/health` | Health check status        |
+## Blogs
 
-### Blogs
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/blogs` | Retrieve all blogs |
+| GET | `/blogs/:id` | Retrieve blog by ID |
+| POST | `/blogs` | Create a new blog |
+| PUT | `/blogs/:id` | Update blog |
+| DELETE | `/blogs/:id` | Delete blog |
 
-| Method | Endpoint      | Description              |
-| ------ | ------------- | ------------------------ |
-| GET    | `/blogs`      | Get all blogs            |
-| GET    | `/blogs/:id`  | Get a single blog by ID  |
-| POST   | `/blogs`      | Create a new blog        |
-| PUT    | `/blogs/:id`  | Update an existing blog  |
-| DELETE | `/blogs/:id`  | Delete a blog            |
+---
 
-### Authentication
+## Authentication
 
-| Method | Endpoint  | Description              |
-| ------ | --------- | ------------------------ |
-| POST   | `/login`  | Mock login with token    |
+| Method | Endpoint |
+|---------|----------|
+| POST | `/login` |
 
-## Sample Requests & Responses
+Returns a mock JWT token.
 
-### GET /
+---
 
-**Response (200):**
-```json
-{
-  "message": "Data Hub API Running Successfully"
-}
-```
-
-### GET /health
-
-**Response (200):**
-```json
-{
-  "status": "OK"
-}
-```
+# 📬 Sample Request
 
 ### POST /blogs
 
-**Request Body:**
 ```json
 {
-  "title": "Getting Started with Node.js",
-  "content": "Node.js is a powerful JavaScript runtime built on Chrome's V8 engine.",
-  "author": "Daksh Choudhary"
+  "title": "My First Blog",
+  "content": "Learning Express.js",
+  "author": "Daksh"
 }
 ```
 
-**Response (201):**
+---
+
+# ✅ Sample Response
+
 ```json
 {
   "success": true,
   "message": "Blog created successfully.",
   "data": {
     "id": 1,
-    "title": "Getting Started with Node.js",
-    "content": "Node.js is a powerful JavaScript runtime built on Chrome's V8 engine.",
-    "author": "Daksh Choudhary",
+    "title": "My First Blog",
+    "content": "Learning Express.js",
+    "author": "Daksh",
     "createdAt": "2026-07-14T11:00:00.000Z"
   }
 }
 ```
 
-### GET /blogs
+---
 
-**Response (200):**
-```json
-{
-  "success": true,
-  "count": 1,
-  "data": [
-    {
-      "id": 1,
-      "title": "Getting Started with Node.js",
-      "content": "Node.js is a powerful JavaScript runtime built on Chrome's V8 engine.",
-      "author": "Daksh Choudhary",
-      "createdAt": "2026-07-14T11:00:00.000Z"
-    }
-  ]
-}
+# ⚙️ Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/dakshchoudhary8881-cmd/Internship_PRODESK_IT.git
 ```
 
-### GET /blogs/1
+Navigate into Sprint 9
 
-**Response (200):**
-```json
-{
-  "success": true,
-  "data": {
-    "id": 1,
-    "title": "Getting Started with Node.js",
-    "content": "Node.js is a powerful JavaScript runtime built on Chrome's V8 engine.",
-    "author": "Daksh Choudhary",
-    "createdAt": "2026-07-14T11:00:00.000Z"
-  }
-}
+```bash
+cd Internship_PRODESK_IT/Sprint_9
 ```
 
-### PUT /blogs/1
+Install dependencies
 
-**Request Body:**
-```json
-{
-  "title": "Updated: Getting Started with Node.js"
-}
+```bash
+npm install
 ```
 
-**Response (200):**
-```json
-{
-  "success": true,
-  "message": "Blog updated successfully.",
-  "data": {
-    "id": 1,
-    "title": "Updated: Getting Started with Node.js",
-    "content": "Node.js is a powerful JavaScript runtime built on Chrome's V8 engine.",
-    "author": "Daksh Choudhary",
-    "createdAt": "2026-07-14T11:00:00.000Z"
-  }
-}
+Run the development server
+
+```bash
+npm run dev
 ```
 
-### DELETE /blogs/1
+or
 
-**Response (200):**
-```json
-{
-  "success": true,
-  "message": "Blog deleted successfully.",
-  "data": {
-    "id": 1,
-    "title": "Updated: Getting Started with Node.js",
-    "content": "Node.js is a powerful JavaScript runtime built on Chrome's V8 engine.",
-    "author": "Daksh Choudhary",
-    "createdAt": "2026-07-14T11:00:00.000Z"
-  }
-}
+```bash
+npm start
 ```
 
-### POST /login
+Server runs at
 
-**Request Body:**
-```json
-{
-  "username": "admin",
-  "password": "password123"
-}
+```text
+http://localhost:5000
 ```
 
-**Response (200):**
-```json
-{
-  "success": true,
-  "token": "mock-jwt-token-aB3dEfGhIjKlMnOp"
-}
-```
+---
 
-### Error Responses
+# 🧪 API Testing
 
-**Missing fields (400):**
-```json
-{
-  "success": false,
-  "message": "All fields are required: title, content, author."
-}
-```
+The API can be tested using:
 
-**Blog not found (404):**
-```json
-{
-  "success": false,
-  "message": "Blog with ID 99 not found."
-}
-```
+- Thunder Client
+- Postman
+- cURL
 
-**Invalid ID (400):**
-```json
-{
-  "success": false,
-  "message": "Invalid blog ID. ID must be a number."
-}
-```
+---
 
-**Route not found (404):**
-```json
-{
-  "success": false,
-  "message": "Route GET /unknown not found."
-}
-```
+# 📊 HTTP Status Codes
 
-## Folder Structure
+| Code | Meaning |
+|------|---------|
+| 200 | Success |
+| 201 | Created |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
 
-```
-Sprint_9/
-├── server.js
-├── package.json
-├── .gitignore
-├── README.md
-├── routes/
-│   ├── blogRoutes.js
-│   ├── authRoutes.js
-│   └── healthRoutes.js
-├── controllers/
-│   ├── blogController.js
-│   ├── authController.js
-│   └── healthController.js
-├── middleware/
-│   ├── requestLogger.js
-│   ├── notFoundHandler.js
-│   └── errorHandler.js
-├── models/
-│   └── blogModel.js
-└── utils/
-    └── tokenGenerator.js
-```
+---
 
-## Middleware
+# 🎯 Learning Outcomes
 
-**Request Logger** – Logs every incoming request with the HTTP method, URL, and timestamp to the console.
+- Express.js fundamentals
+- REST API development
+- CRUD implementation
+- Modular backend architecture
+- Express Router
+- Custom middleware
+- Error handling
+- Mock authentication
+- API testing
+- Professional backend project organization
 
-Example output:
-```
-[2026-07-14T11:00:00.000Z] GET /blogs
-[2026-07-14T11:00:01.000Z] POST /login
-[2026-07-14T11:00:02.000Z] DELETE /blogs/3
-```
+---
 
-## HTTP Status Codes Used
+# 👨‍💻 Author
 
-| Code | Meaning               | Usage                          |
-| ---- | --------------------- | ------------------------------ |
-| 200  | OK                    | Successful GET, PUT, DELETE    |
-| 201  | Created               | Successful POST                |
-| 400  | Bad Request           | Invalid ID or missing fields   |
-| 404  | Not Found             | Blog or route not found        |
-| 500  | Internal Server Error | Unexpected server errors       |
+**Daksh Choudhary**
 
-## Learning Outcomes
+B.Tech Artificial Intelligence & Machine Learning  
+Frontend & Full Stack Developer
 
-- Setting up a Node.js project from scratch
-- Building RESTful APIs with Express.js
-- Implementing CRUD operations with in-memory storage
-- Using Express Router for modular routing
-- Creating custom middleware functions
-- Handling errors globally with middleware
-- Structuring a project using MVC-style architecture
-- Working with HTTP status codes and JSON responses
-- Input validation and error handling best practices
-- Testing APIs with Postman or Thunder Client
+GitHub: **dakshchoudhary8881-cmd**
+
+---
+
+## ⭐ Sprint 09 Completed
+
+Successfully developed a modular RESTful Blog API following industry-standard backend architecture using **Node.js** and **Express.js** as part of the **Prodesk IT Internship**.
