@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <p align="center">
   <img src="logo.png" alt="Prodesk IT Logo" width="200" />
 </p>
@@ -79,7 +78,7 @@ Internship-Sprints/
 | Client Delivery | Project | Tech Stack | Live Demo |
 |----------------|---------|------------|-----------|
 | Client Delivery 01 | Food Truck Menu Management System – Digital menu management dashboard with automatic category icons, menu creation, search, category filtering, dashboard statistics, form validation, XSS sanitization, analytics simulation, and a fully responsive enterprise UI. | React, Vite, JavaScript, CSS | [🌐 Live](https://internship-prodesk-it-j54l-7ri1d2jvu.vercel.app/) |
-| Client Delivery 02 | Developed a premium enterprise-style internal management dashboard for an independent photography studio. The project features booking management, client management, gallery administration, studio scheduling, payment overview, responsive layouts, accessibility, form validation, loading & empty states, theme switching, and XSS-safe input handling using pure HTML, CSS, and Vanilla JavaScript.. |HTML5 • CSS3 • JavaScript | [🌐 Live](https://internship-prodesk-it-j54l-7ri1d2jvu.vercel.app/) |
+| Client Delivery 02 | Developed a premium enterprise-style internal management dashboard for an independent photography studio. The project features booking management, client management, gallery administration, studio scheduling, payment overview, responsive layouts, accessibility, form validation, loading & empty states, theme switching, and XSS-safe input handling using pure HTML, CSS, and Vanilla JavaScript.. |HTML5 • CSS3 • JavaScript | [🌐 Live](https://internship-prodesk-it-w5mo.vercel.app/) |
 
 
 ---
