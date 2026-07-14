@@ -1,0 +1,22 @@
+{
+  "name": "the-data-hub",
+  "version": "1.0.0",
+  "description": "The Data Hub – RESTful Blog API built with Node.js and Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "blog",
+    "api",
+    "rest",
+    "express",
+    "nodejs"
+  ],
+  "author": "Daksh Choudhary",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
