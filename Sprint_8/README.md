@@ -28,7 +28,7 @@ Discover movies intelligently with **Google Gemini AI** and **TMDB**, where your
 
 ## 🔗 Live Demo 
 
-🌐 [Live API](https://internship-prodesk-it-worl.vercel.app/)
+🌐 [Live WEBSITE](https://internship-prodesk-it-worl.vercel.app/)
 
 ---
 
