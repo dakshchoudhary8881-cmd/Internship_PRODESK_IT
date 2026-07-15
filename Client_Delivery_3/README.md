@@ -1,443 +1,234 @@
-# Game Waitlist CRUD API with Route Parameters
+<p align="center">
+  <img src="../logo.png" alt="Game Waitlist API" width="240"/>
+</p>
 
-A production-quality REST API built with Node.js and Express.js for managing gaming arcade player waitlists. This API replaces traditional paper registers and Excel sheets with a modern, digital solution that any frontend application can consume.
+<h1 align="center">
+🎮 Game Waitlist CRUD API
+</h1>
+
+<h3 align="center">
+Production-Inspired RESTful Backend API
+</h3>
+
+<p align="center">
+<img src="https://skillicons.dev/icons?i=nodejs,express,git,github,vercel,vscode,postman"/>
+</p>
+
+<p align="center">
+<img src="https://img.shields.io/badge/API-REST-009688?style=flat-square"/>
+<img src="https://img.shields.io/badge/Architecture-Modular-blue?style=flat-square"/>
+<img src="https://img.shields.io/badge/Status-Production_Ready-success?style=flat-square"/>
+<img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square"/>
+</p>
 
 ---
 
-## Features
+## 🔗 Live Demo 
 
-- Full CRUD operations (Create, Read, Update, Delete)
-- Route Parameters for single-resource operations
-- Input validation with express-validator
-- XSS sanitization on all text inputs
-- Search and filter by game, status, or player name
-- Sort results by name, id, or creation date
-- Consistent JSON response format
-- Comprehensive error handling (400, 404, 500)
-- Malformed JSON detection
-- Security hardening with Helmet and CORS
-- Request logging with Morgan
-- Simulated network delay (300–500ms)
-- Analytics logging on every mutation
-- Environment-based configuration with dotenv
-- Auto-generated UUIDs for every entry
+🌐 **Live API**
+
+https://clientproject3.vercel.app/
 
 ---
 
-## Folder Structure
+# 📖 Overview
 
-```
-Client_Delivery_3/
-│
-├── config/
-│   └── index.js
+The **Game Waitlist CRUD API** is a production-inspired RESTful backend application designed to digitize the manual waitlist process used by gaming arcades.
+
+Instead of managing player queues through paper registers or spreadsheets, this API provides a structured backend service capable of creating, retrieving, updating, and deleting waitlist entries while following REST principles and enterprise development practices.
+
+---
+
+# ✨ Features
+
+- ✅ Complete CRUD Operations
+- ✅ RESTful API Architecture
+- ✅ Express Router
+- ✅ Route Parameters
+- ✅ Input Validation
+- ✅ XSS Sanitization
+- ✅ Analytics Simulation
+- ✅ Proper HTTP Status Codes
+- ✅ Centralized Error Handling
+- ✅ Modular Folder Structure
+- ✅ UUID-based IDs
+- ✅ Environment Variables
+- ✅ Helmet Security
+- ✅ CORS Enabled
+- ✅ Morgan Request Logger
+- ✅ Thunder Client Tested
+
+---
+
+# 🛠 Tech Stack
+
+## 💻 Programming Languages
+
+<p align="left">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="45"/>
+</p>
+
+---
+
+## ⚙️ Backend
+
+<p align="left">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="45"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="45"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="45"/>
+</p>
+
+---
+
+## 🧰 Tools
+
+<p align="left">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="45"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="45"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="45"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="45"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" width="45"/>
+</p>
+
+---
+
+# 📂 Project Structure
+
+```text
+Game-Waitlist-CRUD-API
 │
 ├── controllers/
-│   └── waitlistController.js
-│
-├── data/
-│   └── waitlistData.js
-│
-├── middleware/
-│   ├── errorHandler.js
-│   ├── notFound.js
-│   └── validation.js
-│
-├── models/
-│   └── waitlistModel.js
-│
 ├── routes/
-│   └── waitlistRoutes.js
-│
+├── middleware/
 ├── utils/
-│   ├── analytics.js
-│   ├── delay.js
-│   └── sanitizer.js
-│
-├── .env
-├── .env.example
-├── .gitignore
+├── data/
 ├── app.js
+├── server.js
 ├── package.json
-├── README.md
-└── server.js
+└── README.md
 ```
 
 ---
 
-## Installation
+# 🚀 API Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/api/waitlist` | Get all players |
+| GET | `/api/waitlist/:id` | Get player by ID |
+| POST | `/api/waitlist` | Add new player |
+| PUT | `/api/waitlist/:id` | Update player |
+| DELETE | `/api/waitlist/:id` | Delete player |
+
+---
+
+# 📋 Example Request
+
+```json
+{
+  "name":"Daksh",
+  "game":"Bowling",
+  "players":4,
+  "phone":"9876543210",
+  "status":"waiting"
+}
+```
+
+---
+
+# 📦 Example Response
+
+```json
+{
+    "success": true,
+    "message": "Player added successfully",
+    "data": {
+        ...
+    }
+}
+```
+
+---
+
+# 🛡 Validation
+
+- Required Fields
+- Phone Validation
+- Player Count Validation
+- Status Validation
+- UUID Validation
+- XSS Sanitization
+
+---
+
+# 📊 API Testing
+
+The API has been tested using **Thunder Client**.
+
+### Tested Scenarios
+
+- GET All
+- GET by ID
+- POST
+- PUT
+- DELETE
+- Invalid ID
+- Validation Errors
+- Empty State
+- Route Parameters
+- XSS Protection
+- Analytics Logging
+
+---
+
+# ⚙️ Installation
 
 ```bash
-git clone <repository-url>
-cd Client_Delivery_3
+git clone https://github.com/yourusername/Game-Waitlist-CRUD-API.git
+
+cd Game-Waitlist-CRUD-API
+
 npm install
-```
 
----
-
-## How to Run
-
-### Development (with auto-restart)
-
-```bash
 npm run dev
 ```
 
-### Production
+---
 
-```bash
-npm start
+# 🌍 Base URL
+
+```
+http://localhost:5000/api/waitlist
 ```
 
-The server starts at **http://localhost:5000** by default.
+or
 
----
-
-## Scripts
-
-| Script          | Command           | Description                          |
-| --------------- | ----------------- | ------------------------------------ |
-| `npm start`     | `node server.js`  | Start the server in production mode  |
-| `npm run dev`   | `nodemon server.js` | Start with auto-restart on changes |
-
----
-
-## API Endpoints
-
-| Method   | Endpoint               | Description                     |
-| -------- | ---------------------- | ------------------------------- |
-| `GET`    | `/api/waitlist`        | Retrieve all waitlist entries   |
-| `GET`    | `/api/waitlist/:id`    | Retrieve a single entry by ID  |
-| `POST`   | `/api/waitlist`        | Add a new player to waitlist   |
-| `PUT`    | `/api/waitlist/:id`    | Update an existing entry by ID |
-| `DELETE` | `/api/waitlist/:id`    | Remove an entry by ID          |
-
-### Query Parameters
-
-| Parameter | Example                              | Description              |
-| --------- | ------------------------------------ | ------------------------ |
-| `game`    | `/api/waitlist?game=Bowling`         | Filter by game name      |
-| `status`  | `/api/waitlist?status=waiting`       | Filter by status         |
-| `name`    | `/api/waitlist?name=daksh`           | Search by player name    |
-| `sort`    | `/api/waitlist?sort=name`            | Sort by name, id, or createdAt |
-
----
-
-## Request and Response Examples
-
-### GET /api/waitlist — Get All Players
-
-**Response (200)**
-
-```json
-{
-  "success": true,
-  "message": "Waitlist entries retrieved successfully",
-  "count": 3,
-  "data": [
-    {
-      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      "name": "Daksh Choudhary",
-      "game": "Bowling",
-      "players": 4,
-      "phone": "9876543210",
-      "status": "waiting",
-      "createdAt": "2026-07-14T17:00:00.000Z",
-      "updatedAt": "2026-07-14T17:00:00.000Z"
-    }
-  ]
-}
+```
+https://your-project.vercel.app/api/waitlist
 ```
 
 ---
 
-### GET /api/waitlist/:id — Get Single Player
+# 🚀 Future Improvements
 
-**Response (200)**
-
-```json
-{
-  "success": true,
-  "message": "Waitlist entry retrieved successfully",
-  "data": {
-    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "name": "Daksh Choudhary",
-    "game": "Bowling",
-    "players": 4,
-    "phone": "9876543210",
-    "status": "waiting",
-    "createdAt": "2026-07-14T17:00:00.000Z",
-    "updatedAt": "2026-07-14T17:00:00.000Z"
-  }
-}
-```
-
-**Response (404)**
-
-```json
-{
-  "success": false,
-  "message": "Waitlist entry not found"
-}
-```
+- MongoDB Integration
+- JWT Authentication
+- Pagination
+- Search & Filtering
+- Rate Limiting
+- Swagger Documentation
+- Docker Support
 
 ---
 
-### POST /api/waitlist — Add New Player
-
-**Request Body**
-
-```json
-{
-  "name": "Amit Kumar",
-  "game": "Laser Tag",
-  "players": 5,
-  "phone": "9123456789",
-  "status": "waiting"
-}
-```
-
-**Response (201)**
-
-```json
-{
-  "success": true,
-  "message": "Player added to waitlist successfully",
-  "data": {
-    "id": "generated-uuid",
-    "name": "Amit Kumar",
-    "game": "Laser Tag",
-    "players": 5,
-    "phone": "9123456789",
-    "status": "waiting",
-    "createdAt": "2026-07-14T17:05:00.000Z",
-    "updatedAt": "2026-07-14T17:05:00.000Z"
-  }
-}
-```
-
----
-
-### PUT /api/waitlist/:id — Update Player
-
-**Request Body (partial update)**
-
-```json
-{
-  "status": "playing",
-  "players": 6
-}
-```
-
-**Response (200)**
-
-```json
-{
-  "success": true,
-  "message": "Player updated successfully",
-  "data": {
-    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "name": "Daksh Choudhary",
-    "game": "Bowling",
-    "players": 6,
-    "phone": "9876543210",
-    "status": "playing",
-    "createdAt": "2026-07-14T17:00:00.000Z",
-    "updatedAt": "2026-07-14T17:10:00.000Z"
-  }
-}
-```
-
----
-
-### DELETE /api/waitlist/:id — Delete Player
-
-**Response (200)**
-
-```json
-{
-  "success": true,
-  "message": "Player removed successfully"
-}
-```
-
----
-
-## Validation Rules
-
-| Field     | Rules                                              |
-| --------- | -------------------------------------------------- |
-| `name`    | Required, 3–50 characters, cannot be only numbers  |
-| `game`    | Required, minimum 2 characters                     |
-| `players` | Required, integer, 1–20                            |
-| `phone`   | Required, exactly 10 digits                        |
-| `status`  | Optional, must be: waiting, playing, or completed  |
-
-**Validation Error Response (400)**
-
-```json
-{
-  "success": false,
-  "message": "Validation failed",
-  "errors": [
-    {
-      "field": "name",
-      "message": "Name must be at least 3 characters"
-    },
-    {
-      "field": "phone",
-      "message": "Phone must be exactly 10 digits"
-    }
-  ]
-}
-```
-
----
-
-## Error Responses
-
-| Status | Scenario                    | Message                                   |
-| ------ | --------------------------- | ----------------------------------------- |
-| 400    | Missing required fields     | Validation failed                         |
-| 400    | Invalid phone format        | Phone must be exactly 10 digits           |
-| 400    | Players out of range        | Players must be an integer between 1 and 20 |
-| 400    | Invalid status value        | Status must be one of: waiting, playing, completed |
-| 400    | Malformed JSON body         | Malformed JSON in request body            |
-| 400    | No valid fields for update  | No valid fields provided for update       |
-| 404    | Entry not found             | Waitlist entry not found                  |
-| 404    | Unknown route               | Route GET /unknown not found              |
-| 500    | Server error                | Internal Server Error                     |
-
----
-
-## Thunder Client / Postman Testing
-
-### GET All Players
-```
-GET http://localhost:5000/api/waitlist
-```
-
-### GET Player by ID
-```
-GET http://localhost:5000/api/waitlist/<paste-id-here>
-```
-
-### GET with Filters
-```
-GET http://localhost:5000/api/waitlist?game=Bowling
-GET http://localhost:5000/api/waitlist?status=waiting
-GET http://localhost:5000/api/waitlist?name=daksh
-GET http://localhost:5000/api/waitlist?sort=name
-```
-
-### POST — Create Player
-```
-POST http://localhost:5000/api/waitlist
-Content-Type: application/json
-
-{
-  "name": "Sneha Patel",
-  "game": "Air Hockey",
-  "players": 2,
-  "phone": "9988776655",
-  "status": "waiting"
-}
-```
-
-### PUT — Update Player
-```
-PUT http://localhost:5000/api/waitlist/<paste-id-here>
-Content-Type: application/json
-
-{
-  "status": "playing"
-}
-```
-
-### DELETE — Remove Player
-```
-DELETE http://localhost:5000/api/waitlist/<paste-id-here>
-```
-
-### Test 404 — Invalid ID
-```
-GET http://localhost:5000/api/waitlist/nonexistent-id
-```
-
-### Test 400 — Empty Body
-```
-POST http://localhost:5000/api/waitlist
-Content-Type: application/json
-
-{}
-```
-
-### Test 400 — Invalid Data
-```
-POST http://localhost:5000/api/waitlist
-Content-Type: application/json
-
-{
-  "name": "AB",
-  "game": "B",
-  "players": 25,
-  "phone": "123",
-  "status": "invalid"
-}
-```
-
-### Test 404 — Unknown Route
-```
-GET http://localhost:5000/api/unknown
-```
-
----
-
-## Project Architecture
-
-```
-Request
-  │
-  ├── Helmet (Security Headers)
-  ├── CORS (Cross-Origin Policy)
-  ├── Morgan (Request Logging)
-  ├── JSON Parser (Body Parsing)
-  │
-  ├── Routes (waitlistRoutes.js)
-  │     ├── Validation Middleware (validation.js)
-  │     └── Controller (waitlistController.js)
-  │           ├── Sanitizer (sanitizer.js)
-  │           ├── Model (waitlistModel.js)
-  │           │     └── Data Store (waitlistData.js)
-  │           ├── Analytics (analytics.js)
-  │           └── Delay (delay.js)
-  │
-  ├── 404 Handler (notFound.js)
-  └── Error Handler (errorHandler.js)
-```
-
----
-
-## Future Improvements
-
-- Database integration (MongoDB / PostgreSQL)
-- JWT-based authentication and authorization
-- Rate limiting middleware
-- Pagination for large datasets
-- WebSocket support for real-time waitlist updates
-- Swagger / OpenAPI documentation
-- Automated test suite (Jest / Supertest)
-- Docker containerization
-- CI/CD pipeline integration
-
----
-
-## Author
+# 👨‍💻 Author
 
 **Daksh Choudhary**
 
+B.Tech (Artificial Intelligence & Machine Learning)
+
+Frontend & Backend Developer
+
 ---
 
-## License
-
-This project is licensed under the **MIT License**.
+⭐ If you found this project useful, consider giving it a star!
