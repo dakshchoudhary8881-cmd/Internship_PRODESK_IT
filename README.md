@@ -13,18 +13,22 @@ This repository serves as a collection of sprint-based assignments focused on fr
 ## 👨‍💻 About Me
 
 **Daksh Choudhary**
-B.Tech (Artificial Intelligence & Machine Learning) Student with a strong interest in Frontend Development, Full-Stack Engineering, and Software Product Development.
+B.Tech (Artificial Intelligence & Machine Learning) Student with a strong interest in Full-Stack Development, Backend Engineering, REST API Development, and Software Product Development.
 
 Throughout this internship, I have worked on real-world projects that helped strengthen my understanding of:
 
 * Responsive Web Design
 * JavaScript Engineering
-* DOM Manipulation
+* React Development
+* Backend Development with Node.js & Express
+* REST API Design
+* CRUD Operations
+* Express Routing & Middleware
+* Authentication Concepts
+* API Integration
 * State Management
 * Browser Storage
-* API Integration
 * UI/UX Development
-* React & Component-Based Architecture
 * Git & GitHub Workflow
 
 ---
@@ -33,7 +37,7 @@ Throughout this internship, I have worked on real-world projects that helped str
 
 The Prodesk IT Internship Program is designed to provide hands-on engineering experience through structured sprint-based development tasks.
 
-Each sprint focuses on a different aspect of software development, encouraging practical implementation of industry-standard practices, clean code architecture, problem-solving, and project documentation.
+Each sprint focuses on different aspects of modern software engineering, including frontend development, backend development, REST API architecture, responsive UI implementation, state management, API integration, and scalable project architecture while following industry-standard engineering practices.
 
 ---
 
@@ -81,31 +85,59 @@ Internship-Sprints/
 |----------------|---------|------------|-----------|
 | Client Delivery 01 | Food Truck Menu Management System – Digital menu management dashboard with automatic category icons, menu creation, search, category filtering, dashboard statistics, form validation, XSS sanitization, analytics simulation, and a fully responsive enterprise UI. | React, Vite, JavaScript, CSS | [🌐 Live](https://internship-prodesk-it-j54l-7ri1d2jvu.vercel.app/) |
 | Client Delivery 02 | Developed a premium enterprise-style internal management dashboard for an independent photography studio. The project features booking management, client management, gallery administration, studio scheduling, payment overview, responsive layouts, accessibility, form validation, loading & empty states, theme switching, and XSS-safe input handling using pure HTML, CSS, and Vanilla JavaScript.. |HTML5 • CSS3 • JavaScript | [🌐 Live](https://internship-prodesk-it-w5mo.vercel.app/) |
+| Client Delivery 03 | Game Waitlist CRUD API with Route Parameters – Developed a production-inspired backend REST API for managing gaming waitlists using Node.js and Express.js. Implemented complete CRUD operations, route parameters, modular architecture, request validation, XSS sanitization, analytics logging, proper HTTP status codes, middleware, and standardized JSON responses for enterprise-ready backend development. |Node.js • Express.js • REST API • Middleware • UUID • Helmet • Morgan | [🌐 Live](https://internship-prodesk-it-w5mo.vercel.app/) |
 
 
----
-
-## 🛠 Technologies Used
-
-* HTML5
-* CSS3
-* JavaScript (ES6+)
-* React 19
-* Vite
-* React Hooks
-* @dnd-kit (Drag & Drop)
-* React Icons
-* Chart.js
-* jsPDF
-* LocalStorage API
-* REST APIs
-* Google Gemini API (LLM Integration)
-* PDF.js (Client-side PDF Parsing)
-* Responsive Web Design
-* Git & GitHub
 
 ---
 
+## 🎨 Frontend Technologies
+
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="50" height="50" alt="HTML5"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="50" height="50" alt="CSS3"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="50" height="50" alt="JavaScript"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="50" height="50" alt="React"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" width="50" height="50" alt="Vite"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="50" height="50" alt="Bootstrap"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" width="50" height="50" alt="Tailwind CSS"/>
+</p>
+
+---
+
+## ⚙️ Backend Technologies
+
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="50" height="50" alt="Node.js"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="50" height="50" alt="Express.js"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="50" height="50" alt="NPM"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" width="50" height="50" alt="Postman"/>
+</p>
+
+---
+
+## 🗄️ Databases
+
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="50" height="50" alt="MongoDB"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="50" height="50" alt="MySQL"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="50" height="50" alt="Firebase"/>
+</p>
+
+---
+
+## 🛠 Development Tools
+
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="50" height="50" alt="Git"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="50" height="50" alt="GitHub"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="50" height="50" alt="VS Code"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="50" height="50" alt="Linux"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" width="50" height="50" alt="Bash"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" width="50" height="50" alt="Vercel"/>
+</p>
+
+---
 
 
 ## 📈 Internship Goals
@@ -118,4 +150,4 @@ Future sprint projects will be added to this repository as the internship progre
 
 ### Developed by Daksh Choudhary 🚀
 
-Frontend Developer | AI & ML Student | Aspiring Full-Stack Engineer
+Full-Stack Developer | Backend & Frontend Engineer | AI & ML Student
