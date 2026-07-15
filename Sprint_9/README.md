@@ -1,17 +1,69 @@
-# 🚀 Sprint 09 — The Data Hub RESTful Blog API
+<p align="center">
+  <img src="../logo.png" width="240"/>
+</p>
 
-A production-ready **RESTful Blog API** built with **Node.js** and **Express.js**, implementing CRUD operations, modular architecture, custom middleware, mock authentication, and robust error handling.
+<div align="center">
 
-> **Internship Sprint 09 — Prodesk IT**  
-> **Track B: Fullstack Developers**
+# 🎯 The Data Hub RESTful Blog API
+
+### Production-Ready REST API built with **Node.js** & **Express.js**
+
+<p align="center">
+  Backend CRUD API implementing clean architecture, modular routing, middleware, authentication, and enterprise backend development practices.
+</p>
+
+<p align="center">
+
+<a href="https://YOUR-LIVE-API.vercel.app">
+  <img src="https://img.shields.io/badge/🚀_Live_API-2EA44F?style=for-the-badge&logo=vercel&logoColor=white" />
+</a>
+
+<a href="https://github.com/dakshchoudhary8881-cmd/Internship_PRODESK_IT/tree/main/Sprint_9">
+  <img src="https://img.shields.io/badge/📂_GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+</a>
+
+</p>
+
+<p align="center">
+
+<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/>
+<img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white"/>
+<img src="https://img.shields.io/badge/REST_API-009688?style=flat-square"/>
+<img src="https://img.shields.io/badge/CRUD-2563EB?style=flat-square"/>
+<img src="https://img.shields.io/badge/Middleware-8E44AD?style=flat-square"/>
+<img src="https://img.shields.io/badge/Status-Completed-success?style=flat-square"/>
+
+</p>
+
+<p align="center">
+<img src="https://skillicons.dev/icons?i=nodejs,express,npm,git,github,vscode,postman,vercel" />
+</p>
+
+</div>
 
 ---
 
-## 📌 Project Overview
+> **🚀 Internship Sprint 09 — Prodesk IT**  
+> **👨‍💻 Track B: Full Stack Developers**
 
-The Data Hub is a backend REST API that allows clients to create, retrieve, update, and delete blog posts through standardized HTTP endpoints.
+---
 
-It follows clean backend architecture using Express Router, Controllers, Middleware, and utility modules while maintaining an in-memory data store.
+## 🚀 Live Demo
+
+<div align="center">
+
+### 🌐 Live API
+
+🔗 **[Open Live API](https://internship-prodesk-it-ukpa-gvsv6whoi.vercel.app/)**
+
+---
+
+### 📡 Example Endpoint
+
+🔗 **[`GET /blogs`](https://internship-prodesk-it-ukpa-gvsv6whoi.vercel.app/blogs)**
+
+
+</div>
 
 ---
 
