@@ -26,6 +26,12 @@ Discover movies intelligently with **Google Gemini AI** and **TMDB**, where your
 
 ---
 
+## 🔗 Live Demo 
+
+🌐 [Live API](https://internship-prodesk-it-worl.vercel.app/)
+
+---
+
 ## ✨ Overview
 
 CineVerse AI is a modern **Netflix-inspired Movie Discovery Platform** built with **React 19** and powered by the **TMDB API** and **Google Gemini AI**.
