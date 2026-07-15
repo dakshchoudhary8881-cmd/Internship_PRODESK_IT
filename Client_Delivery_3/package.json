@@ -1,0 +1,33 @@
+{
+  "name": "game-waitlist-crud-api",
+  "version": "1.0.0",
+  "description": "Production-quality REST API for managing gaming arcade player waitlists with full CRUD operations, route parameters, validation, and security.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "express",
+    "rest-api",
+    "waitlist",
+    "crud",
+    "gaming",
+    "arcade"
+  ],
+  "author": "Daksh Choudhary",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "uuid": "^11.1.0",
+    "xss": "^1.0.15"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
