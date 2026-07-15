@@ -47,6 +47,7 @@ Each sprint focuses on different aspects of modern software engineering, includi
 Internship-Sprints/
 ├── Client_Delivery_1/
 ├── Client_Delivery_2/
+├── Client_Delivery_3/
 ├── Sprint_1/
 ├── Sprint_2/
 ├── Sprint_3/
@@ -85,7 +86,7 @@ Internship-Sprints/
 |----------------|---------|------------|-----------|
 | Client Delivery 01 | Food Truck Menu Management System – Digital menu management dashboard with automatic category icons, menu creation, search, category filtering, dashboard statistics, form validation, XSS sanitization, analytics simulation, and a fully responsive enterprise UI. | React, Vite, JavaScript, CSS | [🌐 Live](https://internship-prodesk-it-j54l-7ri1d2jvu.vercel.app/) |
 | Client Delivery 02 | Developed a premium enterprise-style internal management dashboard for an independent photography studio. The project features booking management, client management, gallery administration, studio scheduling, payment overview, responsive layouts, accessibility, form validation, loading & empty states, theme switching, and XSS-safe input handling using pure HTML, CSS, and Vanilla JavaScript.. |HTML5 • CSS3 • JavaScript | [🌐 Live](https://internship-prodesk-it-w5mo.vercel.app/) |
-| Client Delivery 03 | Game Waitlist CRUD API with Route Parameters – Developed a production-inspired backend REST API for managing gaming waitlists using Node.js and Express.js. Implemented complete CRUD operations, route parameters, modular architecture, request validation, XSS sanitization, analytics logging, proper HTTP status codes, middleware, and standardized JSON responses for enterprise-ready backend development. |Node.js • Express.js • REST API • Middleware • UUID • Helmet • Morgan | [🌐 Live](https://internship-prodesk-it-w5mo.vercel.app/) |
+| Client Delivery 03 | Game Waitlist CRUD API with Route Parameters – Developed a production-inspired backend REST API for managing gaming waitlists using Node.js and Express.js. Implemented complete CRUD operations, route parameters, modular architecture, request validation, XSS sanitization, analytics logging, proper HTTP status codes, middleware, and standardized JSON responses for enterprise-ready backend development. |Node.js • Express.js • REST API • Middleware • UUID • Helmet • Morgan | [🌐 Live](https://clientproject3.vercel.app/) |
 
 
 
