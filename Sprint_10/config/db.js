@@ -1,24 +1,29 @@
-// ============================================
-// config/db.js
-// ============================================
-
 const mongoose = require("mongoose");
 
-const connectDB = async () => {
-  try {
-    if (mongoose.connection.readyState >= 1) {
-      return;
-    }
+let cached = global.mongoose;
 
-    const conn = await mongoose.connect(process.env.MONGO_URI);
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
 
-    console.log(
-      `✅ MongoDB Connected Successfully — Host: ${conn.connection.host}`
-    );
-  } catch (error) {
-    console.error(`❌ MongoDB Connection Failed: ${error.message}`);
-    throw error;
+async function connectDB() {
+  if (cached.conn) {
+    return cached.conn;
   }
-};
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(process.env.MONGO_URI, {
+      bufferCommands: false,
+    });
+  }
+
+  cached.conn = await cached.promise;
+
+  console.log(
+    `✅ MongoDB Connected Successfully — Host: ${cached.conn.connection.host}`
+  );
+
+  return cached.conn;
+}
 
 module.exports = connectDB;

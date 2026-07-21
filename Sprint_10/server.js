@@ -1,8 +1,3 @@
-// ============================================
-// server.js — Application Entry Point
-// Works for both Local Development and Vercel
-// ============================================
-
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -11,24 +6,26 @@ const connectDB = require("./config/db");
 
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
-connectDB();
+const start = async () => {
+  await connectDB();
 
-// Only start the HTTP server when NOT running on Vercel
-if (!process.env.VERCEL) {
-  app.listen(PORT, () => {
-    console.log(
-      `🚀 Server running in ${
-        process.env.NODE_ENV || "development"
-      } mode on http://localhost:${PORT}`
-    );
-  });
-}
+  if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+      console.log(
+        `🚀 Server running in ${
+          process.env.NODE_ENV || "development"
+        } mode on http://localhost:${PORT}`
+      );
+    });
+  }
+};
 
-// Handle unhandled promise rejections
+start().catch((err) => {
+  console.error("❌ Startup Error:", err);
+});
+
 process.on("unhandledRejection", (err) => {
   console.error(`❌ Unhandled Rejection: ${err.message}`);
 });
 
-// Export app for Vercel
 module.exports = app;
