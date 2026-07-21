@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../logo.png" alt="The Data Hub Logo" width="120" />
+  <img src="../logo.png" alt="The Data Hub Logo" width="220" />
 </p>
 
 <h1 align="center">🚀 The Data Hub v2 — Sprint 10</h1>
