@@ -42,13 +42,34 @@ Through this internship, I have progressed from frontend development to building
 
 ## 🏢 About the Internship
 
-The Prodesk IT Internship Program is designed to provide hands-on engineering experience through structured sprint-based development tasks.
+A project-based software engineering internship where every sprint focuses on solving real-world development challenges using modern frontend, backend, and full-stack technologies.
 
-Each sprint focuses on modern software engineering, progressing from responsive frontend development to production-ready backend APIs and complete MERN Stack applications featuring cloud databases, REST architecture, deployment pipelines, and scalable full-stack development practices.
+---
+
+## 📊 Internship Statistics
+
+| Metric | Value |
+|--------|------:|
+| 🚀 Sprint Projects | 11 |
+| 💼 Client Deliveries | 3 |
+| 🌐 Live Deployments | 14 |
+| ⚛️ React Projects | 7 |
+| 🔧 REST APIs | 2 |
+| 🗄️ MongoDB Projects | 2 |
+| ☁️ Vercel Deployments | 14 |
+| 💻 Technologies Used | 15+ |
+
+---
+
+## 🎯 Internship Journey
+
+Started with HTML, CSS, and JavaScript projects and progressively advanced through React development, REST API engineering, MongoDB integration, and full-stack MERN application development. Each sprint focused on solving real-world engineering problems while following production-oriented development practices.
 
 ---
 
 ## 📂 Repository Structure
+
+---
 
 ```text
 Internship-Sprints/
@@ -104,67 +125,18 @@ Internship-Sprints/
 
 ---
 
-## 🎨 Frontend Technologies
+## 🛠 Technology Stack
 
-<p align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="50" height="50" alt="HTML5"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="50" height="50" alt="CSS3"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="50" height="50" alt="JavaScript"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="50" height="50" alt="React"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" width="50" height="50" alt="Vite"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="50" height="50" alt="Bootstrap"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" width="50" height="50" alt="Tailwind CSS"/>
-</p>
-
----
-
-## ⚙️ Backend Technologies
-
-<p align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="50" height="50" alt="Node.js"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="50" height="50" alt="Express.js"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="50" height="50" alt="NPM"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" width="50" height="50" alt="Postman"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="50" height="50" alt="MongoDB"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg" width="50" height="50" alt="Mongoose"/>
-</p>
-
----
-
-## 🗄️ Databases
-
-<p align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="50" height="50" alt="MongoDB"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="50" height="50" alt="MySQL"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="50" height="50" alt="Firebase"/>
-</p>
-
----
-
-## 🛠 Development Tools
-
-<p align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="50" height="50" alt="Git"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="50" height="50" alt="GitHub"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="50" height="50" alt="VS Code"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="50" height="50" alt="Linux"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" width="50" height="50" alt="Bash"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" width="50" height="50" alt="Vercel"/>
-  <img src="https://www.svgrepo.com/show/354202/postman-icon.svg" width="50" height="50" alt="Thunder Client"/>
-  <img src="https://www.vectorlogo.zone/logos/cloudinary/cloudinary-icon.svg" width="50" height="50" alt="Cloudinary"/>
-</p>
-
----
-
-
-## 📈 Internship Goals
-
-The primary objective of this internship is to develop industry-level engineering skills through practical project development, code reviews, documentation, and continuous learning.
-
-Future sprint projects will be added to this repository as the internship progresses.
+| Frontend | Backend | Database | Tools |
+|:---------:|:-------:|:--------:|:-----:|
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="60"><br><b>HTML5</b> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="60"><br><b>Node.js</b> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="60"><br><b>MongoDB</b> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="60"><br><b>Git</b> |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="60"><br><b>CSS3</b> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="60"><br><b>Express.js</b> | Mongoose | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="60"><br><b>GitHub</b> |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="60"><br><b>JavaScript</b> | REST API | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="60"><br><b>MySQL</b> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="60"><br><b>VS Code</b> |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="60"><br><b>React</b> | Middleware | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="60"><br><b>Firebase</b> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="60"><br><b>Linux</b> |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" width="60"><br><b>Vite</b> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="60"><br><b>NPM</b> |  | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" width="60"><br><b>Vercel</b> |
 
 ---
 
 ### Developed by Daksh Choudhary 🚀
 
-Full-Stack Developer | Backend & Frontend Engineer | AI & ML Student
+Full-Stack MERN Developer | Backend & Frontend Engineer | AI & ML Student
