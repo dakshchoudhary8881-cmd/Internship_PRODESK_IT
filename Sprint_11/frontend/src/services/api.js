@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://sprint-11-backend.vercel.app/api",
   headers: {
     "Content-Type": "application/json"
   }
@@ -13,7 +13,7 @@ export const getPosts = async () => {
 };
 
 export const createPost = async (formData) => {
-  const response = await axios.post("http://localhost:5000/api/posts", formData, {
+  const response = await axios.post("https://sprint-11-backend.vercel.app/api/posts", formData, {
     headers: {
       "Content-Type": "multipart/form-data"
     }
