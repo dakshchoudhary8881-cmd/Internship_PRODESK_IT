@@ -1,13 +1,26 @@
-<p align="center">
-  <img src="logo.png" alt="Prodesk IT Logo" width="200" />
-</p>
+<div align="center">
+
+<img src="logo.png" width="170"/>
 
 # 🚀 Prodesk IT Internship
 
-Welcome to my internship repository for **Prodesk IT**, where I document and showcase the projects completed throughout my engineering internship journey.
+### Full-Stack MERN Engineering Journey
 
-This repository serves as a collection of sprint-based engineering projects covering Frontend Development, Backend Engineering, REST API Development, React Applications, MERN Stack Development, Cloud Database Integration, UI/UX Design, and modern software engineering practices.
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=24&duration=3000&pause=1000&color=00C7FF&center=true&vCenter=true&width=700&lines=Frontend+Developer;Backend+Engineer;MERN+Stack+Developer;React+%7C+Node.js+%7C+MongoDB;Building+Production+Ready+Applications"/>
+
+<br>
+
+<img src="https://img.shields.io/badge/Sprints-11-success?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Client%20Projects-3-blue?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Deployments-14-orange?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/React-7-informational?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/MERN-Full%20Stack-green?style=for-the-badge"/>
+
+<br><br>
+</div>
+
 ---
+
 
 ## 👨‍💻 About Me
 
