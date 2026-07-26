@@ -20,7 +20,7 @@ async function connectDB() {
   cached.conn = await cached.promise;
 
   console.log(
-    `✅ MongoDB Connected Successfully — Host: ${cached.conn.connection.host}`
+    `✅ MongoDB Connected Successfully — Host: ${cached.conn.connection.host}`,
   );
 
   return cached.conn;

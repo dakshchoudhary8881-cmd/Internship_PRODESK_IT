@@ -1,27 +1,10 @@
-// ============================================
-// controllers/userController.js — User CRUD
-// ============================================
-// Handles all business logic for the User resource:
-//   • Create (with duplicate-email check)
-//   • Read all / Read single
-//   • Update
-//   • Delete
-// Uses asyncHandler for clean async/await without try/catch.
-// ============================================
-
 const User = require("../models/User");
 const Post = require("../models/Post");
 const asyncHandler = require("../middleware/asyncHandler");
 
-// ============================================
-// @desc    Create a new user
-// @route   POST /api/users
-// @access  Public
-// ============================================
 const createUser = asyncHandler(async (req, res) => {
   const { name, email, password, avatar, role } = req.body;
 
-  // Check for duplicate email
   const existingUser = await User.findOne({ email: email.toLowerCase() });
   if (existingUser) {
     return res.status(409).json({
@@ -38,7 +21,6 @@ const createUser = asyncHandler(async (req, res) => {
     role: role || undefined,
   });
 
-  // Return user without the password field
   const userResponse = user.toObject();
   delete userResponse.password;
 
@@ -49,11 +31,6 @@ const createUser = asyncHandler(async (req, res) => {
   });
 });
 
-// ============================================
-// @desc    Get all users
-// @route   GET /api/users
-// @access  Public
-// ============================================
 const getAllUsers = asyncHandler(async (req, res) => {
   const page = Math.max(1, parseInt(req.query.page, 10) || 1);
   const limit = Math.max(1, Math.min(100, parseInt(req.query.limit, 10) || 10));
@@ -81,11 +58,6 @@ const getAllUsers = asyncHandler(async (req, res) => {
   });
 });
 
-// ============================================
-// @desc    Get a single user by ID
-// @route   GET /api/users/:id
-// @access  Public
-// ============================================
 const getUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id).populate("posts");
 
@@ -103,11 +75,6 @@ const getUserById = asyncHandler(async (req, res) => {
   });
 });
 
-// ============================================
-// @desc    Update a user by ID
-// @route   PUT /api/users/:id
-// @access  Public
-// ============================================
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
@@ -118,7 +85,6 @@ const updateUser = asyncHandler(async (req, res) => {
     });
   }
 
-  // If email is being changed, check for duplicates
   if (req.body.email && req.body.email.toLowerCase() !== user.email) {
     const emailTaken = await User.findOne({ email: req.body.email.toLowerCase() });
     if (emailTaken) {
@@ -129,7 +95,6 @@ const updateUser = asyncHandler(async (req, res) => {
     }
   }
 
-  // Apply allowed updates
   const allowedFields = ["name", "email", "password", "avatar", "role"];
   allowedFields.forEach((field) => {
     if (req.body[field] !== undefined) {
@@ -139,7 +104,6 @@ const updateUser = asyncHandler(async (req, res) => {
 
   await user.save();
 
-  // Return user without password
   const userResponse = user.toObject();
   delete userResponse.password;
 
@@ -150,11 +114,6 @@ const updateUser = asyncHandler(async (req, res) => {
   });
 });
 
-// ============================================
-// @desc    Delete a user by ID
-// @route   DELETE /api/users/:id
-// @access  Public
-// ============================================
 const deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
@@ -165,7 +124,6 @@ const deleteUser = asyncHandler(async (req, res) => {
     });
   }
 
-  // Check if user has any posts
   const postCount = await Post.countDocuments({ authorId: req.params.id, isDeleted: false });
   if (postCount > 0) {
     return res.status(400).json({

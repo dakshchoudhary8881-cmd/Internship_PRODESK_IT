@@ -1,17 +1,5 @@
-// ============================================
-// validators/postValidator.js — Post Request Validators
-// ============================================
-// Uses express-validator to define reusable validation
-// chains for POST and PUT requests on the /api/posts route.
-// A shared validationResult handler returns structured
-// JSON errors if any validation rule fails.
-// ============================================
-
 const { body, validationResult } = require("express-validator");
 
-// ============================================
-// Shared: extract and format validation errors
-// ============================================
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
 
@@ -31,9 +19,6 @@ const handleValidationErrors = (req, res, next) => {
   next();
 };
 
-// ============================================
-// Validate: Create Post (POST /api/posts)
-// ============================================
 const validateCreatePost = [
   body("title")
     .trim()
@@ -81,9 +66,6 @@ const validateCreatePost = [
   handleValidationErrors,
 ];
 
-// ============================================
-// Validate: Update Post (PUT /api/posts/:id)
-// ============================================
 const validateUpdatePost = [
   body("title")
     .optional()

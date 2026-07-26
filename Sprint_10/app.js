@@ -1,12 +1,3 @@
-// ============================================
-// app.js — Express Application Configuration
-// ============================================
-// Sets up all middleware (security, logging, compression),
-// mounts API routes, and configures error handling.
-// This module exports the configured app instance
-// without starting the HTTP server — that's done in server.js.
-// ============================================
-
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -14,48 +5,32 @@ const compression = require("compression");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
-// Route imports
 const postRoutes = require("./routes/postRoutes");
 const userRoutes = require("./routes/userRoutes");
 const statsRoutes = require("./routes/statsRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const authorRoutes = require("./routes/authorRoutes");
 
-// Middleware imports
 const errorHandler = require("./middleware/errorHandler");
 
-// Initialize Express app
 const app = express();
 
-// ============================================
-// Security & Utility Middleware
-// ============================================
-
-// Set security-related HTTP headers
 app.use(helmet());
 
-// Enable CORS for all origins (customizable via env if needed)
 app.use(cors());
 
-// Compress all HTTP responses
 app.use(compression());
 
-// Parse incoming JSON payloads
 app.use(express.json({ limit: "10mb" }));
 
-// Parse URL-encoded payloads (form submissions)
 app.use(express.urlencoded({ extended: true }));
 
-// HTTP request logger (concise output in dev, combined in production)
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 } else {
   app.use(morgan("combined"));
 }
 
-// ============================================
-// Root — API Status
-// ============================================
 app.get("/", (req, res) => {
   return res.status(200).json({
     success: true,
@@ -65,9 +40,6 @@ app.get("/", (req, res) => {
   });
 });
 
-// ============================================
-// API Index — Available Endpoints
-// ============================================
 app.get("/api", (req, res) => {
   return res.status(200).json({
     success: true,
@@ -83,9 +55,6 @@ app.get("/api", (req, res) => {
   });
 });
 
-// ============================================
-// Health Check — Server + Database Status (P3)
-// ============================================
 app.get("/api/health", (req, res) => {
   const dbState = mongoose.connection.readyState;
   const dbStates = {
@@ -112,18 +81,12 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// ============================================
-// API Routes
-// ============================================
 app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/stats", statsRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/authors", authorRoutes);
 
-// ============================================
-// 404 — Route Not Found
-// ============================================
 app.use("*", (req, res) => {
   return res.status(404).json({
     success: false,
@@ -131,9 +94,6 @@ app.use("*", (req, res) => {
   });
 });
 
-// ============================================
-// Centralized Error Handler (must be last)
-// ============================================
 app.use(errorHandler);
 
 module.exports = app;

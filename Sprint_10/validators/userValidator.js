@@ -1,15 +1,5 @@
-// ============================================
-// validators/userValidator.js — User Request Validators
-// ============================================
-// Uses express-validator to define reusable validation
-// chains for POST and PUT requests on the /api/users route.
-// ============================================
-
 const { body, validationResult } = require("express-validator");
 
-// ============================================
-// Shared: extract and format validation errors
-// ============================================
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
 
@@ -29,9 +19,6 @@ const handleValidationErrors = (req, res, next) => {
   next();
 };
 
-// ============================================
-// Validate: Create User (POST /api/users)
-// ============================================
 const validateCreateUser = [
   body("name")
     .trim()
@@ -71,9 +58,6 @@ const validateCreateUser = [
   handleValidationErrors,
 ];
 
-// ============================================
-// Validate: Update User (PUT /api/users/:id)
-// ============================================
 const validateUpdateUser = [
   body("name")
     .optional()
