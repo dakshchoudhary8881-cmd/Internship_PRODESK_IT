@@ -4,11 +4,7 @@ A production-inspired **MERN Stack** application that demonstrates complete fron
 
 ---
 
-## 🌐 Live Demo
-
-**Frontend:** https://your-frontend-url.vercel.app
-
-**Backend API:** https://your-backend-url.vercel.app
+## 🌐 [Live Demo](https://sprint-11frontend.vercel.app/)
 
 ---
 
@@ -196,32 +192,6 @@ DELETE /api/posts/:id
 
 ---
 
-# 📷 Screenshots
-
-## Home Page
-
-_Add Screenshot_
-
----
-
-## Create Post
-
-_Add Screenshot_
-
----
-
-## MongoDB Atlas
-
-_Add Screenshot_
-
----
-
-## Responsive View
-
-_Add Screenshot_
-
----
-
 # 🚀 Key Learning Outcomes
 
 - MERN Stack Architecture
@@ -242,17 +212,3 @@ _Add Screenshot_
 # 👨‍💻 Author
 
 **Daksh Choudhary**
-
-B.Tech Artificial Intelligence & Machine Learning
-
-Haridwar University
-
-GitHub: https://github.com/dakshchoudhary8881-cmd
-
-LinkedIn: https://www.linkedin.com/in/your-linkedin
-
----
-
-# 📄 License
-
-This project was developed as part of the **Prodesk IT Summer Engineering Internship — Sprint 11** and is intended for educational and portfolio purposes.
