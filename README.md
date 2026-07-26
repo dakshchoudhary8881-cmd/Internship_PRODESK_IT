@@ -6,16 +6,15 @@
 
 Welcome to my internship repository for **Prodesk IT**, where I document and showcase the projects completed throughout my engineering internship journey.
 
-This repository serves as a collection of sprint-based assignments focused on frontend development, JavaScript engineering, responsive design, UI/UX implementation, browser APIs, React development, and modern web development practices.
-
+This repository serves as a collection of sprint-based engineering projects covering Frontend Development, Backend Engineering, REST API Development, React Applications, MERN Stack Development, Cloud Database Integration, UI/UX Design, and modern software engineering practices.
 ---
 
 ## 👨‍💻 About Me
 
 **Daksh Choudhary**
-B.Tech (Artificial Intelligence & Machine Learning) Student with a strong interest in Full-Stack Development, Backend Engineering, REST API Development, and Software Product Development.
+B.Tech (Artificial Intelligence & Machine Learning) student passionate about Full-Stack MERN Development, Backend Engineering, REST API Design, Cloud Database Integration, and scalable Software Product Development.
 
-Throughout this internship, I have worked on real-world projects that helped strengthen my understanding of:
+Through this internship, I have progressed from frontend development to building and deploying complete MERN Stack applications with React, Node.js, Express.js, MongoDB Atlas, and modern deployment workflows.
 
 * Responsive Web Design
 * JavaScript Engineering
@@ -30,6 +29,14 @@ Throughout this internship, I have worked on real-world projects that helped str
 * Browser Storage
 * UI/UX Development
 * Git & GitHub Workflow
+* MERN Stack Development
+* MongoDB Atlas
+* Mongoose ODM
+* Axios API Integration
+* File Uploads (Multer)
+* Cloud Deployment (Vercel)
+* Environment Configuration
+* API Testing
 
 ---
 
@@ -37,7 +44,7 @@ Throughout this internship, I have worked on real-world projects that helped str
 
 The Prodesk IT Internship Program is designed to provide hands-on engineering experience through structured sprint-based development tasks.
 
-Each sprint focuses on different aspects of modern software engineering, including frontend development, backend development, REST API architecture, responsive UI implementation, state management, API integration, and scalable project architecture while following industry-standard engineering practices.
+Each sprint focuses on modern software engineering, progressing from responsive frontend development to production-ready backend APIs and complete MERN Stack applications featuring cloud databases, REST architecture, deployment pipelines, and scalable full-stack development practices.
 
 ---
 
@@ -118,6 +125,8 @@ Internship-Sprints/
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="50" height="50" alt="Express.js"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="50" height="50" alt="NPM"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" width="50" height="50" alt="Postman"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="50" height="50" alt="MongoDB"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg" width="50" height="50" alt="Mongoose"/>
 </p>
 
 ---
@@ -141,6 +150,8 @@ Internship-Sprints/
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="50" height="50" alt="Linux"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" width="50" height="50" alt="Bash"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" width="50" height="50" alt="Vercel"/>
+  <img src="https://www.svgrepo.com/show/354202/postman-icon.svg" width="50" height="50" alt="Thunder Client"/>
+  <img src="https://www.vectorlogo.zone/logos/cloudinary/cloudinary-icon.svg" width="50" height="50" alt="Cloudinary"/>
 </p>
 
 ---
