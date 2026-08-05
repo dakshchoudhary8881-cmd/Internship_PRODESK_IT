@@ -9,7 +9,7 @@ const healthRoute = require('./routes/health');
 const { registerSocketEvents } = require('./socket/socketHandler');
 
 const PORT = process.env.PORT || 5000;
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+const CLIENT_URL = process.env.CLIENT_URL || 'https://sprint-12.vercel.app/';
 
 const app = express();
 
