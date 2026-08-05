@@ -1,6 +1,12 @@
+
+
 # 🌊 Ripple — Real-Time Chat
 
 A production-quality real-time chat application built with **React 19**, **Socket.IO**, and **Express.js**. Features room-based messaging, live typing indicators, online user tracking, and a clean light-themed UI.
+
+---
+
+## 🌐 [Live Demo](https://sprint-12.vercel.app/)
 
 ---
 
