@@ -135,12 +135,6 @@ npm run dev
 
 ---
 
-## 🖼️ Screenshots
-
-> Add screenshots here
-
----
-
 ## 🛠️ Tech Stack
 
 | Layer    | Technology                       |
@@ -161,8 +155,4 @@ npm run dev
 5. Test room isolation by joining different rooms
 6. Stop backend to verify reconnection behavior
 
----
 
-## 📝 License
-
-ISC
