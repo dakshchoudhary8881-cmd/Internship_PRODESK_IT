@@ -12,6 +12,8 @@ const app = express();
 
 const allowedOrigins = [
   process.env.CLIENT_URL,
+  'https://sprint-14-client-9f0b4ef01-dakshchoudhary8881-cmds-projects.vercel.app',
+  'https://sprint-14-client.vercel.app',
   'http://localhost:5173'
 ].filter(Boolean);
 
