@@ -89,10 +89,13 @@ Internship-Sprints/
 ├── Client_Delivery_1/
 ├── Client_Delivery_2/
 ├── Client_Delivery_3/
+├── Client_Delivery_4/
 ├── Sprint_1/
 ├── Sprint_10/
 ├── Sprint_11/
 ├── Sprint_12/
+├── Sprint_13/
+├── Sprint_14/
 ├── Sprint_2/
 ├── Sprint_3/
 ├── Sprint_4/
@@ -124,7 +127,8 @@ Internship-Sprints/
 | Sprint 10 | The Data Hub v2 — Production Blog API with MongoDB | Engineered a production-ready RESTful Blog API using Node.js, Express.js, MongoDB Atlas, and Mongoose. Implemented persistent CRUD operations, modular MVC architecture, schema validation, environment-based configuration, centralized error handling, health check endpoints, and production deployment, demonstrating scalable backend development practices with cloud database integration. | [🌐 Live API](https://sprint10.vercel.app/) |
 | Sprint 11 | The Data Hub v3 — Full Stack MERN Content Management System | Developed a production-inspired MERN Stack content management application integrating React 19, Vite, Node.js, Express.js, MongoDB Atlas, Mongoose, Axios, Multer, and Cloudinary/Local Uploads. Implemented full-stack CRUD operations, real-time API integration, image uploads with FormData, loading and error states, responsive SaaS-inspired UI, reusable React components, and seamless frontend-backend communication following modern full-stack engineering best practices. | [🌐 Live](https://sprint-11frontend.vercel.app/) |
 | Sprint 12 | Ripple — Real-Time WebSocket Chat Application | Built a production-inspired real-time chat application using React 19, Vite, Node.js, Express.js, and Socket.IO. Implemented persistent WebSocket connections, bidirectional real-time messaging, username-based sessions, live typing indicators, room-based communication with isolated message broadcasting, automatic reconnection handling, responsive modern UI, and seamless frontend-backend integration following scalable real-time application architecture and WebSocket engineering best practices. | [🌐 Live](https://sprint-12.vercel.app/) |
-
+| Sprint 13 | Prodesk IT — Frontend Architecture & UI Foundation | Developed the frontend foundation for the Prodesk IT platform, translating approved Figma wireframes into a structured and responsive React interface. Implemented reusable components, organized application layouts and routing, established consistent UI patterns, and prepared the frontend architecture for backend authentication and future full-stack integration. | [🌐 Live](YOUR_SPRINT_13_LIVE_URL) |
+| Sprint 14 | Prodesk IT — Full Stack Authentication & JWT Integration | Built a secure MERN Stack authentication MVP using React, Vite, Node.js, Express.js, MongoDB Atlas, Mongoose, Axios, bcryptjs, and JSON Web Tokens. Implemented user registration and login, secure bcrypt password hashing, JWT generation and localStorage persistence, protected React routes, Express JWT authentication middleware, authenticated user profile retrieval, logout handling, validation and error states, MongoDB Atlas integration, and automatic redirection for invalid or expired authentication sessions, demonstrating secure and scalable full-stack authentication architecture. | [🌐 Live](YOUR_SPRINT_14_LIVE_URL) |
 
 ---
 
@@ -135,8 +139,7 @@ Internship-Sprints/
 | Client Delivery 01 | Food Truck Menu Management System – Digital menu management dashboard with automatic category icons, menu creation, search, category filtering, dashboard statistics, form validation, XSS sanitization, analytics simulation, and a fully responsive enterprise UI. | React, Vite, JavaScript, CSS | [🌐 Live](https://internship-prodesk-it-j54l-7ri1d2jvu.vercel.app/) |
 | Client Delivery 02 | Developed a premium enterprise-style internal management dashboard for an independent photography studio. The project features booking management, client management, gallery administration, studio scheduling, payment overview, responsive layouts, accessibility, form validation, loading & empty states, theme switching, and XSS-safe input handling using pure HTML, CSS, and Vanilla JavaScript.. |HTML5 • CSS3 • JavaScript | [🌐 Live](https://internship-prodesk-it-w5mo.vercel.app/) |
 | Client Delivery 03 | Game Waitlist CRUD API with Route Parameters – Developed a production-inspired backend REST API for managing gaming waitlists using Node.js and Express.js. Implemented complete CRUD operations, route parameters, modular architecture, request validation, XSS sanitization, analytics logging, proper HTTP status codes, middleware, and standardized JSON responses for enterprise-ready backend development. |Node.js • Express.js • REST API • Middleware • UUID • Helmet • Morgan | [🌐 Live](https://clientproject3.vercel.app/) |
-
-
+| Client Delivery 4 | Prodesk IT — Client Delivery & Production-Ready Frontend | Developed and refined the Prodesk IT client-facing application with a structured React frontend, reusable components, responsive layouts, and production-ready UI architecture based on the approved design direction. Organized the application for maintainability and future backend integration while establishing a polished user experience suitable for the final client delivery phase. | [🌐 Live](https://client-delivery-4.vercel.app/) |
 
 ---
 
