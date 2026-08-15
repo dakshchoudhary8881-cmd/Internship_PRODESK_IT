@@ -5,14 +5,7 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
 
-// Wrap in try/catch — Vercel has no .env file, uses dashboard env vars
-try {
-  dotenv.config();
-} catch (e) {
-  console.log('No .env file, using Vercel environment variables');
-}
-
-connectDB();
+try { dotenv.config(); } catch (e) {}
 
 const app = express();
 
@@ -37,6 +30,12 @@ const corsOptions = {
 app.options(/.*/, cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(express.json());
+
+// Ensure DB connected on every request (Vercel serverless)
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
