@@ -5,7 +5,7 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
 
-dotenv.config();
+dotenv.config({ path: '.env' }); // won't crash if file missing
 connectDB();
 
 const app = express();
