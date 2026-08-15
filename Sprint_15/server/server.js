@@ -5,7 +5,13 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
 
-dotenv.config({ path: '.env' }); // won't crash if file missing
+// Wrap in try/catch — Vercel has no .env file, uses dashboard env vars
+try {
+  dotenv.config();
+} catch (e) {
+  console.log('No .env file, using Vercel environment variables');
+}
+
 connectDB();
 
 const app = express();
@@ -28,7 +34,7 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization']
 };
 
-app.options('*', cors(corsOptions)); // ← ADD THIS
+app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(express.json());
 
@@ -37,5 +43,4 @@ app.use('/api/tasks', taskRoutes);
 
 app.get('/', (req, res) => res.send('API is running...'));
 
-// ← REMOVE app.listen(), replace with export
 export default app;
