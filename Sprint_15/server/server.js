@@ -1,10 +1,16 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
 
-// NO dotenv import or config — Vercel handles this automatically
+// Wrap in try/catch — Vercel has no .env file, uses dashboard env vars
+try {
+  dotenv.config();
+} catch (e) {
+  console.log('No .env file, using Vercel environment variables');
+}
 
 connectDB();
 
