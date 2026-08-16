@@ -63,13 +63,13 @@ A project-based software engineering internship where every sprint focuses on so
 
 | Metric | Value |
 |--------|------:|
-| 🚀 Sprint Projects | 12 |
-| 💼 Client Deliveries | 3 |
-| 🌐 Live Deployments | 15 |
-| ⚛️ React Projects | 8 |
-| 🔧 REST APIs | 3 |
-| 🗄️ MongoDB Projects | 2 |
-| ☁️ Vercel Deployments | 15 |
+| 🚀 Sprint Projects | 15 |
+| 💼 Client Deliveries | 4 |
+| 🌐 Live Deployments | 19 |
+| ⚛️ React Projects | 14 |
+| 🔧 REST APIs | 4 |
+| 🗄️ MongoDB Projects | 4 |
+| ☁️ Vercel Deployments | 19 |
 | 💻 Technologies Used | 15+ |
 
 ---
