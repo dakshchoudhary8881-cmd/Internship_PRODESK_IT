@@ -96,6 +96,7 @@ Internship-Sprints/
 ├── Sprint_12/
 ├── Sprint_13/
 ├── Sprint_14/
+├── Sprint_15/
 ├── Sprint_2/
 ├── Sprint_3/
 ├── Sprint_4/
@@ -129,6 +130,7 @@ Internship-Sprints/
 | Sprint 12 | Ripple — Real-Time WebSocket Chat Application | Built a production-inspired real-time chat application using React 19, Vite, Node.js, Express.js, and Socket.IO. Implemented persistent WebSocket connections, bidirectional real-time messaging, username-based sessions, live typing indicators, room-based communication with isolated message broadcasting, automatic reconnection handling, responsive modern UI, and seamless frontend-backend integration following scalable real-time application architecture and WebSocket engineering best practices. | [🌐 Live](https://sprint-12.vercel.app/) |
 | Sprint 13 | Prodesk IT — Frontend Architecture & UI Foundation | Developed the frontend foundation for the Prodesk IT platform, translating approved Figma wireframes into a structured and responsive React interface. Implemented reusable components, organized application layouts and routing, established consistent UI patterns, and prepared the frontend architecture for backend authentication and future full-stack integration. | [🌐 Live](YOUR_SPRINT_13_LIVE_URL) |
 | Sprint 14 | Prodesk IT — Full Stack Authentication & JWT Integration | Built a secure MERN Stack authentication MVP using React, Vite, Node.js, Express.js, MongoDB Atlas, Mongoose, Axios, bcryptjs, and JSON Web Tokens. Implemented user registration and login, secure bcrypt password hashing, JWT generation and localStorage persistence, protected React routes, Express JWT authentication middleware, authenticated user profile retrieval, logout handling, validation and error states, MongoDB Atlas integration, and automatic redirection for invalid or expired authentication sessions, demonstrating secure and scalable full-stack authentication architecture. | [🌐 Live](https://sprint-14-client-fl4i4gmjd-dakshchoudhary8881-cmds-projects.vercel.app) |
+| Sprint 15 | Prodesk IT — Full Stack REST API CRUD & Secure Task Management | Completed the TaskMatrix full-stack task management system using React, Vite, Node.js, Express.js, MongoDB Atlas, Mongoose, Axios, and JWT authentication. Implemented fully protected REST API endpoints for task creation, retrieval, updating, and deletion, with strict user ownership validation to ensure users can only access and modify their own tasks. Integrated the React dashboard with the backend API, implemented dynamic task rendering, task status management, search, create/edit modals, delete confirmation, loading and empty states, error handling, and optimistic UI deletion with rollback on failure. Extended the Sprint 13 TaskMatrix dashboard experience while building on the secure JWT authentication architecture established in Sprint 14, resulting in a persistent, multi-user, secure CRUD-based task management application. | [🌐 Live](https://sprint-15-client.vercel.app) |
 
 ---
 
