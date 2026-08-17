@@ -1,96 +1,108 @@
-# Prodesk IT — Sprint 15
+# 📝 Sprint 15 — Full Stack Todo & Task Manager
 
-## Track B — Full-Stack REST API CRUD & Data Ownership
+> 🚀 **Prodesk IT Internship — Sprint 15 | Track B: Full Stack Developer**
 
-Sprint 15 completes the core full-stack functionality for the Prodesk IT TaskMatrix application.
+A simple, secure, and responsive **Full Stack Todo / Task Management Application** built as part of Sprint 15.
 
-The application combines the authentication foundation from Sprint 14 with the TaskMatrix product experience from Sprint 13 and adds a complete REST API CRUD architecture with secure user ownership.
-
----
-
-## Project Overview
-
-TaskMatrix is a task management dashboard where authenticated users can create, view, update, and delete their own tasks.
-
-The Sprint 15 implementation focuses on:
-
-- JWT authentication
-- Protected REST API endpoints
-- MongoDB persistence
-- Complete CRUD functionality
-- User data ownership
-- React frontend integration
-- Optimistic UI updates
-- Task status management
-- Search and task organization
-- Responsive TaskMatrix dashboard
+This sprint focuses on completing the complete **CRUD lifecycle** for tasks while connecting a React frontend to a secure Express REST API backed by MongoDB.
 
 ---
 
-# Sprint 15 Objectives
+## 🌐 Live Demo
 
-The main Sprint 15 Track B objectives were:
-
-1. Complete REST API CRUD operations.
-2. Protect API endpoints using JWT authentication.
-3. Enforce strict user ownership of task data.
-4. Connect the React frontend to the REST API.
-5. Implement optimistic deletion.
-6. Provide a polished TaskMatrix dashboard.
-7. Maintain the authentication foundation from Sprint 14.
-8. Maintain the TaskMatrix product experience established in Sprint 13.
+### 🚀 [**Open Live Demo**](https://sprint-15-client.vercel.app)
 
 ---
 
-# Technology Stack
+## 📌 About The Project
 
-## Frontend
+The Sprint 15 application extends the authentication architecture developed in the previous sprint and introduces the application's core task-management functionality.
 
-- React
-- JavaScript
-- CSS
-- Axios
-- Vite
+Users can:
 
-## Backend
+- ➕ Create new tasks
+- 👀 View their tasks
+- ✏️ Edit existing tasks
+- 🔄 Change task status
+- 🗑️ Delete tasks
+- 🔐 Access only their own tasks
+- ⚡ Experience instant UI updates
+- 💾 Persist task data in MongoDB
 
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JWT Authentication
-
-## Development
-
-- Git
-- npm
-- VS Code
+The project demonstrates how a React frontend communicates with a protected Node.js/Express REST API while maintaining user-level data ownership.
 
 ---
 
-# Application Structure
+# 🎯 Sprint 15 Objectives
+
+The primary goal of this sprint was to implement **Track B — Full Stack Developer** requirements.
+
+### Phase 1 — Base Architecture 🏗️
+
+- ✅ Complete REST API CRUD endpoints
+- ✅ JWT-protected API routes
+- ✅ MongoDB task persistence
+- ✅ User ownership validation
+- ✅ Secure task creation
+- ✅ User-specific task retrieval
+
+### Phase 2 — State & Integration 🔗
+
+- ✅ Connect React frontend to REST API
+- ✅ Axios API service
+- ✅ Dynamic task rendering
+- ✅ Create task interface
+- ✅ Edit task interface
+- ✅ Delete confirmation
+- ✅ Optimistic UI deletion
+- ✅ Loading states
+- ✅ Empty states
+- ✅ Error handling
+
+### Phase 3 — Advanced Optimization 🚀
+
+- ⏳ Stripe Test Mode / Checkout integration
+
+> **Note:** P0 and P1 were prioritized as the core Sprint 15 implementation. Stripe Checkout is an optional P2 enhancement and is not required for the core CRUD workflow.
+
+---
+
+# ✨ Features
+
+## 🔐 Authentication
+
+The application uses JWT-based authentication to protect user-specific resources.
+
+- 🔑 Secure login
+- 🪪 JWT authentication
+- 🛡️ Protected API routes
+- 👤 Authenticated user identification
+- 🚪 Logout functionality
+- ⚠️ Unauthorized request handling
+
+---
+
+## 📝 Task Management
+
+The application provides a complete CRUD workflow.
+
+### ➕ Create
+
+Users can create a task with:
+
+- Task title
+- Description
+- Status
+
+The authenticated user's ID is automatically associated with the task.
+
+---
+
+### 👀 Read
+
+Users can retrieve their existing tasks.
+
+The backend automatically filters tasks using the authenticated user's ID.
 
 ```text
-Sprint_15/
-│
-├── server/
-│   ├── controllers/
-│   │   └── taskController.js
-│   │
-│   ├── models/
-│   │   └── Task.js
-│   │
-│   ├── routes/
-│   │   └── taskRoutes.js
-│   │
-│   └── server.js
-│
-└── client/
-    └── src/
-        ├── pages/
-        │   └── Dashboard.jsx
-        │
-        ├── services/
-        │   └── tasks.js
-        │
-        └── index.css
+GET /api/tasks
